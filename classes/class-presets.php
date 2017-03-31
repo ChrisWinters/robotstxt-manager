@@ -4,22 +4,111 @@ if ( count( get_included_files() ) == 1 ){ exit(); }
 
 
 /**
- * Preset Robots.txt Files
+ * @about Update Robots.txt File With Preset Robots.txt File
+ * @location classes/class-process.php
+ * @call RobotstxtManager_Presets::instance();
+ * 
+ * @method init()                   Update Robots.txt, Status & Preset Options
+ * @method robotstxt()              Preset Robots.txt File
+ * @method defaultRobotstxt()       Default Robots.txt File
+ * @method defaultAltRobotstxt()    Default-Alt Robots.txt File
+ * @method wordpressRobotstxt()     Wordpress Only Robots.txt File
+ * @method openRobotstxt()          Open Robots.txt File
+ * @method bloggerRobotstxt()       Blogger Robots.txt File
+ * @method blockedRobotstxt()       Disallow Website Robots.txt File
+ * @method googleRobotstxt()        Google Friendly Robots.txt File
+ * @method instance()               Create Instance
  */
 if ( ! class_exists( 'RobotstxtManager_Presets' ) )
 {
-    class RobotstxtManager_Presets
+    class RobotstxtManager_Presets extends RobotstxtManager_Extended
     {
-        // Plugin Extension Parser
-        private $parser;
+        // Holds Instance Object
+        protected static $instance = NULL;
 
-        
+
         /**
-         * Default Robots.txt File
-         * 
-         * @return string
+         * @about Update Robots.txt, Status & Preset Options
          */
-        final public function defaultRobotstxt() {
+        final public function init()
+        {
+            // Get Post Data
+            $post = filter_input( INPUT_POST, 'preset', FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH );
+
+            // Allowed Presets
+            $allowed = array( 'default', 'default-alt', 'wordpress', 'open', 'blogger', 'block', 'google' );
+
+            // Clear Preset Type
+            $type = '';
+
+            // Validate Preset Type
+            foreach ( $allowed as $value ) {
+                if ( strpos( $post, $value ) !== false ) {
+                    $type = $value;
+                }
+            }
+
+            // If Preset Set
+            if ( ! empty( $type ) ) {
+                // Save Robots.txt File
+                update_option( $this->option_name . 'robotstxt', array( 'robotstxt' => $this->robotstxt( $type ) ), 'yes' );
+
+                // Change Status
+                update_option( $this->option_name . 'status', true, 'yes' );
+
+                // Display Message
+                parent::message( 'presetupdated', 'updated' );
+
+            } else {
+                // Error Display Message
+                parent::message( 'presetfailed', 'error' );
+            }
+        }
+
+
+        /**
+         * @about Get Preset Robots.txt File
+         */
+        final private function robotstxt( $type )
+        {
+            // Default Robots.txt Preset
+            if ( $type == "default" ) {
+                $robotstxt = $this->defaultRobotstxt();
+
+            // Default Alt Robots.txt Preset
+            } elseif ( $type == "default-alt" ) {
+                $robotstxt = $this->defaultAltRobotstxt();
+ 
+            // Wordpress Limited Robots.txt Preset
+            } elseif ( $type == "wordpress" ) {
+                $robotstxt = $this->wordpressRobotstxt();
+
+            // Open Robots.txt Preset
+            } elseif ( $type == "open" ) {
+                $robotstxt = $this->openRobotstxt();
+
+            // Blogger Style Robots.txt Preset
+            } elseif ( $type == "blogger" ) {
+                $robotstxt = $this->bloggerRobotstxt();
+
+            // Blocked Robots.txt Preset
+            } elseif ( $type == "block" ) {
+                $robotstxt = $this->blockedRobotstxt();
+
+            // Google Robots.txt Preset
+            } elseif ( $type == "google" ) {
+                $robotstxt = $this->googleRobotstxt();
+            }
+
+            return $robotstxt;
+        }
+
+
+        /**
+         * @about Default Robots.txt File
+         */
+        final private function defaultRobotstxt()
+        {
             $txt = "# robots.txt\n";
             $txt .= "User-agent: *\n";
             $txt .= "Disallow: /feed\n";
@@ -34,19 +123,18 @@ if ( ! class_exists( 'RobotstxtManager_Presets' ) )
             $txt .= "Disallow: /wp-admin/\n";
             $txt .= "Disallow: /wp-content/\n";
             $txt .= "Disallow: /wp-includes/\n";
-            $txt .= "Disallow: /wp-login.php";
-            if ( $this->parser() ) { $txt .= $this->parser(); }
+            $txt .= "Disallow: /wp-login.php\n";
+            $txt .= "Allow: /wp-admin/admin-ajax.php\n";
 
             return $txt;
         }
 
 
         /**
-         * Default-Alt Robots.txt File
-         * 
-         * @return string
+         * @about Default-Alt Robots.txt File
          */
-	public function defaultAltRobotstxt() {
+        final private function defaultAltRobotstxt()
+        {
             $txt = "# robots.txt\n";
             $txt .= "User-agent: *\n";
             $txt .= "Disallow: */feed\n";
@@ -69,49 +157,46 @@ if ( ! class_exists( 'RobotstxtManager_Presets' ) )
             $txt .= "Disallow: /wp-admin/\n";
             $txt .= "Disallow: /wp-content/\n";
             $txt .= "Disallow: /wp-includes/\n";
-            $txt .= "Disallow: /wp-login.php";
-            if ( $this->parser() ) { $txt .= $this->parser(); }
+            $txt .= "Disallow: /wp-login.php\n";
+            $txt .= "Allow: /wp-admin/admin-ajax.php\n";
 
             return $txt;
-	}
+        }
 
 
         /**
-         * Wordpress Only Robots.txt File
-         * 
-         * @return string
+         * @about Wordpress Only Robots.txt File
          */
-	public function wordpressRobotstxt() {
+        final private function wordpressRobotstxt()
+        {
             $txt = "# robots.txt\n";
             $txt .= "User-agent: *\n";
             $txt .= "Disallow: /wp-admin/\n";
-            $txt .= "Disallow: /wp-includes/";
-            if ( $this->parser() ) { $txt .= $this->parser(); }
+            $txt .= "Disallow: /wp-includes/\n";
+            $txt .= "Allow: /wp-admin/admin-ajax.php\n";
 
             return $txt;
-	}
+        }
 
 
         /**
-         * Open Robots.txt File
-         * 
-         * @return string
+         * @about Open Robots.txt File
          */
-	public function openRobotstxt() {
+        final private function openRobotstxt()
+        {
             $txt = "# robots.txt\n";
             $txt .= "User-agent: *\n";
             $txt .= "Disallow:";
 
             return $txt;
-	}
+        }
 
 
         /**
-         * Blogger Robots.txt File
-         * 
-         * @return string
+         * @about Blogger Robots.txt File
          */
-	public function bloggerRobotstxt() {
+        final private function bloggerRobotstxt()
+        {
             $txt = "# robots.txt\n";
             $txt .= "User-agent: *\n";
             $txt .= "Disallow: *?\n";
@@ -145,33 +230,31 @@ if ( ! class_exists( 'RobotstxtManager_Presets' ) )
             $txt .= "Disallow: /wp-login.php\n";
             $txt .= "Disallow: /wp-content/cache/\n";
             $txt .= "Disallow: /wp-content/themes/\n";
-            $txt .= "Disallow: /wp-content/plugins/";
-            if ( $this->parser() ) { $txt .= $this->parser(); }
+            $txt .= "Disallow: /wp-content/plugins/\n";
+            $txt .= "Allow: /wp-admin/admin-ajax.php\n";
 
             return $txt;
-	}
+        }
 
 
         /**
-         * Disallow Website Robots.txt File
-         * 
-         * @return string
+         * @about Disallow Website Robots.txt File
          */
-	public function blockedRobotstxt() {
+        final private function blockedRobotstxt()
+        {
             $txt = "# robots.txt\n";
             $txt .= "User-agent: *\n";
             $txt .= "Disallow: /";
 
             return $txt;
-	}
+        }
 
 
         /**
-         * Google Friendly Robots.txt File
-         * 
-         * @return string
+         * @about Google Friendly Robots.txt File
          */
-	public function googleRobotstxt() {
+        final private function googleRobotstxt()
+        {
             $txt = "# robots.txt\n";
             $txt .= "User-agent: *\n";
             $txt .= "Disallow: /wp-\n";
@@ -191,8 +274,10 @@ if ( ! class_exists( 'RobotstxtManager_Presets' ) )
             $txt .= "Disallow: /wp-login.php\n";
             $txt .= "Disallow: /wp-content/cache/\n";
             $txt .= "Disallow: /wp-content/themes/\n";
-            $txt .= "Disallow: /wp-content/plugins/";
-            if ( $this->parser() ) { $txt .= $this->parser(); }
+            $txt .= "Disallow: /wp-content/plugins/\n";
+            $txt .= "Allow: /wp-content/uploads\n";
+            $txt .= "Allow: /wp-content/uploads/\n";
+            $txt .= "Allow: /wp-admin/admin-ajax.php\n";
             $txt .= "\n";
             $txt .= "# google bot\n";
             $txt .= "User-agent: Googlebot\n";
@@ -215,19 +300,20 @@ if ( ! class_exists( 'RobotstxtManager_Presets' ) )
             $txt .= "Allow: /*\n";
 
             return $txt;
-	}
+        }
+
 
         /**
-         * Plugin Extension Parser
-         * 
-         * @return string/void
+         * @about Create Instance
          */
-        final private function parser()
+        public static function instance()
         {
-            if ( defined( 'RTM_Api' ) ) {
-                $this->rtm = new RTM_Extension();
-                $this->parser = $this->rtm->parseRobotstxt();
+            if ( ! self::$instance ) {
+                self::$instance = new self();
+                self::$instance->init();
             }
+
+            return self::$instance;
         }
     }
 }
