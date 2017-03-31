@@ -32,7 +32,7 @@ if( function_exists( 'RobotstxtManagerConstants' ) )
         'ROBOTSTXT_MANAGER_PLUGIN_BASE'     => plugin_basename( __FILE__ ),
 
         'ROBOTSTXT_MANAGER_MENU_NAME'       => __( 'Robots.txt Manager', 'robotstxt-manager' ),
-        'ROBOTSTXT_MANAGER_PAGE_NAME'       => __( 'Robots.txt Manager for Wordpress', 'robotstxt-manager' ),
+        'ROBOTSTXT_MANAGER_PAGE_NAME'       => __( 'Robots.txt Manager', 'robotstxt-manager' ),
         'ROBOTSTXT_MANAGER_PAGE_ABOUT'      => __( 'A Simple Robots.txt Manager Plugin For Wordpress.', 'robotstxt-manager' ),
         'ROBOTSTXT_MANAGER_PLUGIN_NAME'     => 'robotstxt-manager',
         'ROBOTSTXT_MANAGER_OPTION_NAME'     => 'robotstxt_manager_',
