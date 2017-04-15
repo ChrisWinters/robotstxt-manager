@@ -58,11 +58,9 @@ For Multisite Networks use the Multisite Robots.txt Manager Plugin instead of th
 
 A) Allows you to manage your websites robots.txt file on standalone WordPress.org installs.
 
-
 = Q) Does this plugin work on Multisite Networks? =
 
 A) Yes, but only if activated per-website. A better solution is to use the Multisite Robots.txt Manager. You can download it from [GitHub](https://github.com/tribalNerd/multisite-robotstxt-manager) or from [WordPress](https://github.com/tribalNerd/multisite-robotstxt-manager).
-
 
 = Q) Does the plugin remove the settings when it is disabled or deleted? =
 
@@ -100,15 +98,15 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files.... with Google a
 == Changelog ==
 
 = 0.1.0 =
-Beta
+
+* Beta Release
 * Plugin format upgrade
 * Added Cleaner
 
 = 0.0.1 =
-Alpha
-* Release
 
-Created: Sept 6, 2016
+* Alpha Release
+* Created: Sept 6, 2016
 
 
 == Screenshots ==

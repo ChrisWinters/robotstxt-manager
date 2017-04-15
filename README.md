@@ -24,9 +24,11 @@ A Simple Robots.txt Manager Plugin for WordPress with 7 pre-created robots.txt f
 * Quickly disable or delete the plugin settings within the plugin admin
 * Scan/Cleaner for other plugin rules, a physical robots.txt file, and missing rewrite rules.
 
+
 ### For Support, Bugs & Feature Requests
 
 Please [contact us directly](http://technerdia.com/help/) or [Submit an Issue](https://github.com/tribalNerd/robotstxt-manager/issues) if you need assistance, found a bug, or if you would to request a feature!
+
 
 ### Multisite Networks
 
@@ -41,6 +43,7 @@ For Multisite Networks use the Multisite Robots.txt Manager Plugin instead of th
 * In the Search box, enter: Robots.txt Manager
 * Find the Plugin "Robots.txt Manager"
 * Click the blue Install button, then click the Activate button.
+
 
 ### Upload and Install
 
@@ -66,6 +69,15 @@ A) No! However you can disable the plugin and delete settings within the plugin 
 
 ## Arbitrary section
 
+#### Understanding the Default Settings
+
+By default, no settings are activated/installed.
+
+To setup: access the plugin admin (Settings > Robots.txt Manager), scroll down and select a preset robots.txt file, then click the Update Website button. The plugin will then be managing the robots.txt file for your website.
+
+
+#### Testing Robots.txt Files
+
 Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log into your Google Account and access the Log into your Webmaster Tools feature. Select a Website or Add a Website.
 
 * On the Webmaster Tools Home page, click the site you want.
@@ -77,7 +89,7 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log
 * https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt
 
 
-= Recommended Sitemap Plugins =
+#### Recommended Sitemap Plugins
 
 * Google XML Sitemaps: http://wordpress.org/extend/plugins/google-sitemap-generator/
 * Better WordPress Google XML Sitemaps: http://wordpress.org/extend/plugins/bwp-google-xml-sitemaps/
