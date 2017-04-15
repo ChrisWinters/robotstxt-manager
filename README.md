@@ -1,4 +1,4 @@
-# Robots.txt Manager #
+# Robots.txt Manager
 * **Plugin Name:** Robots.txt Manager
 * **Contributors:** tribalNerd, Chris Winters
 * **Tags:** robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo, plugin, network, technerdia, tribalnerd
@@ -11,8 +11,7 @@
 A Simple Robots.txt Manager Plugin For WordPress.
 
 
-:: Description
---------
+## Description
 
 A Simple Robots.txt Manager Plugin for WordPress with 7 pre-created robots.txt files to help you get started.
 
@@ -25,55 +24,47 @@ A Simple Robots.txt Manager Plugin for WordPress with 7 pre-created robots.txt f
 * Quickly disable or delete the plugin settings within the plugin admin
 * Scan/Cleaner for other plugin rules, a physical robots.txt file, and missing rewrite rules.
 
-
 ### For Support, Bugs & Feature Requests
 
 Please [contact us directly](http://technerdia.com/help/) or [Submit an Issue](https://github.com/tribalNerd/robotstxt-manager/issues) if you need assistance, found a bug, or if you would to request a feature!
-
 
 ### Multisite Networks
 
 For Multisite Networks use the Multisite Robots.txt Manager Plugin instead of this plugin. Download from [GitHub](https://github.com/tribalNerd/multisite-robotstxt-manager) or from [WordPress](https://github.com/tribalNerd/multisite-robotstxt-manager).
 
 
-:: Installation
---------
+## Installation
 
-= Standard Install =
+### Standard Install
 
 * It is recommended that you use the built in WordPress installer to install plugins.
 * In the Search box, enter: Robots.txt Manager
 * Find the Plugin "Robots.txt Manager"
 * Click the blue Install button, then click the Activate button.
 
-
-= Upload and Install =
+### Upload and Install
 
 * If uploading, upload the /robotstxt-manager/ folder to /wp-content/plugins/ folder for your Worpdress install.
 * Then open the WordPress Admin, locate the "Robots.txt Manager" Plugin in your listing of plugins. (sort by Inactive)
 * Click the Activate link to start the plugin.
 
 
-:: Frequently Asked Questions
---------
+## Frequently Asked Questions
 
-= Q) What does this plugin do? =
+#### Q) What does this plugin do?
 
 A) Allows you to manage your websites robots.txt file on standalone WordPress.org installs.
 
-
-= Q) Does this plugin work on Multisite Networks? =
+#### Q) Does this plugin work on Multisite Networks?
 
 A) Yes, but only if activated per-website. A better solution is to use the Multisite Robots.txt Manager. You can download it from [GitHub](https://github.com/tribalNerd/multisite-robotstxt-manager) or from [WordPress](https://github.com/tribalNerd/multisite-robotstxt-manager).
 
-
-= Q) Does the plugin remove the settings when it is disabled or deleted? =
+#### Q) Does the plugin remove the settings when it is disabled or deleted?
 
 A) No! However you can disable the plugin and delete settings within the plugin admin area.
 
 
-:: Arbitrary section
---------
+## Arbitrary section
 
 Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log into your Google Account and access the Log into your Webmaster Tools feature. Select a Website or Add a Website.
 
@@ -92,23 +83,21 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log
 * Better WordPress Google XML Sitemaps: http://wordpress.org/extend/plugins/bwp-google-xml-sitemaps/
 
 
-:: Changelog
---------
+## Changelog
 
-= 0.1.0 =
-Beta
+#### 0.1.0
+
+* Beta Release
 * Plugin format upgrade
 * Added Cleaner
 
-= 0.0.1 =
-Alpha
-* Release
+#### 0.0.1
 
-Created: Sept 6, 2016
+* Alpha Release
+* Created: Sept 6, 2016
 
 
-:: Screenshots
---------
+## Screenshots
 
 1. [Website Admin Home Tab - Fresh Install](https://github.com/tribalNerd/robotstxt-manager/blob/master/svn/assets/screenshot-1.png)
 

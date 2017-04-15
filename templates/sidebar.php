@@ -17,7 +17,7 @@ if ( count( get_included_files() ) == 1 ){ exit(); }?>
 </div></div> <!-- end inside-pad & inside -->
 </div> <!-- end postbox -->
 
-<p><a href="https://wordpress.org/plugins/robotstxt-manager/" target="_blank"><img src="<?php echo ROBOTSTXT_MANAGER_BASE_URL;?>/wp-content/plugins/robotstxt-manager/assets/sidebar_rate-plugin.gif" alt="<?php _e( 'Please Rate This Plugin At Wordpress.org!', 'robotstxt-manager' );?>" /></a></p>
+<p><a href="https://wordpress.org/support/plugin/robotstxt-manager/reviews/?rate=5#new-post" target="_blank"><img src="<?php echo ROBOTSTXT_MANAGER_BASE_URL;?>/wp-content/plugins/robotstxt-manager/assets/sidebar_rate-plugin.gif" alt="<?php _e( 'Please Rate This Plugin At Wordpress.org!', 'robotstxt-manager' );?>" /></a></p>
 
 <div class="postbox">
     <h3><span><?php _e( 'Robots.txt Help', 'robotstxt-manager' );?></span></h3>
