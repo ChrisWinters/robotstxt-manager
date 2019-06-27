@@ -1,12 +1,12 @@
 === Robots.txt Manager ===
 Plugin Name: Robots.txt Manager
 Contributors: tribalNerd, Chris Winters
-Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo, plugin, network, technerdia, tribalnerd
+Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
 Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 0.1.0
+Tested up to: 5.2.2
+Stable tag: 1.0.0
 License: GNU GPLv3
-License URI: https://github.com/tribalNerd/robotstxt-manager/blob/master/LICENSE
+License URI: https://github.com/ChrisWinters/robotstxt-manager/blob/master/LICENSE
 
 A Simple Robots.txt Manager Plugin for WordPress.
 
@@ -27,12 +27,12 @@ A Simple Robots.txt Manager Plugin for WordPress with 7 pre-created robots.txt f
 
 = For Support, Bugs & Feature Requests =
 
-Please [contact us directly](http://technerdia.com/help/) or visit the [Robots.txt Manager on Github!](https://github.com/tribalNerd/robotstxt-manager/) if you need assistance, found a bug, or if you would to request a feature!
+Please [contact us directly](http://technerdia.com/help/) or visit the [Robots.txt Manager on Github!](https://github.com/ChrisWinters/robotstxt-manager/) if you need assistance, found a bug, or if you would to request a feature!
 
 
 = Multisite Networks =
 
-For Multisite Networks use the Multisite Robots.txt Manager Plugin instead of this plugin. Download from [GitHub](https://github.com/tribalNerd/multisite-robotstxt-manager) or from [WordPress](https://github.com/tribalNerd/multisite-robotstxt-manager).
+For Multisite Networks use the Multisite Robots.txt Manager Plugin instead of this plugin. Download from [GitHub](https://github.com/ChrisWinters/multisite-robotstxt-manager) or from [WordPress](https://github.com/ChrisWinters/multisite-robotstxt-manager).
 
 
 == Installation ==
@@ -60,7 +60,7 @@ A) Allows you to manage your websites robots.txt file on standalone WordPress.or
 
 = Q) Does this plugin work on Multisite Networks? =
 
-A) Yes, but only if activated per-website. A better solution is to use the Multisite Robots.txt Manager. You can download it from [GitHub](https://github.com/tribalNerd/multisite-robotstxt-manager) or from [WordPress](https://github.com/tribalNerd/multisite-robotstxt-manager).
+A) Yes, but only if activated per-website. A better solution is to use the Multisite Robots.txt Manager. You can download it from [GitHub](https://github.com/ChrisWinters/multisite-robotstxt-manager) or from [WordPress](https://github.com/ChrisWinters/multisite-robotstxt-manager).
 
 = Q) Does the plugin remove the settings when it is disabled or deleted? =
 
@@ -68,10 +68,6 @@ A) No! However you can disable the plugin and delete settings within the plugin 
 
 
 == Arbitrary section ==
-
-= Understanding the Default Settings =
-
-By default, no settings are activated/installed.
 
 To setup: access the plugin admin (Settings > Robots.txt Manager), scroll down and select a preset robots.txt file, then click the Update Website button. The plugin will then be managing the robots.txt file for your website.
 
@@ -97,22 +93,17 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files.... with Google a
 
 == Changelog ==
 
-= 0.1.0 =
-
-* Beta Release
-* Plugin format upgrade
-* Added Cleaner
-
-= 0.0.1 =
-
-* Alpha Release
-* Created: Sept 6, 2016
+= 1.0.0 =
+* Released: 2019-06-27
+* Changelog: https://github.com/SecretumTheme/secretum/blob/master/CHANGELOG.md#1.0.0
 
 
 == Screenshots ==
 
-1. Website Admin Home Tab - Fresh Install
+1. Plugin Admin Settings Tab - Fresh Install
 
-2. Website Admin Home Tab - Saved Robots.txt
+2. Plugin Admin Setings Tab - Saved Robots.txt
 
-3. Network Admin Cleaner Tab
+3. Viewing Saved Robots.txt
+
+4. Plugin Admin Cleaner Tab
