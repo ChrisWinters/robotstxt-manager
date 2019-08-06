@@ -4,6 +4,6 @@
 psds
 psds/
 copy.sh
-node_modules/*
 package-lock.json
+node_modules/*
 assets/css/bootstrap4/*
