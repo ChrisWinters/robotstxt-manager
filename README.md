@@ -6,7 +6,7 @@
 * **Tested up to:** 5.2.2
 * **Stable tag:** 1.0.1
 * **License:** GNU GPLv3
-* **License URI:** https://github.com/ChrisWinters/robotstxt-manager/blob/master/LICENSE
+* **License URI:** /LICENSE
 
 A Simple Robots.txt Manager Plugin For WordPress.
 
@@ -91,9 +91,9 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log
 * Better WordPress Google XML Sitemaps: http://wordpress.org/extend/plugins/bwp-google-xml-sitemaps/
 
 
-### 1.0.0
-* Released: 2019-06-27
-* Changelog: https://github.com/SecretumTheme/secretum/blob/master/CHANGELOG.md#100
+### 1.0.1
+* Released: 2019-08-06
+* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md#101
 
 
 ## Screenshots
