@@ -15,5 +15,8 @@ if ( false === defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Loads Translated Strings.
+$robotstxt_manager_translate = new Translate();
+
 // Display Robots.txt File.
 $robotstxt_manager_robotstxt = new Robotstxt();
