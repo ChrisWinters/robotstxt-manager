@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ChrisWinters/robotstxt-manager
  * Description: A Simple Robots.txt Manager For WordPress.
  * Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: GNU GPLv3
  * Copyright ( c ) 2017-2019 Chris W.
  * Author: tribalNerd, Chris Winters
@@ -26,14 +26,35 @@ if ( false === defined( 'ABSPATH' ) ) {
 
 define( 'ROBOTSTXT_MANAGER_DIR', __DIR__ );
 define( 'ROBOTSTXT_MANAGER_FILE', __FILE__ );
-define( 'ROBOTSTXT_MANAGER_VERSION', '1.0.0' );
+define( 'ROBOTSTXT_MANAGER_VERSION', '1.0.1' );
+define( 'ROBOTSTXT_MANAGER_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'ROBOTSTXT_MANAGER_PLUGIN_NAME', 'robotstxt-manager' );
 define( 'ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_' );
 
 require_once dirname( __FILE__ ) . '/inc/autoload-classes.php';
-require_once dirname( __FILE__ ) . '/inc/instantiate-public-classes.php';
-require_once dirname( __FILE__ ) . '/inc/instantiate-admin-classes.php';
-require_once dirname( __FILE__ ) . '/inc/register-plugin-hooks.php';
+
+/*
+ * Hooks a function on to a specific action.
+ * https://developer.wordpress.org/reference/functions/add_action/
+ *
+ * Fires once activated plugins have loaded.
+ * https://developer.wordpress.org/reference/hooks/plugins_loaded/
+ */
+add_action(
+	'plugins_loaded',
+	[
+		'RobotstxtManager\Translate',
+		'init',
+	]
+);
+
+add_action(
+	'plugins_loaded',
+	[
+		'RobotstxtManager\RobotstxtManager',
+		'init',
+	]
+);
 
 if ( true === file_exists( dirname( __FILE__ ) . '/puc/plugin-update-checker.php' ) ) {
 	require_once dirname( __FILE__ ) . '/puc/plugin-update-checker.php';

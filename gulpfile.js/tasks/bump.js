@@ -16,7 +16,7 @@ var next_version;
 /**
  * Bump Version Prompt & Version Update
  */
-gulp.task('bump', gulp.series('prompt', 'robotstxtmanagerphp', 'packagejson', 'readmemd', 'readmetxt', 'stylecss', 'updatesjson'));
+gulp.task('bump', gulp.series('prompt', 'robotstxtmanagerphp', 'packagejson', 'readmemd', 'readmetxt', 'updatesjson'));
 
 
 /**
@@ -40,6 +40,7 @@ gulp.task('prompt', function(cb) {
  */
 gulp.task('robotstxtmanagerphp', function() {
     return gulp.src('./robotstxt-manager.php', {base: process.cwd()})
+    .pipe(replace("Version: " + current_version, "Version: " + next_version))
     .pipe(replace("'" + current_version + "'", "'" + next_version + "'"))
     .pipe(notify({message: 'robotstxt-manager.php updated to: ' + next_version, onLast: true}))
     .pipe(gulp.dest('.'));
@@ -62,7 +63,7 @@ gulp.task('packagejson', function() {
  */
 gulp.task('readmemd', function() {
     return gulp.src('./README.md', {base: process.cwd()})
-    .pipe(replace("**Version:** " + current_version, "**Version:** " + next_version))
+    .pipe(replace("**Stable tag:** " + current_version, "**Stable tag:** " + next_version))
     .pipe(notify({message: 'README.md updated to: ' + next_version, onLast: true}))
     .pipe(gulp.dest('.'));
 });
@@ -73,7 +74,7 @@ gulp.task('readmemd', function() {
  */
 gulp.task('readmetxt', function() {
     return gulp.src('./readme.txt', {base: process.cwd()})
-    .pipe(replace("Version: " + current_version, "Version: " + next_version))
+    .pipe(replace("Stable tag: " + current_version, "Stable tag: " + next_version))
     .pipe(notify({message: 'readme.txt updated to: ' + next_version, onLast: true}))
     .pipe(gulp.dest('.'));
 });

@@ -4,7 +4,7 @@
 * **Tags:** robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
 * **Requires at least:** 3.8
 * **Tested up to:** 5.2.2
-* **Stable tag:** 1.0.0
+* **Stable tag:** 1.0.1
 * **License:** GNU GPLv3
 * **License URI:** https://github.com/ChrisWinters/robotstxt-manager/blob/master/LICENSE
 

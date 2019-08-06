@@ -1,7 +1,12 @@
 # Changelog
 
+# 1.0.1
+**2019-08-06 - Hotfix**
+* Corrected plugin translation file being called incorrectly.
+* Moved admin/public class calls into plugins_loaded hook.
+
 # 1.0.0
-**2018-10-01 - Release**
+**2019-06-27 - Release**
 
 * Offical Release
 * Migrated to new plugin format, added gulpfile.js to manage plugin admin styling

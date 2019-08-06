@@ -4,9 +4,9 @@ Contributors: tribalNerd, Chris Winters
 Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
 Requires at least: 3.8
 Tested up to: 5.2.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU GPLv3
-License URI: https://github.com/ChrisWinters/robotstxt-manager/blob/master/LICENSE
+License URI: /LICENSE
 
 A Simple Robots.txt Manager Plugin for WordPress.
 
@@ -93,9 +93,9 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files.... with Google a
 
 == Changelog ==
 
-= 1.0.0 =
-* Released: 2019-06-27
-* Changelog: https://github.com/SecretumTheme/secretum/blob/master/CHANGELOG.md#1.0.0
+= 1.0.1 =
+* Released: 2019-08-06
+* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md#101
 
 
 == Screenshots ==
