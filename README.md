@@ -98,10 +98,8 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log
 
 ## Screenshots
 
-1. [Plugin Admin Settings Tab - Fresh Install](https://github.com/ChrisWinters/robotstxt-manager/blob/master/svn/assets/screenshot-1.png)
+1. [Plugin Admin - Settings Tab - Fresh Install](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/screenshot-1.png)
 
-2. [Plugin Admin Setings Tab - Saved Robots.txt](https://github.com/ChrisWinters/robotstxt-manager/blob/master/svn/assets/screenshot-2.png)
+2. [Plugin Admin - Settings Tab - Saved Robots.txt](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/screenshot-2.png)
 
-3. [Viewing Saved Robots.txt](https://github.com/ChrisWinters/robotstxt-manager/blob/master/svn/assets/screenshot-3.png)
-
-4. [Plugin Admin Cleaner Tab](https://github.com/ChrisWinters/robotstxt-manager/blob/master/svn/assets/screenshot-4.png)
+3. [Plugin Admin - Cleaner Tab](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/screenshot-3.png)

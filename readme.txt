@@ -100,10 +100,8 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files.... with Google a
 
 == Screenshots ==
 
-1. Plugin Admin Settings Tab - Fresh Install
+1. Plugin Admin - Settings Tab - Fresh Install
 
-2. Plugin Admin Setings Tab - Saved Robots.txt
+2. Plugin Admin - Settings Tab - Saved Robots.txt
 
-3. Viewing Saved Robots.txt
-
-4. Plugin Admin Cleaner Tab
+3. Plugin Admin - Cleaner Tab
