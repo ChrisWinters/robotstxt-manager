@@ -4,7 +4,7 @@ Contributors: tribalNerd, Chris Winters
 Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
 Requires at least: 3.8
 Tested up to: 5.2.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GNU GPLv3
 License URI: /LICENSE
 
@@ -93,9 +93,9 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files.... with Google a
 
 == Changelog ==
 
-= 1.0.1 =
-* Released: 2019-08-06
-* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md#101
+= 1.0.2 =
+* Released: 2019-08-07
+* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md#102
 
 
 == Screenshots ==

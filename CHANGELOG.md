@@ -1,7 +1,14 @@
 # Changelog
 
+# 1.0.2
+**2019-08-07 - Hotfix**
+
+* Moved register_activation_hook to robotstxt-manager.php
+* Removed register-plugin-hooks.php
+
 # 1.0.1
 **2019-08-06 - Hotfix**
+
 * Corrected plugin translation file being called incorrectly
 * Moved admin/public class calls into plugins_loaded hook
 * Moved /svn/ directory to root directory
