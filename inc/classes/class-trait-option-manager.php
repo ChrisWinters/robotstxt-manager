@@ -35,7 +35,7 @@ trait Trait_Option_Manager {
 			return $get_option;
 		}
 
-		return [];
+		return array();
 	}//end get_option()
 
 
@@ -162,7 +162,7 @@ trait Trait_Option_Manager {
 	 * @return array
 	 */
 	public function all_options() {
-		$options = [];
+		$options = array();
 
 		$get_option = $this->get_option();
 

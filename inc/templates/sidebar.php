@@ -38,10 +38,6 @@ if ( false === defined( 'ABSPATH' ) ) {
 </div></div> <!-- end inside-pad & inside -->
 </div> <!-- end postbox -->
 
-<!--
-<p><a href="https://wordpress.org/support/plugin/robotstxt-manager/reviews/?rate=5#new-post" target="_blank"><img src="<?php //echo esc_url( home_url() ); ?>/wp-content/plugins/robotstxt-manager/assets/images/sidebar_rate-plugin.gif" alt="<?php //_e( 'Please Rate This Plugin At Wordpress.org!', 'robotstxt-manager' ); ?>" /></a></p>
--->
-
 <div class="postbox">
 	<div class="h5 p-1 font-weight-bold"><?php esc_html_e( 'Robots.txt Help', 'robotstxt-manager' ); ?></div>
 <div class="inside" style="clear:both;padding-top:1px;"><div class="para">

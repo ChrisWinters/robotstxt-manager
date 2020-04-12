@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ChrisWinters/robotstxt-manager
  * Description: A Simple Robots.txt Manager For WordPress.
  * Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
- * Version: 1.0.2
+ * Version: 1.0.3
  * License: GNU GPLv3
  * Copyright ( c ) 2017-2019 Chris W.
  * Author: tribalNerd, Chris Winters
@@ -26,7 +26,7 @@ if ( false === defined( 'ABSPATH' ) ) {
 
 define( 'ROBOTSTXT_MANAGER_DIR', __DIR__ );
 define( 'ROBOTSTXT_MANAGER_FILE', __FILE__ );
-define( 'ROBOTSTXT_MANAGER_VERSION', '1.0.2' );
+define( 'ROBOTSTXT_MANAGER_VERSION', '1.0.3' );
 define( 'ROBOTSTXT_MANAGER_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'ROBOTSTXT_MANAGER_PLUGIN_NAME', 'robotstxt-manager' );
 define( 'ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_' );
@@ -42,18 +42,18 @@ require_once dirname( __FILE__ ) . '/inc/autoload-classes.php';
  */
 add_action(
 	'plugins_loaded',
-	[
+	array(
 		'RobotstxtManager\Translate',
 		'init',
-	]
+	)
 );
 
 add_action(
 	'plugins_loaded',
-	[
+	array(
 		'RobotstxtManager\RobotstxtManager',
 		'init',
-	]
+	)
 );
 
 /*
@@ -62,10 +62,10 @@ add_action(
  */
 register_activation_hook(
 	__FILE__,
-	[
+	array(
 		'RobotstxtManager\Plugin_Activate',
 		'init',
-	]
+	)
 );
 
 if ( true === file_exists( dirname( __FILE__ ) . '/puc/plugin-update-checker.php' ) ) {

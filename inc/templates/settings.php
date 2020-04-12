@@ -31,7 +31,6 @@ if ( false === defined( 'ABSPATH' ) ) {
 ?>
 <form enctype="multipart/form-data" method="post" action="">
 <?php
-
 /*
  * Retrieve or display nonce hidden field for forms.
  * https://developer.wordpress.org/reference/functions/wp_nonce_field/
@@ -94,7 +93,6 @@ $robotstxt_manager_robotstxt_file = $this->get_setting( 'robotstxt' );
 
 <form enctype="multipart/form-data" method="post" action="">
 <?php
-
 /*
  * Retrieve or display nonce hidden field for forms.
  * https://developer.wordpress.org/reference/functions/wp_nonce_field/
@@ -153,7 +151,6 @@ wp_nonce_field(
 
 <form enctype="multipart/form-data" method="post" action="">
 <?php
-
 /*
  * Retrieve or display nonce hidden field for forms.
  * https://developer.wordpress.org/reference/functions/wp_nonce_field/

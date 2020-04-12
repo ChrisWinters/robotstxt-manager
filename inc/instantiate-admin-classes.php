@@ -21,10 +21,10 @@ if ( false === defined( 'ABSPATH' ) ) {
  */
 if ( true === is_admin() ) {
 	// Save Plugin Admin Data.
-	$robotstxt_manager_plugin_admin_save = new Plugin_Admin_Save();
+	$robotstxt_manager_plugin_admin_save = new \RobotstxtManager\Plugin_Admin_Save();
 	$robotstxt_manager_plugin_admin_save->init();
 
 	// Display Plugin Admin.
-	$robotstxt_manager_plugin_admin = new Plugin_Admin();
+	$robotstxt_manager_plugin_admin = new \RobotstxtManager\Plugin_Admin();
 	$robotstxt_manager_plugin_admin->init();
 }

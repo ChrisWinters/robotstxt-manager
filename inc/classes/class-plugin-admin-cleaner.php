@@ -28,14 +28,14 @@ final class Plugin_Admin_Cleaner {
 	 *
 	 * @var array
 	 */
-	public $post_object = [];
+	public $post_object = array();
 
 	/**
 	 * Notices Class Object.
 	 *
 	 * @var object
 	 */
-	public $notices = [];
+	public $notices = array();
 
 
 	/**
@@ -44,7 +44,7 @@ final class Plugin_Admin_Cleaner {
 	 * @param array  $post_object Post Object Array.
 	 * @param object $notices     Notices Class Object.
 	 */
-	public function __construct( $post_object = [], $notices = [] ) {
+	public function __construct( $post_object = array(), $notices = array() ) {
 		$this->post_object = $post_object;
 		$this->notices     = $notices;
 	}//end __construct()
@@ -94,7 +94,7 @@ final class Plugin_Admin_Cleaner {
 
 		// Old Data Found, Set Marker.
 		if ( get_option( 'pc_robotstxt' ) || get_option( 'kb_robotstxt' ) || get_option( 'cd_rdte_content' ) ) {
-			$this->update_option( [ 'checkdata' => 'error' ] );
+			$this->update_option( array( 'checkdata' => 'error' ) );
 			$message = true;
 		} else {
 			$this->del_setting( 'checkdata' );
@@ -107,10 +107,10 @@ final class Plugin_Admin_Cleaner {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'checkdata_notice',
-				]
+				)
 			);
 		} else {
 			/*
@@ -119,10 +119,10 @@ final class Plugin_Admin_Cleaner {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'checkdata_done',
-				]
+				)
 			);
 		}
 	}
@@ -155,7 +155,7 @@ final class Plugin_Admin_Cleaner {
 
 		// Robots.txt File Found.
 		if ( true === file_exists( get_home_path() . 'robots.txt' ) ) {
-			$this->update_option( [ 'checkphysical' => 'error' ] );
+			$this->update_option( array( 'checkphysical' => 'error' ) );
 			$message = true;
 		} else {
 			$this->del_setting( 'checkphysical' );
@@ -168,10 +168,10 @@ final class Plugin_Admin_Cleaner {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'checkphysical_notice',
-				]
+				)
 			);
 		} else {
 			/*
@@ -180,10 +180,10 @@ final class Plugin_Admin_Cleaner {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'checkphysical_done',
-				]
+				)
 			);
 		}
 	}
@@ -208,10 +208,10 @@ final class Plugin_Admin_Cleaner {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'checkphysical_error',
-				]
+				)
 			);
 		} else {
 			$this->checkphysical();
@@ -235,7 +235,7 @@ final class Plugin_Admin_Cleaner {
 
 		// Error No Rewrite Rule Found, Set Marker.
 		if ( true !== in_array( 'index.php?robots=1', (array) $rules, true ) ) {
-			$this->update_option( [ 'checkrewrite' => 'error' ] );
+			$this->update_option( array( 'checkrewrite' => 'error' ) );
 			$message = true;
 		} else {
 			$this->del_setting( 'checkrewrite' );
@@ -248,10 +248,10 @@ final class Plugin_Admin_Cleaner {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'checkrewrite_notice',
-				]
+				)
 			);
 		} else {
 			/*
@@ -260,10 +260,10 @@ final class Plugin_Admin_Cleaner {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'checkrewrite_done',
-				]
+				)
 			);
 		}
 	}

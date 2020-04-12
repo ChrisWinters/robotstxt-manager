@@ -25,7 +25,6 @@ if ( false === defined( 'ABSPATH' ) ) {
 
 
 <?php
-
 /*
  * Sanitizes content for allowed HTML tags for post content.
  * https://developer.wordpress.org/reference/functions/wp_kses_post/

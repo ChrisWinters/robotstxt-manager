@@ -1,5 +1,13 @@
 # Changelog
 
+# 1.0.3
+**2020-04-12- Hotfix**
+
+* Removed esc_html output around WordPress robots_txt filter in class-robotstxt.php
+* Corrected/added strict comparison in class-robotstxt.php
+* Added namespaces to admin and public class instantiate calls
+* WordPress 5.4 Tested
+
 # 1.0.2
 **2019-08-07 - Hotfix**
 

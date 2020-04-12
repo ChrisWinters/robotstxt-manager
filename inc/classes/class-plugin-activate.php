@@ -64,9 +64,9 @@ final class Plugin_Activate {
 			 */
 			update_option(
 				ROBOTSTXT_MANAGER_PLUGIN_NAME,
-				[
+				array(
 					'robotstxt' => self::get_website_robotstxt(),
-				]
+				)
 			);
 		}
 
@@ -82,9 +82,9 @@ final class Plugin_Activate {
 			 */
 			update_option(
 				ROBOTSTXT_MANAGER_PLUGIN_NAME,
-				[
+				array(
 					'robotstxt' => $preset_robotstxt,
-				]
+				)
 			);
 		}
 	}//end set_robotstxt()

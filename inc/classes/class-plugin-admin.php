@@ -30,7 +30,7 @@ final class Plugin_Admin {
 	 *
 	 * @var array
 	 */
-	public $admin_tabs = [];
+	public $admin_tabs = array();
 
 	/**
 	 * Saved Robots.txt File.
@@ -71,10 +71,10 @@ final class Plugin_Admin {
 		 * Escaping for HTML blocks.
 		 * https://developer.wordpress.org/reference/functions/esc_html__/
 		 */
-		$this->admin_tabs = [
+		$this->admin_tabs = array(
 			'settings' => esc_html__( 'Settings', 'robotstxt-manager' ),
 			'cleaner'  => esc_html__( 'Cleaner', 'robotstxt-manager' ),
-		];
+		);
 
 		// Saved Robots.txt File.
 		$this->robotstxt = $this->get_setting( 'robotstxt' );
@@ -99,10 +99,10 @@ final class Plugin_Admin {
 		 */
 		add_action(
 			'admin_menu',
-			[
+			array(
 				$this,
 				'menu',
-			]
+			)
 		);
 
 		if ( $this->query_string( 'page' ) === ROBOTSTXT_MANAGER_PLUGIN_NAME ) {
@@ -112,10 +112,10 @@ final class Plugin_Admin {
 			 */
 			add_action(
 				'admin_enqueue_scripts',
-				[
+				array(
 					$this,
 					'enqueue',
-				]
+				)
 			);
 		}
 	}//end init()
@@ -137,10 +137,10 @@ final class Plugin_Admin {
 			__( 'Robots.txt Manager', 'robotstxt-manager' ),
 			'manage_options',
 			ROBOTSTXT_MANAGER_PLUGIN_NAME,
-			[
+			array(
 				$this,
 				'display',
-			]
+			)
 		);
 	}//end menu()
 
@@ -162,7 +162,7 @@ final class Plugin_Admin {
 			ROBOTSTXT_MANAGER_PLUGIN_NAME,
 			plugins_url( '/assets/css/style.min.css', ROBOTSTXT_MANAGER_FILE ),
 			'',
-			date( 'YmdHis', time() ),
+			gmdate( 'YmdHis', time() ),
 			'all'
 		);
 	}//end enqueue()

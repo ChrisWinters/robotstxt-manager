@@ -3,8 +3,8 @@
 * **Contributors:** tribalNerd, Chris Winters
 * **Tags:** robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
 * **Requires at least:** 3.8
-* **Tested up to:** 5.2.2
-* **Stable tag:** 1.0.2
+* **Tested up to:** 5.4
+* **Stable tag:** 1.0.3
 * **License:** GNU GPLv3
 * **License URI:** /LICENSE
 
@@ -18,6 +18,7 @@ A Simple Robots.txt Manager Plugin for WordPress with 7 pre-created robots.txt f
 
 ### Features:
 
+* GitHub installs update like any other WordPress plugin
 * Full control over your WordPress website robots.txt file
 * 7 Pre-created robots.txt files to help you get started
 * Auto-detects sitemap Url, active theme path & upload directory
@@ -91,9 +92,9 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log
 * Better WordPress Google XML Sitemaps: http://wordpress.org/extend/plugins/bwp-google-xml-sitemaps/
 
 
-### 1.0.2
-* Released: 2019-08-07
-* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md#102
+### 1.0.3
+* Released: 2020-04-12
+* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md#103
 
 
 ## Screenshots

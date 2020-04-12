@@ -31,7 +31,7 @@ final class Plugin_Admin_Save {
 	 *
 	 * @var array
 	 */
-	public $post_object = [];
+	public $post_object = array();
 
 	/**
 	 * Plugin_Admin_Notices
@@ -87,10 +87,10 @@ final class Plugin_Admin_Save {
 		 */
 		add_action(
 			'admin_init',
-			[
+			array(
 				$this,
 				'update',
-			]
+			)
 		);
 	}//end init()
 
@@ -153,10 +153,10 @@ final class Plugin_Admin_Save {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'input_error',
-				]
+				)
 			);
 		}
 	}//end unset_post_items()
@@ -187,10 +187,10 @@ final class Plugin_Admin_Save {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'update_success',
-				]
+				)
 			);
 		} else {
 			/*
@@ -199,10 +199,10 @@ final class Plugin_Admin_Save {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'update_error',
-				]
+				)
 			);
 		}
 	}//end update_action()
@@ -221,10 +221,10 @@ final class Plugin_Admin_Save {
 			*/
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'delete_success',
-				]
+				)
 			);
 		} else {
 			/*
@@ -233,10 +233,10 @@ final class Plugin_Admin_Save {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'delete_error',
-				]
+				)
 			);
 		}
 	}//end delete_action()

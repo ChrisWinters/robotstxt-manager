@@ -28,7 +28,7 @@ final class Plugin_Admin_Presets {
 	 *
 	 * @var array
 	 */
-	public $post_object = [];
+	public $post_object = array();
 
 	/**
 	 * Plugin_Admin_Notices
@@ -44,7 +44,7 @@ final class Plugin_Admin_Presets {
 	 * @param array  $post_object Post Object Array.
 	 * @param object $notices     Notices Class Object.
 	 */
-	public function __construct( $post_object = [], $notices = [] ) {
+	public function __construct( $post_object = array(), $notices = array() ) {
 		$this->post_object = $post_object;
 		$this->notices     = $notices;
 	}//end __construct()
@@ -63,37 +63,37 @@ final class Plugin_Admin_Presets {
 
 		switch ( $preset ) {
 			case 'default-robotstxt':
-				$this->update_option( [ 'robotstxt' => $this->default_robotstxt() ] );
+				$this->update_option( array( 'robotstxt' => $this->default_robotstxt() ) );
 				$message = true;
 				break;
 
 			case 'defaultalt-robotstxt':
-				$this->update_option( [ 'robotstxt' => $this->defaultAlt_robotstxt() ] );
+				$this->update_option( array( 'robotstxt' => $this->defaultAlt_robotstxt() ) );
 				$message = true;
 				break;
 
 			case 'wordpress-robotstxt':
-				$this->update_option( [ 'robotstxt' => $this->wordpress_robotstxt() ] );
+				$this->update_option( array( 'robotstxt' => $this->wordpress_robotstxt() ) );
 				$message = true;
 				break;
 
 			case 'open-robotstxt':
-				$this->update_option( [ 'robotstxt' => $this->open_robotstxt() ] );
+				$this->update_option( array( 'robotstxt' => $this->open_robotstxt() ) );
 				$message = true;
 				break;
 
 			case 'blogger-robotstxt':
-				$this->update_option( [ 'robotstxt' => $this->blogger_robotstxt() ] );
+				$this->update_option( array( 'robotstxt' => $this->blogger_robotstxt() ) );
 				$message = true;
 				break;
 
 			case 'block-robotstxt':
-				$this->update_option( [ 'robotstxt' => $this->blocked_robotstxt() ] );
+				$this->update_option( array( 'robotstxt' => $this->blocked_robotstxt() ) );
 				$message = true;
 				break;
 
 			case 'google-robotstxt':
-				$this->update_option( [ 'robotstxt' => $this->google_robotstxt() ] );
+				$this->update_option( array( 'robotstxt' => $this->google_robotstxt() ) );
 				$message = true;
 				break;
 		}
@@ -105,10 +105,10 @@ final class Plugin_Admin_Presets {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'preset_success',
-				]
+				)
 			);
 		} else {
 			/*
@@ -117,10 +117,10 @@ final class Plugin_Admin_Presets {
 			 */
 			add_action(
 				'admin_notices',
-				[
+				array(
 					$this->notices,
 					'preset_error',
-				]
+				)
 			);
 		}
 	}

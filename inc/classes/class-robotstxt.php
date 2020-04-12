@@ -9,7 +9,7 @@
  * @link       /LICENSE
  */
 
-namespace RobotstxtManager;
+namespace MsRobotstxtManager;
 
 if ( false === defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,9 +33,48 @@ final class Robotstxt {
 	 * Display Robots.txt File
 	 */
 	private function robotstxt() {
-		$get_option = get_option( ROBOTSTXT_MANAGER_PLUGIN_NAME );
+		/*
+		 * If Multisite is enabled.
+		 * https://developer.wordpress.org/reference/functions/is_multisite/
+		 */
+		if ( true === is_multisite() ) {
+			/*
+			 * Retrieve the current site ID.
+			 * https://developer.wordpress.org/reference/functions/get_current_blog_id/
+			 */
+			$site_id = get_current_blog_id();
 
-		if ( true !== empty( $get_option['robotstxt'] ) ) {
+			/*
+			 * Switch the current blog.
+			 * https://developer.wordpress.org/reference/functions/switch_to_blog/
+			 */
+			switch_to_blog( $site_id );
+		}
+
+		/*
+		 * Retrieves an option value based on an option name.
+		 * https://developer.wordpress.org/reference/functions/get_option/
+		 */
+		$website_option = get_option( MS_ROBOTSTXT_MANAGER_PLUGIN_NAME );
+		$robotstxt_file = '';
+
+		// Ignore If Disabled.
+		if ( true !== empty( $website_option['disable'] ) ) {
+			return;
+		}
+
+		// Robots.txt Set.
+		if ( true !== empty( $website_option['robotstxt'] ) && true === empty( $robotstxt_file ) ) {
+			$robotstxt_file = $website_option['robotstxt'];
+		}
+
+		// Override Robots.txt Set, Use Append As Robots.txt File.
+		if ( true !== empty( $website_option['override'] ) ) {
+			$robotstxt_file = $website_option['append'];
+		}
+
+		// Display Robots.txt File.
+		if ( true !== empty( $robotstxt_file ) ) {
 			header( 'Status: 200 OK', true, 200 );
 			header( 'Content-type: text/plain; charset=' . get_bloginfo( 'charset' ) );
 
@@ -46,11 +85,24 @@ final class Robotstxt {
 			 */
 			do_action( 'do_robotstxt' );
 
-			/*
-			 * Escaping for HTML blocks.
-			 * https://developer.wordpress.org/reference/functions/esc_html/
+			// Get Status.
+			$public = get_option( 'blog_public' );
+
+			if ( '0' === $public ) {
+				$output .= "Disallow: /\n";
+			} else {
+				$output = $robotstxt_file;
+			}
+
+			/**
+			 * Filters the robots.txt output.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param string $output Robots.txt output.
+			 * @param bool   $public Whether the site is considered "public".
 			 */
-			echo esc_html( $get_option['robotstxt'] );
+			echo apply_filters( 'robots_txt', $output, $public );
 			exit;
 		}
 	}

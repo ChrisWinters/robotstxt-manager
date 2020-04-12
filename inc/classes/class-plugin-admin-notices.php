@@ -24,7 +24,7 @@ final class Plugin_Admin_Notices {
 	 *
 	 * @var array
 	 */
-	public $message = [];
+	public $message = array();
 
 
 	/**
@@ -33,7 +33,7 @@ final class Plugin_Admin_Notices {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->message = [
+		$this->message = array(
 			'update_success'       => __(
 				'Settings Updated.',
 				'includes'
@@ -90,7 +90,7 @@ final class Plugin_Admin_Notices {
 				'Proper Rewrite Rule found.',
 				'includes'
 			),
-		];
+		);
 	}//end __construct()
 
 
