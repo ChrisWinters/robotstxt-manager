@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ChrisWinters/robotstxt-manager
  * Description: A Simple Robots.txt Manager For WordPress.
  * Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
- * Version: 1.0.3
+ * Version: 1.0.4
  * License: GNU GPLv3
  * Copyright ( c ) 2017-2019 Chris W.
  * Author: tribalNerd, Chris Winters
@@ -26,7 +26,7 @@ if ( false === defined( 'ABSPATH' ) ) {
 
 define( 'ROBOTSTXT_MANAGER_DIR', __DIR__ );
 define( 'ROBOTSTXT_MANAGER_FILE', __FILE__ );
-define( 'ROBOTSTXT_MANAGER_VERSION', '1.0.3' );
+define( 'ROBOTSTXT_MANAGER_VERSION', '1.0.4' );
 define( 'ROBOTSTXT_MANAGER_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'ROBOTSTXT_MANAGER_PLUGIN_NAME', 'robotstxt-manager' );
 define( 'ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_' );
