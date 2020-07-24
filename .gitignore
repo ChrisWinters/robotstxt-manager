@@ -3,7 +3,7 @@
 .svn
 psds
 psds/
-copy.sh
+.copy-config
 package-lock.json
 node_modules/*
 assets/css/bootstrap4/*
