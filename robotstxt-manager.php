@@ -33,12 +33,14 @@ define( 'ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_' );
 
 require_once dirname( __FILE__ ) . '/inc/autoload-classes.php';
 
-/*
+/**
  * Hooks a function on to a specific action.
- * https://developer.wordpress.org/reference/functions/add_action/
+ *
+ * @source https://developer.wordpress.org/reference/functions/add_action/
  *
  * Fires once activated plugins have loaded.
- * https://developer.wordpress.org/reference/hooks/plugins_loaded/
+ *
+ * @source https://developer.wordpress.org/reference/hooks/plugins_loaded/
  */
 add_action(
 	'plugins_loaded',
@@ -56,9 +58,10 @@ add_action(
 	)
 );
 
-/*
+/**
  * Set the activation hook for a plugin.
- * https://developer.wordpress.org/reference/functions/register_activation_hook/
+ *
+ * @source https://developer.wordpress.org/reference/functions/register_activation_hook/
  */
 register_activation_hook(
 	__FILE__,
@@ -68,11 +71,12 @@ register_activation_hook(
 	)
 );
 
-if ( true === file_exists( dirname( __FILE__ ) . '/puc/plugin-update-checker.php' ) ) {
+if ( file_exists( dirname( __FILE__ ) . '/puc/plugin-update-checker.php' ) ) {
 	require_once dirname( __FILE__ ) . '/puc/plugin-update-checker.php';
+
 	$robotstxt_manager_updater = \Puc_v4_Factory::buildUpdateChecker(
 		'https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/updates.json',
 		__FILE__,
-		'robotstxt-manager-updater'
+		'robotstxt-manager'
 	);
 }
