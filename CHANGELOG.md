@@ -1,5 +1,11 @@
 # Changelog
 
+# 1.0.4
+**2020-07-24- Hotfix**
+
+* Update Plugin Update Checker from v4 to v4.9
+* Corrected Robotstxt class instance callable
+
 # 1.0.3
 **2020-04-12- Hotfix**
 
