@@ -9,7 +9,7 @@
  * @link       /LICENSE
  */
 
-namespace MsRobotstxtManager;
+namespace RobotstxtManager;
 
 if ( false === defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,7 +20,7 @@ if ( false === defined( 'ABSPATH' ) ) {
  */
 final class Robotstxt {
 	/**
-	 * Check File Being Called
+	 * Robots.txt Called
 	 */
 	public function __construct() {
 		if ( false !== strpos( filter_input( INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL ), 'robots.txt' ) ) {
@@ -33,50 +33,46 @@ final class Robotstxt {
 	 * Display Robots.txt File
 	 */
 	private function robotstxt() {
-		/*
+		/**
 		 * If Multisite is enabled.
-		 * https://developer.wordpress.org/reference/functions/is_multisite/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/is_multisite/
 		 */
 		if ( true === is_multisite() ) {
-			/*
+			/**
 			 * Retrieve the current site ID.
-			 * https://developer.wordpress.org/reference/functions/get_current_blog_id/
+			 *
+			 * @source https://developer.wordpress.org/reference/functions/get_current_blog_id/
 			 */
 			$site_id = get_current_blog_id();
 
-			/*
+			/**
 			 * Switch the current blog.
-			 * https://developer.wordpress.org/reference/functions/switch_to_blog/
+			 *
+			 * @source https://developer.wordpress.org/reference/functions/switch_to_blog/
 			 */
 			switch_to_blog( $site_id );
 		}
 
-		/*
+		/**
 		 * Retrieves an option value based on an option name.
-		 * https://developer.wordpress.org/reference/functions/get_option/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/get_option/
 		 */
-		$website_option = get_option( MS_ROBOTSTXT_MANAGER_PLUGIN_NAME );
+		$website_option = get_option( ROBOTSTXT_MANAGER_PLUGIN_NAME );
 		$robotstxt_file = '';
 
-		// Ignore If Disabled.
 		if ( true !== empty( $website_option['disable'] ) ) {
 			return;
 		}
 
-		// Robots.txt Set.
-		if ( true !== empty( $website_option['robotstxt'] ) && true === empty( $robotstxt_file ) ) {
+		if ( true !== empty( $website_option['robotstxt'] ) ) {
 			$robotstxt_file = $website_option['robotstxt'];
 		}
 
-		// Override Robots.txt Set, Use Append As Robots.txt File.
-		if ( true !== empty( $website_option['override'] ) ) {
-			$robotstxt_file = $website_option['append'];
-		}
-
-		// Display Robots.txt File.
 		if ( true !== empty( $robotstxt_file ) ) {
 			header( 'Status: 200 OK', true, 200 );
-			header( 'Content-type: text/plain; charset=' . get_bloginfo( 'charset' ) );
+			header( 'Content-Type: text/plain; charset=utf-8' );
 
 			/**
 			 * Fires when displaying the robots.txt file.
@@ -85,7 +81,6 @@ final class Robotstxt {
 			 */
 			do_action( 'do_robotstxt' );
 
-			// Get Status.
 			$public = get_option( 'blog_public' );
 
 			if ( '0' === $public ) {
@@ -106,4 +101,4 @@ final class Robotstxt {
 			exit;
 		}
 	}
-}//end class
+}
