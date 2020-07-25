@@ -4,7 +4,7 @@
 * **Tags:** robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
 * **Requires at least:** 3.8
 * **Tested up to:** 5.4
-* **Stable tag:** 1.0.4
+* **Stable tag:** 1.0.5
 * **License:** GNU GPLv3
 * **License URI:** /LICENSE
 

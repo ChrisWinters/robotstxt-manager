@@ -1,5 +1,11 @@
 # Changelog
 
+# 1.0.5
+**2020-07-25- Hotfix**
+
+* Simplified how plugin loads features
+* Refactor robotstxt class and robots.txt detection
+
 # 1.0.4
 **2020-07-24- Hotfix**
 
