@@ -42,28 +42,75 @@ require_once dirname( __FILE__ ) . '/inc/autoload-classes.php';
  *
  * @source https://developer.wordpress.org/reference/hooks/plugins_loaded/
  */
-add_action(
+\add_action(
 	'plugins_loaded',
-	array(
-		'RobotstxtManager\Translate',
-		'init',
-	)
+	function() {
+		/**
+		 * Call the functions added to a filter hook.
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/apply_filters/
+		 *
+		 * Retrieves the current locale.
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/get_locale/
+		 */
+		$get_locale = \apply_filters(
+			'plugin_locale',
+			\get_locale(),
+			ROBOTSTXT_MANAGER_PLUGIN_NAME
+		);
+
+		$plugin_path  = ROBOTSTXT_MANAGER_PLUGIN_DIR;
+		$load_mo_file = $plugin_path . '/lang/' . $get_locale . '.mo';
+
+		if ( true === file_exists( $load_mo_file ) ) {
+			/**
+			 * Load a .mo file into the text domain $textdomain.
+			 *
+			 * @source https://developer.wordpress.org/reference/functions/load_textdomain/
+			 */
+			\load_textdomain(
+				ROBOTSTXT_MANAGER_PLUGIN_NAME,
+				$load_mo_file
+			);
+		}
+
+		/**
+		 * Loads a plugin’s translated strings.
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/load_plugin_textdomain/
+		 */
+		\load_plugin_textdomain(
+			ROBOTSTXT_MANAGER_PLUGIN_NAME,
+			false,
+			ROBOTSTXT_MANAGER_FILE . '/lang/'
+		);
+
+		/**
+		 * Determines whether the current request is for an administrative interface page.
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/is_admin/
+		 */
+		if ( true === is_admin() ) {
+			$admin_save = new Plugin_Admin_Save();
+			$admin_save->init();
+
+			$admin = new Plugin_Admin();
+			$admin->init();
+		}
+
+		new \RobotstxtManager\Robotstxt();
+	}
 );
 
-add_action(
-	'plugins_loaded',
-	array(
-		'RobotstxtManager\RobotstxtManager',
-		'init',
-	)
-);
+
 
 /**
  * Set the activation hook for a plugin.
  *
  * @source https://developer.wordpress.org/reference/functions/register_activation_hook/
  */
-register_activation_hook(
+\register_activation_hook(
 	__FILE__,
 	array(
 		'RobotstxtManager\Plugin_Activate',
@@ -71,6 +118,10 @@ register_activation_hook(
 	)
 );
 
+
+/**
+ * Plugin update checker
+ */
 if ( file_exists( dirname( __FILE__ ) . '/puc/plugin-update-checker.php' ) ) {
 	require_once dirname( __FILE__ ) . '/puc/plugin-update-checker.php';
 
