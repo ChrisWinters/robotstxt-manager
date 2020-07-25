@@ -16,21 +16,21 @@ if ( false === defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Display Robots.txt File If Called
+ * Robots.txt
  */
 final class Robotstxt {
 	/**
-	 * Robots.txt Called
+	 * Maybe display robots.txt
 	 */
 	public function __construct() {
-		if ( false !== strpos( filter_input( INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL ), 'robots.txt' ) ) {
+		if ( true === $this->is_robots_txt_file() ) {
 			$this->robotstxt();
 		}
 	}
 
 
 	/**
-	 * Display Robots.txt File
+	 * Echo robots.txt file
 	 */
 	private function robotstxt() {
 		/**
@@ -92,13 +92,50 @@ final class Robotstxt {
 			/**
 			 * Filters the robots.txt output.
 			 *
-			 * @since 3.0.0
+			 * @since 1.1.0
 			 *
 			 * @param string $output Robots.txt output.
 			 * @param bool   $public Whether the site is considered "public".
 			 */
-			echo apply_filters( 'robots_txt', $output, $public );
+			echo apply_filters(
+				'robotstxt_manager_robots_txt',
+				$output,
+				$public
+			);
+
 			exit;
 		}
+	}
+
+
+	/**
+	 * Check if called file is robots.txt file
+	 */
+	private function is_robots_txt_file() : bool {
+		if ( true === filter_has_var( INPUT_SERVER, 'REQUEST_URI' ) ) {
+			$filename = filter_input(
+				INPUT_SERVER,
+				'REQUEST_URI',
+				FILTER_UNSAFE_RAW,
+				FILTER_NULL_ON_FAILURE
+			);
+		} else {
+			if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+				$request_uri = $_SERVER['REQUEST_URI'];
+				$filename    = filter_var(
+					$request_uri,
+					FILTER_UNSAFE_RAW,
+					FILTER_NULL_ON_FAILURE
+				);
+			} else {
+				$filename = null;
+			}
+		}
+
+		if ( '/robots.txt' === $filename || 'robotst.txt' === $filename ) {
+			return true;
+		}
+
+		return false;
 	}
 }
