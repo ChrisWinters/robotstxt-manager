@@ -1,9 +1,4 @@
 *~
 .git
 .svn
-psds
-psds/
-.copy-config
-package-lock.json
-node_modules/*
-assets/css/bootstrap4/*
+node_modules
