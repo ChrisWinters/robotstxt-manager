@@ -6,7 +6,7 @@
  * Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
  * Version: 1.0.5
  * License: GNU GPLv3
- * Copyright ( c ) 2017-2019 Chris W.
+ * Copyright ( c ) 2017-2022 Chris W.
  * Author: tribalNerd, Chris Winters
  * Author URI: https://github.com/ChrisWinters
  * Text Domain: robotstxt-manager
