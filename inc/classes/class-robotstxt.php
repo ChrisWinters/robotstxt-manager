@@ -139,7 +139,7 @@ final class Robotstxt {
 				 *
 				 * @source https://developer.wordpress.org/reference/functions/wp_unslash/
 				 */
-				$request_uri = \wp_unslash( $_SERVER['REQUEST_URI'] );
+				$request_uri = htmlspecialchars( \wp_unslash( $_SERVER['REQUEST_URI'] ), ENT_QUOTES, 'UTF-8' );
 				$filename    = filter_var(
 					$request_uri,
 					FILTER_UNSAFE_RAW,
