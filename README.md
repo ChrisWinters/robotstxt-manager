@@ -4,7 +4,7 @@
 * **Tags:** robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
 * **Requires at least:** 3.8
 * **Tested up to:** 5.4
-* **Stable tag:** 1.0.5
+* **Stable tag:** 1.1.0
 * **License:** GNU GPLv3
 * **License URI:** /LICENSE
 
@@ -91,10 +91,9 @@ Use Google's Webmaster Tools to Validate your Robots.txt Files. With Google: Log
 * Google XML Sitemaps: http://wordpress.org/extend/plugins/google-sitemap-generator/
 * Better WordPress Google XML Sitemaps: http://wordpress.org/extend/plugins/bwp-google-xml-sitemaps/
 
-
-### 1.0.3
+### Changelog
 * Released: 2020-04-12
-* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md#103
+* Changelog: https://github.com/ChrisWinters/robotstxt-manager/blob/master/CHANGELOG.md
 
 
 ## Screenshots
