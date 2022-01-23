@@ -22,11 +22,11 @@ if ( false === defined( 'ABSPATH' ) ) {
  *
  * Escaping for HTML attributes.
  *
- *  @source https://developer.wordpress.org/reference/functions/esc_attr/
+ * @source https://developer.wordpress.org/reference/functions/esc_attr/
  *
  * Checks and cleans a URL.
  *
- *  @source https://developer.wordpress.org/reference/functions/esc_url/
+ * @source https://developer.wordpress.org/reference/functions/esc_url/
  */
 ?>
 <div class="postbox">
