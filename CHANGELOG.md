@@ -1,5 +1,16 @@
 # Changelog
 
+# 1.1.0
+**2022-01-23 Build update and hotfix**
+
+* Corrected filename typo in class-robotstxt.php
+* Updated plugin update checker to newest version
+* Created new build file to zip plugin
+* Created new build file to version bump plugin
+* Updated packages and scripts
+* Removed gulp
+* Updated comments
+
 # 1.0.5
 **2020-07-25- Hotfix**
 
