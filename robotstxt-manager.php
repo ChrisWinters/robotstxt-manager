@@ -122,7 +122,7 @@ require_once dirname( __FILE__ ) . '/inc/autoload-classes.php';
 /**
  * Plugin update checker
  */
-if ( file_exists( dirname( __FILE__ ) . '/puc/plugin-update-checker.php' ) ) {
+if ( true === file_exists( dirname( __FILE__ ) . '/puc/plugin-update-checker.php' ) ) {
 	require_once dirname( __FILE__ ) . '/puc/plugin-update-checker.php';
 
 	$robotstxt_manager_updater = \Puc_v4_Factory::buildUpdateChecker(
