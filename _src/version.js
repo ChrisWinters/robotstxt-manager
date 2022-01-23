@@ -19,23 +19,20 @@ inquirer.prompt([{
 }]).then(function(res) {
   try {
     const replace = require('replace-in-file')
-  
+
     // Tags to update.
     const currentStableTag = 'Stable tag:** ' + res.version
     const previousStableTag = 'Stable tag:** ' + packageVersion
-  
-    const currentChangeLogTag = '### ' + res.version
-    const previousChangeLogTag = '### ' + packageVersion
-  
+
     const currentHeaderTag = 'Version: ' + res.version
     const previousHeaderTag = 'Version: ' + packageVersion
-  
-    const currentConstantTag = '\'' + res.version + '\''
-    const previousConstantTag = '\'' + packageVersion + '\''
-  
-    const currentUpdatesTag = '"' + res.version + '"'
-    const previousUpdatesTag = '"' + packageVersion + '"'
-  
+
+    const currentConstantTag = '\'ROBOTSTXT_MANAGER_VERSION\', \'' + res.version + '\''
+    const previousConstantTag = '\'ROBOTSTXT_MANAGER_VERSION\', \'' + packageVersion + '\''
+
+    const currentUpdatesTag = '"version": "' + res.version + '"'
+    const previousUpdatesTag = '"version": "' + packageVersion + '"'
+
     // Update version.
     replace.sync(
       {
@@ -48,21 +45,19 @@ inquirer.prompt([{
         ],
         from: [
           previousStableTag,
-          previousChangeLogTag,
           previousHeaderTag,
           previousConstantTag,
           previousUpdatesTag
         ],
         to: [
           currentStableTag,
-          currentChangeLogTag,
           currentHeaderTag,
           currentConstantTag,
           currentUpdatesTag
         ],
       }
     )
-  
+
     console.log('Version updated to: ' + res.version )
   } catch(error) {
       console.log('Packages missing: Type `npm install`\n')
