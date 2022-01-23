@@ -15,9 +15,10 @@ if ( false === defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
+/**
  * Display translated text that has been escaped for safe use in HTML output.
- * https://developer.wordpress.org/reference/functions/esc_html_e/
+ *
+ * @source https://developer.wordpress.org/reference/functions/esc_html_e/
  */
 ?>
 <div class="wrap">
@@ -25,9 +26,10 @@ if ( false === defined( 'ABSPATH' ) ) {
 
 
 <?php
-/*
+/**
  * Sanitizes content for allowed HTML tags for post content.
- * https://developer.wordpress.org/reference/functions/wp_kses_post/
+ *
+ * @source https://developer.wordpress.org/reference/functions/wp_kses_post/
  */
 echo wp_kses_post( $this->tabs() );
 ?>

@@ -25,9 +25,10 @@ trait Trait_Option_Manager {
 	 * @return array
 	 */
 	public function get_option() {
-		/*
+		/**
 		 * Retrieves an option value based on an option name.
-		 * https://developer.wordpress.org/reference/functions/get_option/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/get_option/
 		 */
 		$get_option = get_option( ROBOTSTXT_MANAGER_PLUGIN_NAME );
 
@@ -36,7 +37,7 @@ trait Trait_Option_Manager {
 		}
 
 		return array();
-	}//end get_option()
+	}
 
 
 	/**
@@ -54,7 +55,7 @@ trait Trait_Option_Manager {
 		}
 
 		return false;
-	}//end get_setting()
+	}
 
 
 	/**
@@ -69,15 +70,16 @@ trait Trait_Option_Manager {
 			return;
 		}
 
-		/*
+		/**
 		 * Update the value of an option that was already added.
-		 * https://developer.wordpress.org/reference/functions/update_option/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/update_option/
 		 */
 		update_option(
 			ROBOTSTXT_MANAGER_PLUGIN_NAME,
 			$option_array
 		);
-	}//end update_option()
+	}
 
 
 	/**
@@ -100,7 +102,7 @@ trait Trait_Option_Manager {
 		$get_option[ $setting_name ] = $setting_value;
 
 		$this->update_option( $get_option );
-	}//end update_setting()
+	}
 
 
 	/**
@@ -118,7 +120,7 @@ trait Trait_Option_Manager {
 		if ( true === isset( $get_option ) ) {
 			delete_option( ROBOTSTXT_MANAGER_PLUGIN_NAME );
 		}
-	}//end del_option()
+	}
 
 
 	/**
@@ -140,10 +142,6 @@ trait Trait_Option_Manager {
 		}
 
 		if ( true !== empty( $get_option ) ) {
-			/*
-			 * Update the value of an option that was already added.
-			 * https://developer.wordpress.org/reference/functions/update_option/
-			 */
 			update_option(
 				ROBOTSTXT_MANAGER_PLUGIN_NAME,
 				$get_option
@@ -153,7 +151,7 @@ trait Trait_Option_Manager {
 		if ( true === empty( $get_option ) ) {
 			$this->del_option();
 		}
-	}//end del_setting()
+	}
 
 
 	/**
@@ -171,9 +169,10 @@ trait Trait_Option_Manager {
 		}
 
 		if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG ) {
-			/*
+			/**
 			 * Loads and caches all autoloaded options, if available or all options.
-			 * https://developer.wordpress.org/reference/functions/wp_load_all_options/
+			 *
+			 * @source https://developer.wordpress.org/reference/functions/wp_load_all_options/
 			 */
 			$loaded_options = wp_load_alloptions();
 
@@ -189,7 +188,7 @@ trait Trait_Option_Manager {
 		}
 
 		return $options;
-	}//end all_options()
+	}
 
 
 	/**
@@ -200,12 +199,14 @@ trait Trait_Option_Manager {
 	private function validate_update() {
 		$status = true;
 
-		/*
+		/**
 		 * Determines whether the current request is for an administrative interface page.
-		 * https://developer.wordpress.org/reference/functions/is_admin/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/is_admin/
 		 *
 		 * Whether the current user has a specific capability.
-		 * https://developer.wordpress.org/reference/functions/current_user_can/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/current_user_can/
 		 */
 		if ( false === is_admin() || false === current_user_can( 'manage_options' ) ) {
 			$status = false;
@@ -213,4 +214,4 @@ trait Trait_Option_Manager {
 
 		return $status;
 	}
-}//end class
+}

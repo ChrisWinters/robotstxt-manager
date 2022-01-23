@@ -15,15 +15,18 @@ if ( false === defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
+/**
  * Display translated text.
- * https://developer.wordpress.org/reference/functions/esc_html_e/
+ *
+ * @source https://developer.wordpress.org/reference/functions/esc_html_e/
  *
  * Escaping for HTML attributes.
- * https://developer.wordpress.org/reference/functions/esc_attr/
+ *
+ *  @source https://developer.wordpress.org/reference/functions/esc_attr/
  *
  * Checks and cleans a URL.
- * https://developer.wordpress.org/reference/functions/esc_url/
+ *
+ *  @source https://developer.wordpress.org/reference/functions/esc_url/
  */
 ?>
 <div class="postbox">

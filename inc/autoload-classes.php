@@ -41,6 +41,6 @@ function robotstxtmanager_register_classes( $class ) {
 		require $file;
 	}
 
-}//end robotstxtmanager_register_classes()
+}
 
 spl_autoload_register( 'RobotstxtManager\robotstxtmanager_register_classes' );

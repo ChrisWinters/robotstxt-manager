@@ -47,7 +47,7 @@ final class Plugin_Admin_Presets {
 	public function __construct( $post_object = array(), $notices = array() ) {
 		$this->post_object = $post_object;
 		$this->notices     = $notices;
-	}//end __construct()
+	}
 
 
 	/**
@@ -99,9 +99,10 @@ final class Plugin_Admin_Presets {
 		}
 
 		if ( true === $message ) {
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -111,10 +112,6 @@ final class Plugin_Admin_Presets {
 				)
 			);
 		} else {
-			/*
-			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
 			add_action(
 				'admin_notices',
 				array(
@@ -316,4 +313,4 @@ final class Plugin_Admin_Presets {
 
 		return $txt;
 	}
-}//end class
+}

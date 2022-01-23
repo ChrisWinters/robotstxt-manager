@@ -47,43 +47,43 @@ final class Plugin_Admin_Cleaner {
 	public function __construct( $post_object = array(), $notices = array() ) {
 		$this->post_object = $post_object;
 		$this->notices     = $notices;
-	}//end __construct()
+	}
 
 
 	/**
 	 * Cleaner Actions
 	 */
 	public function cleaner_action() {
-		// Check For Old Plugin Data.
+		// Check for old plugin data.
 		if ( true !== empty( $this->post_object['check-data'] ) ) {
 			$this->checkdata();
 		}
 
-		// TEMP.
+		// Clean plugin data.
 		if ( true !== empty( $this->post_object['clean-data'] ) ) {
 			$this->cleandata();
 		}
 
-		// TEMP.
+		// Check for real robots.txt file.
 		if ( true !== empty( $this->post_object['check-physical'] ) ) {
 			$this->checkphysical();
 		}
 
-		// TEMP.
+		// Remove real robots.txt file.
 		if ( true !== empty( $this->post_object['clean-physical'] ) ) {
 			$this->cleanphysical();
 		}
 
-		// TEMP.
+		// Check for robots.txt file rewrite rules.
 		if ( true !== empty( $this->post_object['check-rewrite'] ) ) {
 			$this->checkrewrite();
 		}
 
-		// TEMP.
+		// Add missing robots.txt file rewrite rules.
 		if ( true !== empty( $this->post_object['add-rewrite'] ) ) {
 			$this->addrewrite();
 		}
-	}//end cleaner_action()
+	}
 
 
 	/**
@@ -101,9 +101,10 @@ final class Plugin_Admin_Cleaner {
 		}
 
 		if ( true === $message ) {
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -113,9 +114,10 @@ final class Plugin_Admin_Cleaner {
 				)
 			);
 		} else {
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -162,9 +164,10 @@ final class Plugin_Admin_Cleaner {
 		}
 
 		if ( true === $message ) {
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -174,9 +177,10 @@ final class Plugin_Admin_Cleaner {
 				)
 			);
 		} else {
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -202,9 +206,10 @@ final class Plugin_Admin_Cleaner {
 		if ( true === file_exists( get_home_path() . 'robots.txt' ) ) {
 			$this->del_setting( 'checkphysical' );
 
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -242,9 +247,10 @@ final class Plugin_Admin_Cleaner {
 		}
 
 		if ( true === $message ) {
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -254,9 +260,10 @@ final class Plugin_Admin_Cleaner {
 				)
 			);
 		} else {
-			/*
+			/**
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -292,4 +299,4 @@ final class Plugin_Admin_Cleaner {
 		// Recheck Rewrite Rules.
 		$this->checkRewrite();
 	}
-}//end class
+}

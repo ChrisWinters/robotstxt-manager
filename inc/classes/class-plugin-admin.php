@@ -67,9 +67,10 @@ final class Plugin_Admin {
 	 * @return void
 	 */
 	public function __construct() {
-		/*
+		/**
 		 * Escaping for HTML blocks.
-		 * https://developer.wordpress.org/reference/functions/esc_html__/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/esc_html__/
 		 */
 		$this->admin_tabs = array(
 			'settings' => esc_html__( 'Settings', 'robotstxt-manager' ),
@@ -84,7 +85,7 @@ final class Plugin_Admin {
 		$this->uploadpath = $robotstxt_rules->get_uploadpath();
 		$this->themepath  = $robotstxt_rules->get_themepath();
 		$this->sitemapurl = $robotstxt_rules->get_sitemapurl();
-	}//end __construct()
+	}
 
 
 	/**
@@ -93,9 +94,10 @@ final class Plugin_Admin {
 	 * @return void
 	 */
 	public function init() {
-		/*
+		/**
 		 * Fires before the administration menu loads in the admin.
-		 * https://developer.wordpress.org/reference/hooks/admin_menu/
+		 *
+		 * @source https://developer.wordpress.org/reference/hooks/admin_menu/
 		 */
 		add_action(
 			'admin_menu',
@@ -106,9 +108,10 @@ final class Plugin_Admin {
 		);
 
 		if ( $this->query_string( 'page' ) === ROBOTSTXT_MANAGER_PLUGIN_NAME ) {
-			/*
+			/**
 			 * Enqueue Scripts For Plugin Admin
-			 * https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts/
 			 */
 			add_action(
 				'admin_enqueue_scripts',
@@ -118,7 +121,7 @@ final class Plugin_Admin {
 				)
 			);
 		}
-	}//end init()
+	}
 
 
 	/**
@@ -127,9 +130,10 @@ final class Plugin_Admin {
 	 * @return void
 	 */
 	public function menu() {
-		/*
-		 * Add Settings Page Options
-		 * https://developer.wordpress.org/reference/functions/add_submenu_page/
+		/**
+		 * Add Settings Page Options.
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/add_submenu_page/
 		 */
 		add_submenu_page(
 			'options-general.php',
@@ -142,7 +146,7 @@ final class Plugin_Admin {
 				'display',
 			)
 		);
-	}//end menu()
+	}
 
 
 	/**
@@ -151,12 +155,14 @@ final class Plugin_Admin {
 	 * @return void
 	 */
 	public function enqueue() {
-		/*
+		/**
 		 * Enqueue a CSS stylesheet.
-		 * https://developer.wordpress.org/reference/functions/wp_enqueue_style/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/wp_enqueue_style/
 		 *
 		 * Retrieves a URL within the plugins directory.
-		 * https://developer.wordpress.org/reference/functions/plugins_url/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/plugins_url/
 		 */
 		wp_enqueue_style(
 			ROBOTSTXT_MANAGER_PLUGIN_NAME,
@@ -165,7 +171,7 @@ final class Plugin_Admin {
 			gmdate( 'YmdHis', time() ),
 			'all'
 		);
-	}//end enqueue()
+	}
 
 
 	/**
@@ -186,7 +192,7 @@ final class Plugin_Admin {
 		}
 
 		include_once $dir . '/inc/templates/footer.php';
-	}//end display()
+	}
 
 
 	/**
@@ -224,5 +230,5 @@ final class Plugin_Admin {
 		$html .= '</h2><br />';
 
 		return $html;
-	}//end tabs()
-}//end class
+	}
+}

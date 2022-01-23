@@ -15,25 +15,30 @@ if ( false === defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
+/**
  * Retrieve the translation of $text and escapes it for safe use in HTML output.
- * https://developer.wordpress.org/reference/functions/esc_html__/
+ *
+ * @source https://developer.wordpress.org/reference/functions/esc_html__/
  *
  * Checks and cleans a URL.
- * https://developer.wordpress.org/reference/functions/esc_url/
+ *
+ * @source  https://developer.wordpress.org/reference/functions/esc_url/
  *
  * Display translated text.
- * https://developer.wordpress.org/reference/functions/esc_html_e/
+ *
+ * @source https://developer.wordpress.org/reference/functions/esc_html_e/
  *
  * Echoes a submit button, with provided text and appropriate class( es ).
- * https://developer.wordpress.org/reference/functions/submit_button/
+ *
+ * @source https://developer.wordpress.org/reference/functions/submit_button/
  */
 ?>
 <form enctype="multipart/form-data" method="post" action="">
 <?php
-/*
+/**
  * Retrieve or display nonce hidden field for forms.
- * https://developer.wordpress.org/reference/functions/wp_nonce_field/
+ *
+ * @source https://developer.wordpress.org/reference/functions/wp_nonce_field/
  */
 wp_nonce_field(
 	ROBOTSTXT_MANAGER_SETTING_PREFIX . 'action',

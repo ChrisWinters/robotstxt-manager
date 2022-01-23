@@ -81,4 +81,4 @@ final class Plugin_Admin_Robotstxt_Rules {
 		// Return the url or empty if no sitemap.
 		return ( ! empty( $url ) ) ? 'Sitemap: ' . $url : '';
 	}
-}//end class
+}

@@ -66,7 +66,7 @@ final class Plugin_Admin_Save {
 		$this->post_object = $this->unset_post_items( $post_object_array );
 
 		$this->notices = new PluginAdminNotices();
-	}//end __construct()
+	}
 
 
 	/**
@@ -81,9 +81,10 @@ final class Plugin_Admin_Save {
 			return;
 		}
 
-		/*
+		/**
 		 * Fires as an admin screen or script is being initialized.
-		 * https://developer.wordpress.org/reference/hooks/admin_init/
+		 *
+		 * @source https://developer.wordpress.org/reference/hooks/admin_init/
 		 */
 		add_action(
 			'admin_init',
@@ -92,7 +93,7 @@ final class Plugin_Admin_Save {
 				'update',
 			)
 		);
-	}//end init()
+	}
 
 
 	/**
@@ -101,11 +102,12 @@ final class Plugin_Admin_Save {
 	public function update() {
 		$this->security_check();
 
-		/*
+		/**
 		 * Sanitizes title, replacing whitespace with dashes.
 		 * Limits the output to alphanumeric characters,
 		 * underscore ( _ ) and dash ( - ). Whitespace becomes a dash.
-		 * https://developer.wordpress.org/reference/functions/sanitize_title_with_dashes/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/sanitize_title_with_dashes/
 		 */
 		$action = sanitize_title_with_dashes( $this->action_post );
 
@@ -126,7 +128,7 @@ final class Plugin_Admin_Save {
 			$cleaner = new Plugin_Admin_Cleaner( $this->post_object, $this->notices );
 			$cleaner->cleaner_action();
 		}
-	}//end update()
+	}
 
 
 	/**
@@ -149,7 +151,8 @@ final class Plugin_Admin_Save {
 		} elseif ( true === isset( $post['section'] ) && 'update' !== $post['section'] ) {
 			/*
 			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
+			 *
+			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
 			 */
 			add_action(
 				'admin_notices',
@@ -159,7 +162,7 @@ final class Plugin_Admin_Save {
 				)
 			);
 		}
-	}//end unset_post_items()
+	}
 
 
 	/**
@@ -181,10 +184,6 @@ final class Plugin_Admin_Save {
 		}
 
 		if ( true === $message ) {
-			/*
-			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
 			add_action(
 				'admin_notices',
 				array(
@@ -193,10 +192,6 @@ final class Plugin_Admin_Save {
 				)
 			);
 		} else {
-			/*
-			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
 			add_action(
 				'admin_notices',
 				array(
@@ -205,7 +200,7 @@ final class Plugin_Admin_Save {
 				)
 			);
 		}
-	}//end update_action()
+	}
 
 
 	/**
@@ -215,10 +210,6 @@ final class Plugin_Admin_Save {
 		$this->del_option();
 
 		if ( true === empty( $this->get_option() ) ) {
-			/*
-				* Prints admin screen notices.
-				* https://developer.wordpress.org/reference/hooks/admin_notices/
-			*/
 			add_action(
 				'admin_notices',
 				array(
@@ -227,10 +218,6 @@ final class Plugin_Admin_Save {
 				)
 			);
 		} else {
-			/*
-			 * Prints admin screen notices.
-			 * https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
 			add_action(
 				'admin_notices',
 				array(
@@ -239,7 +226,7 @@ final class Plugin_Admin_Save {
 				)
 			);
 		}
-	}//end delete_action()
+	}
 
 
 	/**
@@ -249,39 +236,44 @@ final class Plugin_Admin_Save {
 		$message = __( 'You are not authorized to perform this action.', 'robotstxt-manager' );
 
 		if ( filter_input( INPUT_GET, 'page' ) !== ROBOTSTXT_MANAGER_PLUGIN_NAME ) {
-			/*
+			/**
 			 * Kill WordPress execution with message.
-			 * https://developer.wordpress.org/reference/functions/wp_die/
+			 *
+			 * @source https://developer.wordpress.org/reference/functions/wp_die/
 			 */
 			wp_die( esc_html( $message ) );
 		}
 
 		/*
 		 * Whether the current user has a specific capability.
-		 * https://developer.wordpress.org/reference/functions/current_user_can/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/current_user_can/
 		 */
 		if ( false === current_user_can( 'manage_options' ) ) {
-			/*
+			/**
 			 * Kill WordPress execution and display message.
-			 * https://developer.wordpress.org/reference/functions/wp_die/
+			 *
+			 * @source https://developer.wordpress.org/reference/functions/wp_die/
 			 */
 			wp_die( esc_html( $message ) );
 		}
 
-		/*
+		/**
 		 * Makes sure that a user was referred from another admin page.
-		 * https://developer.wordpress.org/reference/functions/check_admin_referer/
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/check_admin_referer/
 		 */
 		if ( false === check_admin_referer(
 			ROBOTSTXT_MANAGER_SETTING_PREFIX . 'action',
 			ROBOTSTXT_MANAGER_SETTING_PREFIX . 'nonce'
 		)
 		) {
-			/*
+			/**
 			 * Kill WordPress execution and display message.
-			 * https://developer.wordpress.org/reference/functions/wp_die/
+			 *
+			 * @source https://developer.wordpress.org/reference/functions/wp_die/
 			*/
 			wp_die( esc_html( $message ) );
 		}
-	}//end security_check()
-}//end class
+	}
+}

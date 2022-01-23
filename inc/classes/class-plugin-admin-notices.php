@@ -33,6 +33,11 @@ final class Plugin_Admin_Notices {
 	 * @return void
 	 */
 	public function __construct() {
+		/**
+		 * Retrieve the translation of $text.
+		 *
+		 * @source https://developer.wordpress.org/reference/functions/__/
+		 */
 		$this->message = array(
 			'update_success'       => __(
 				'Settings Updated.',
@@ -91,7 +96,7 @@ final class Plugin_Admin_Notices {
 				'includes'
 			),
 		);
-	}//end __construct()
+	}
 
 
 	/**
@@ -99,7 +104,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function update_success() {
 		echo wp_kses_post( $this->success_message( $this->message['update_success'] ) );
-	}//end update_success()
+	}
 
 
 	/**
@@ -107,7 +112,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function update_error() {
 		echo wp_kses_post( $this->error_message( $this->message['update_error'] ) );
-	}//end update_error()
+	}
 
 
 	/**
@@ -115,7 +120,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function input_error() {
 		echo wp_kses_post( $this->error_message( $this->message['input_error'] ) );
-	}//end input_error()
+	}
 
 
 	/**
@@ -123,7 +128,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function delete_success() {
 		echo wp_kses_post( $this->success_message( $this->message['delete_success'] ) );
-	}//end delete_success()
+	}
 
 
 	/**
@@ -131,7 +136,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function delete_error() {
 		echo wp_kses_post( $this->error_message( $this->message['delete_error'] ) );
-	}//end delete_error()
+	}
 
 
 	/**
@@ -139,7 +144,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function preset_success() {
 		echo wp_kses_post( $this->success_message( $this->message['preset_success'] ) );
-	}//end preset_success()
+	}
 
 
 	/**
@@ -147,7 +152,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function preset_error() {
 		echo wp_kses_post( $this->error_message( $this->message['preset_error'] ) );
-	}//end preset_error()
+	}
 
 
 	/**
@@ -155,7 +160,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function checkdata_notice() {
 		echo wp_kses_post( $this->success_message( $this->message['checkdata_notice'] ) );
-	}//end checkdata_notice()
+	}
 
 
 	/**
@@ -163,7 +168,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function checkdata_done() {
 		echo wp_kses_post( $this->success_message( $this->message['checkdata_done'] ) );
-	}//end checkdata_done()
+	}
 
 
 	/**
@@ -171,7 +176,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function checkphysical_notice() {
 		echo wp_kses_post( $this->success_message( $this->message['checkphysical_notice'] ) );
-	}//end checkphysical_notice()
+	}
 
 
 	/**
@@ -179,7 +184,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function checkphysical_done() {
 		echo wp_kses_post( $this->success_message( $this->message['checkphysical_done'] ) );
-	}//end checkphysical_done()
+	}
 
 
 	/**
@@ -187,7 +192,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function checkphysical_error() {
 		echo wp_kses_post( $this->error_message( $this->message['checkphysical_error'] ) );
-	}//end checkphysical_error()
+	}
 
 
 	/**
@@ -195,7 +200,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function checkrewrite_notice() {
 		echo wp_kses_post( $this->success_message( $this->message['checkrewrite_notice'] ) );
-	}//end checkrewrite_notice()
+	}
 
 
 	/**
@@ -203,7 +208,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function checkrewrite_done() {
 		echo wp_kses_post( $this->success_message( $this->message['checkrewrite_done'] ) );
-	}//end checkrewrite_done()
+	}
 
 
 	/**
@@ -215,7 +220,7 @@ final class Plugin_Admin_Notices {
 	 */
 	public function success_message( $message ) {
 		return '<div class="notice notice-success is-dismissible"><p>' . $message . '</p></div>';
-	}//end success_message()
+	}
 
 
 	/**
@@ -227,6 +232,5 @@ final class Plugin_Admin_Notices {
 	 */
 	public function error_message( $message ) {
 		return '<div class="notice notice-error is-dismissible"><p>' . $message . '</p></div>';
-	}//end error_message()
-
-}//end class
+	}
+}

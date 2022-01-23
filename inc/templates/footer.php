@@ -15,15 +15,18 @@ if ( false === defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
+/**
  * Escaping for HTML blocks.
- * https://developer.wordpress.org/reference/functions/esc_html/
+ *
+ * @source https://developer.wordpress.org/reference/functions/esc_html/
  *
  * Checks and cleans a URL.
- * https://developer.wordpress.org/reference/functions/esc_url/
+ *
+ * @source https://developer.wordpress.org/reference/functions/esc_url/
  *
  * Display translated text.
- * https://developer.wordpress.org/reference/functions/_e/
+ *
+ * @source https://developer.wordpress.org/reference/functions/_e/
  */
 
 ?>
