@@ -150,7 +150,7 @@ final class Robotstxt {
 			}
 		}
 
-		if ( '/robots.txt' === $filename || 'robotst.txt' === $filename ) {
+		if ( '/robots.txt' === $filename || 'robots.txt' === $filename ) {
 			return true;
 		}
 
