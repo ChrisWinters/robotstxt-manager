@@ -67,6 +67,10 @@ final class Plugin_Admin
      */
     public function __construct()
     {
+        if (false === \is_admin()) {
+            return;
+        }
+
         $this->adminTabs = [
             'settings' => \esc_html__('Settings', 'robotstxt-manager'),
             'cleaner' => \esc_html__('Cleaner', 'robotstxt-manager'),

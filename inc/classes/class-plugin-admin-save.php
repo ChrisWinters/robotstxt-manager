@@ -52,6 +52,10 @@ final class Plugin_Admin_Save
      */
     public function __construct()
     {
+        if (false === \is_admin()) {
+            return;
+        }
+
         if ($this->query_string('page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
             return;
         }

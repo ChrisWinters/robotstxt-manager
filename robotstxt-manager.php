@@ -32,6 +32,14 @@ define('ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_');
 
 require_once dirname(__FILE__).'/inc/autoload-classes.php';
 
+$adminSave = new Plugin_Admin_Save();
+$adminSave->init();
+
+$admin = new Plugin_Admin();
+$admin->init();
+
+new \RobotstxtManager\Robotstxt();
+
 \add_action(
     'plugins_loaded',
     function () {
@@ -59,16 +67,6 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
             false,
             ROBOTSTXT_MANAGER_FILE.'/lang/'
         );
-
-        if (true === \is_admin()) {
-            $adminSave = new Plugin_Admin_Save();
-            $adminSave->init();
-
-            $admin = new Plugin_Admin();
-            $admin->init();
-        }
-
-        new \RobotstxtManager\Robotstxt();
     }
 );
 
