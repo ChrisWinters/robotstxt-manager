@@ -87,10 +87,6 @@ final class Robotstxt
             }
         }
 
-        if (true !== empty($user_robotstxt)) {
-            $robotstxt = $user_robotstxt;
-        }
-
         return (string) $robotstxt;
     }
 
