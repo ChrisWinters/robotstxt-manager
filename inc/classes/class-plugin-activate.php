@@ -53,7 +53,7 @@ final class Plugin_Activate
 
         // Set Plugin Robots.txt Based On Default WordPress robots.txt - Unable To Read Robots.txt.
         if (true === empty($plugin_option['robotstxt']) && true === empty(self::get_website_robotstxt())) {
-            $preset_robotstxt .= "User-agent: *\n";
+            $preset_robotstxt = "User-agent: *\n";
             $preset_robotstxt .= "Disallow: /wp-admin/\n";
             $preset_robotstxt .= "Allow: /wp-admin/admin-ajax.php\n";
 
