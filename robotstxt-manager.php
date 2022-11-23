@@ -80,7 +80,7 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
         'init',
     ]
 );
-
+/*
 // Plugin update checker
 if (true === file_exists(dirname(__FILE__).'/puc/plugin-update-checker.php')) {
     require_once dirname(__FILE__).'/puc/plugin-update-checker.php';
@@ -91,3 +91,4 @@ if (true === file_exists(dirname(__FILE__).'/puc/plugin-update-checker.php')) {
         'robotstxt-manager'
     );
 }
+ */
