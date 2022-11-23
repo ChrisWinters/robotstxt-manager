@@ -1,52 +1,53 @@
 <?php
 /**
- * Class Trait
+ * Class Trait.
  *
- * @package    WordPress
- * @subpackage Plugin
  * @author     Chris W. <chrisw@null.net>
  * @license    GNU GPLv3
- * @link       /LICENSE
+ *
+ * @see       /LICENSE
  */
 
 namespace RobotstxtManager;
 
-if ( false === defined( 'ABSPATH' ) ) {
-	exit;
+if (false === defined('ABSPATH')) {
+    exit;
 }
 
 /**
- * Process Plugin Admin Query String
+ * Process Plugin Admin Query String.
  */
-trait Trait_Query_String {
-	/**
-	 * Get Query String Item & Sanitize
-	 *
-	 * @param string $get Query String Get Item.
-	 *
-	 * @return string Query String Item Sanitized
-	 */
-	final public function query_string( $get ) {
-		$string = filter_input(
-			INPUT_GET,
-			$get,
-			FILTER_SANITIZE_STRING,
-			( FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK )
-		);
+trait Trait_Query_String
+{
+    /**
+     * Get Query String Item & Sanitize.
+     *
+     * @param string $get Query String Get Item.
+     *
+     * @return string Query String Item Sanitized
+     */
+    final public function query_string($get)
+    {
+        $string = filter_input(
+            INPUT_GET,
+            $get,
+            FILTER_UNSAFE_RAW,
+            FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK
+        );
 
-		if ( true !== isset( $string ) ) {
-			return false;
-		};
+        if (true !== isset($string)) {
+            return false;
+        }
 
-		$string = strtolower( $string );
+        $string = strtolower($string);
 
-		$string = preg_replace( '/\s/', '', $string );
+        $string = preg_replace('/\s/', '', $string);
 
-		/**
-		 * Sanitizes a string from user input or from the database.
-		 *
-		 * @source https://developer.wordpress.org/reference/functions/sanitize_text_field/
-		 */
-		return sanitize_text_field( $string );
-	}
+        /*
+         * Sanitizes a string from user input or from the database.
+         *
+         * @source https://developer.wordpress.org/reference/functions/sanitize_text_field/
+         */
+        return sanitize_text_field($string);
+    }
 }
