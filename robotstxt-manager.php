@@ -32,43 +32,15 @@ define('ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_');
 
 require_once dirname(__FILE__).'/inc/autoload-classes.php';
 
-$adminSave = new Plugin_Admin_Save();
+new \RobotstxtManager\Plugin_Locale();
+
+$adminSave = new \RobotstxtManager\Plugin_Admin_Save();
 $adminSave->init();
 
-$admin = new Plugin_Admin();
+$admin = new \RobotstxtManager\Plugin_Admin();
 $admin->init();
 
 new \RobotstxtManager\Robotstxt();
-
-\add_action(
-    'plugins_loaded',
-    function () {
-        // Retrieves the current locale.
-        $getLocale = \apply_filters(
-            'plugin_locale',
-            \get_locale(),
-            ROBOTSTXT_MANAGER_PLUGIN_NAME
-        );
-
-        $pluginPath = ROBOTSTXT_MANAGER_PLUGIN_DIR;
-        $loadMoFile = $pluginPath.'/lang/'.$getLocale.'.mo';
-
-        if (true === file_exists($loadMoFile)) {
-            // Load a .mo file into the text domain $textdomain.
-            \load_textdomain(
-                ROBOTSTXT_MANAGER_PLUGIN_NAME,
-                $loadMoFile
-            );
-        }
-
-        // Loads a plugin’s translated strings.
-        \load_plugin_textdomain(
-            ROBOTSTXT_MANAGER_PLUGIN_NAME,
-            false,
-            ROBOTSTXT_MANAGER_FILE.'/lang/'
-        );
-    }
-);
 
 // Plugin activation checks.
 \register_activation_hook(
