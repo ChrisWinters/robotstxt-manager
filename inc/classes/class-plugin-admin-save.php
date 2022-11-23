@@ -105,7 +105,7 @@ final class Plugin_Admin_Save
         /**
          * Sanitizes title, replacing whitespace with dashes.
          * Limits the output to alphanumeric characters,
-         * underscore ( _ ) and dash ( - ). Whitespace becomes a dash.
+         * underscore (_) and dash (-). Whitespace becomes a dash.
          *
          * @source https://developer.wordpress.org/reference/functions/sanitize_title_with_dashes/
          */
