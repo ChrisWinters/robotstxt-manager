@@ -62,7 +62,7 @@ final class Plugin_Admin_Robotstxt_Rules
     public function get_sitemapurl()
     {
         // Get Site URL.
-        $sitemap_url_base = \get_option('siteurl') ? \get_option('siteurl') : ROBOTSTXT_MANAGER_BASE_URL;
+        $sitemap_url_base = \get_option('siteurl');
 
         // Base XML File Locations To check.
         $root_xml_file_location = get_headers($sitemap_url_base.'/sitemap.xml');
