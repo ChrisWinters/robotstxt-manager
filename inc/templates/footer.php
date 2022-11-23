@@ -13,21 +13,6 @@ namespace RobotstxtManager;
 if (false === defined('ABSPATH')) {
     exit;
 }
-
-/*
- * Escaping for HTML blocks.
- *
- * @source https://developer.wordpress.org/reference/functions/esc_html/
- *
- * Checks and cleans a URL.
- *
- * @source https://developer.wordpress.org/reference/functions/esc_url/
- *
- * Display translated text.
- *
- * @source https://developer.wordpress.org/reference/functions/_e/
- */
-
 ?>
 </div></div><!-- .postbox & inside -->
 </div><!-- .post-body-content -->

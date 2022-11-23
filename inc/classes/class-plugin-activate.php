@@ -24,23 +24,9 @@ final class Plugin_Activate
      */
     public static function init()
     {
-        /**
-         * Retrieves the current WordPress version.
-         *
-         * @source https://developer.wordpress.org/reference/functions/get_bloginfo/
-         */
         $wp_version = get_bloginfo('version');
 
         if (true === version_compare($wp_version, 3.8, '<')) {
-            /*
-             * Kill WordPress execution and display HTML message with error message.
-             *
-             * @source https://developer.wordpress.org/reference/functions/wp_die/
-             *
-             * Retrieve the translation of $text and escapes it for safe use in HTML output.
-             *
-             * @source https://developer.wordpress.org/reference/functions/esc_html__/
-             */
             wp_die(esc_html__('WordPress 3.8 is required. Please upgrade WordPress and try again.', 'robotstxt-manager'));
         }
 
@@ -53,20 +39,10 @@ final class Plugin_Activate
      */
     public static function set_robotstxt()
     {
-        /**
-         * Retrieves an option value based on an option name.
-         *
-         * @source https://developer.wordpress.org/reference/functions/get_option/
-         */
         $plugin_option = get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
         // Set Plugin Robots.txt From Website Robots.txt.
         if (true === empty($plugin_option['robotstxt']) && true !== empty(self::get_website_robotstxt())) {
-            /*
-             * Update the value of an option that was already added.
-             *
-             * @source https://developer.wordpress.org/reference/functions/update_option/
-             */
             update_option(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
                 [
@@ -81,11 +57,6 @@ final class Plugin_Activate
             $preset_robotstxt .= "Disallow: /wp-admin/\n";
             $preset_robotstxt .= "Allow: /wp-admin/admin-ajax.php\n";
 
-            /*
-             * Update the value of an option that was already added.
-             *
-             * @source https://developer.wordpress.org/reference/functions/update_option/
-             */
             update_option(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
                 [

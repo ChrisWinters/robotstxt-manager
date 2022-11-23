@@ -43,11 +43,6 @@ trait Trait_Query_String
 
         $string = preg_replace('/\s/', '', $string);
 
-        /*
-         * Sanitizes a string from user input or from the database.
-         *
-         * @source https://developer.wordpress.org/reference/functions/sanitize_text_field/
-         */
         return sanitize_text_field($string);
     }
 }

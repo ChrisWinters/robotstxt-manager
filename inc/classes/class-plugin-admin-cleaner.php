@@ -1,302 +1,267 @@
 <?php
 /**
- * Manager Class
+ * Manager Class.
  *
- * @package    WordPress
- * @subpackage Plugin
  * @author     Chris W. <chrisw@null.net>
  * @license    GNU GPLv3
- * @link       /LICENSE
+ *
+ * @see       /LICENSE
  */
 
 namespace RobotstxtManager;
 
 if (false === defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 use RobotstxtManager\Trait_Option_Manager as TraitOptionManager;
 
 /**
- * Robots.txt Cleaner Tool
+ * Robots.txt Cleaner Tool.
  */
-final class Plugin_Admin_Cleaner {
-	use TraitOptionManager;
+final class Plugin_Admin_Cleaner
+{
+    use TraitOptionManager;
 
-	/**
-	 * Post Object Array.
-	 *
-	 * @var array
-	 */
-	public $post_object = array();
+    /**
+     * Post Object Array.
+     *
+     * @var array
+     */
+    public $post_object = [];
 
-	/**
-	 * Notices Class Object.
-	 *
-	 * @var object
-	 */
-	public $notices = array();
+    /**
+     * Notices Class Object.
+     *
+     * @var object
+     */
+    public $notices = [];
 
+    /**
+     * Setup Class.
+     *
+     * @param array  $post_object Post Object Array.
+     * @param object $notices     Notices Class Object.
+     */
+    public function __construct($post_object = [], $notices = [])
+    {
+        $this->post_object = $post_object;
+        $this->notices = $notices;
+    }
 
-	/**
-	 * Setup Class
-	 *
-	 * @param array  $post_object Post Object Array.
-	 * @param object $notices     Notices Class Object.
-	 */
-	public function __construct($post_object = array(), $notices = array()) {
-		$this->post_object = $post_object;
-		$this->notices     = $notices;
-	}
+    /**
+     * Cleaner Actions.
+     */
+    public function cleaner_action()
+    {
+        // Check for old plugin data.
+        if (true !== empty($this->post_object['check-data'])) {
+            $this->checkdata();
+        }
 
+        // Clean plugin data.
+        if (true !== empty($this->post_object['clean-data'])) {
+            $this->cleandata();
+        }
 
-	/**
-	 * Cleaner Actions
-	 */
-	public function cleaner_action() {
-		// Check for old plugin data.
-		if (true !== empty($this->post_object['check-data'])) {
-			$this->checkdata();
-		}
+        // Check for real robots.txt file.
+        if (true !== empty($this->post_object['check-physical'])) {
+            $this->checkphysical();
+        }
 
-		// Clean plugin data.
-		if (true !== empty($this->post_object['clean-data'])) {
-			$this->cleandata();
-		}
+        // Remove real robots.txt file.
+        if (true !== empty($this->post_object['clean-physical'])) {
+            $this->cleanphysical();
+        }
 
-		// Check for real robots.txt file.
-		if (true !== empty($this->post_object['check-physical'])) {
-			$this->checkphysical();
-		}
+        // Check for robots.txt file rewrite rules.
+        if (true !== empty($this->post_object['check-rewrite'])) {
+            $this->checkrewrite();
+        }
 
-		// Remove real robots.txt file.
-		if (true !== empty($this->post_object['clean-physical'])) {
-			$this->cleanphysical();
-		}
+        // Add missing robots.txt file rewrite rules.
+        if (true !== empty($this->post_object['add-rewrite'])) {
+            $this->addrewrite();
+        }
+    }
 
-		// Check for robots.txt file rewrite rules.
-		if (true !== empty($this->post_object['check-rewrite'])) {
-			$this->checkrewrite();
-		}
+    /**
+     * Check For Old Plugin Data.
+     */
+    public function checkdata()
+    {
+        $message = false;
 
-		// Add missing robots.txt file rewrite rules.
-		if (true !== empty($this->post_object['add-rewrite'])) {
-			$this->addrewrite();
-		}
-	}
+        // Old Data Found, Set Marker.
+        if (get_option('pc_robotstxt') || get_option('kb_robotstxt') || get_option('cd_rdte_content')) {
+            $this->update_option(['checkdata' => 'error']);
+            $message = true;
+        } else {
+            $this->del_setting('checkdata');
+        }
 
+        if (true === $message) {
+            add_action(
+                'admin_notices',
+                [
+                    $this->notices,
+                    'checkdata_notice',
+                ]
+            );
+        } else {
+            add_action(
+                'admin_notices',
+                [
+                    $this->notices,
+                    'checkdata_done',
+                ]
+            );
+        }
+    }
 
-	/**
-	 * Check For Old Plugin Data
-	 */
-	public function checkdata() {
-		$message = false;
+    /**
+     * Remove Old Plugin Data.
+     */
+    public function cleandata()
+    {
+        // Remove Options.
+        delete_option('pc_robotstxt');
+        delete_option('kb_robotstxt');
+        delete_option('cd_rdte_content');
 
-		// Old Data Found, Set Marker.
-		if (get_option('pc_robotstxt') || get_option('kb_robotstxt') || get_option('cd_rdte_content')) {
-			$this->update_option(array('checkdata' => 'error'));
-			$message = true;
-		} else {
-			$this->del_setting('checkdata');
-		}
+        // Remove Filters.
+        remove_filter('robots_txt', 'cd_rdte_filter_robots');
+        remove_filter('robots_txt', 'ljpl_filter_robots_txt');
+        remove_filter('robots_txt', 'robots_txt_filter');
 
-		if (true === $message) {
-			/**
-			 * Prints admin screen notices.
-			 *
-			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
-			add_action(
-				'admin_notices',
-				array(
-					$this->notices,
-					'checkdata_notice',
-				)
-			);
-		} else {
-			/**
-			 * Prints admin screen notices.
-			 *
-			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
-			add_action(
-				'admin_notices',
-				array(
-					$this->notices,
-					'checkdata_done',
-				)
-			);
-		}
-	}
+        // Run Check Again.
+        $this->checkData();
+    }
 
+    /**
+     * Check For Phsyical Robots.txt File.
+     */
+    public function checkphysical()
+    {
+        $message = false;
 
-	/**
-	 * Remove Old Plugin Data
-	 */
-	public function cleandata() {
-		// Remove Options.
-		delete_option('pc_robotstxt');
-		delete_option('kb_robotstxt');
-		delete_option('cd_rdte_content');
+        // Robots.txt File Found.
+        if (true === file_exists(get_home_path().'robots.txt')) {
+            $this->update_option(['checkphysical' => 'error']);
+            $message = true;
+        } else {
+            $this->del_setting('checkphysical');
+        }
 
-		// Remove Filters.
-		remove_filter('robots_txt', 'cd_rdte_filter_robots');
-		remove_filter('robots_txt', 'ljpl_filter_robots_txt');
-		remove_filter('robots_txt', 'robots_txt_filter');
+        if (true === $message) {
+            add_action(
+                'admin_notices',
+                [
+                    $this->notices,
+                    'checkphysical_notice',
+                ]
+            );
+        } else {
+            add_action(
+                'admin_notices',
+                [
+                    $this->notices,
+                    'checkphysical_done',
+                ]
+            );
+        }
+    }
 
-		// Run Check Again.
-		$this->checkData();
-	}
+    /**
+     * Remove Physical Robots.txt File.
+     */
+    public function cleanphysical()
+    {
+        // Remove Robots.txt File.
+        if (true === file_exists(get_home_path().'robots.txt') && true === is_writable(get_home_path().'robots.txt')) {
+            unlink(realpath(get_home_path().'robots.txt'));
+        }
 
+        // Robots.txt File Found.
+        if (true === file_exists(get_home_path().'robots.txt')) {
+            $this->del_setting('checkphysical');
 
-	/**
-	 * Check For Phsyical Robots.txt File
-	 */
-	public function checkphysical() {
-		$message = false;
+            add_action(
+                'admin_notices',
+                [
+                    $this->notices,
+                    'checkphysical_error',
+                ]
+            );
+        } else {
+            $this->checkphysical();
+        }
+    }
 
-		// Robots.txt File Found.
-		if (true === file_exists(get_home_path() . 'robots.txt')) {
-			$this->update_option(array('checkphysical' => 'error'));
-			$message = true;
-		} else {
-			$this->del_setting('checkphysical');
-		}
+    /**
+     * Check For Missing Rewrite Rules.
+     */
+    public function checkrewrite()
+    {
+        $message = false;
 
-		if (true === $message) {
-			/**
-			 * Prints admin screen notices.
-			 *
-			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
-			add_action(
-				'admin_notices',
-				array(
-					$this->notices,
-					'checkphysical_notice',
-				)
-			);
-		} else {
-			/**
-			 * Prints admin screen notices.
-			 *
-			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
-			add_action(
-				'admin_notices',
-				array(
-					$this->notices,
-					'checkphysical_done',
-				)
-			);
-		}
-	}
+        // Get Rewrite Rules.
+        $rules = get_option('rewrite_rules');
 
+        // Flush Rules If Needed.
+        if (empty($rules)) {
+            flush_rewrite_rules();
+        }
 
-	/**
-	 * Remove Physical Robots.txt File
-	 */
-	public function cleanphysical() {
-		// Remove Robots.txt File.
-		if (true === file_exists(get_home_path() . 'robots.txt') && true === is_writable(get_home_path() . 'robots.txt')) {
-			unlink(realpath(get_home_path() . 'robots.txt'));
-		}
+        // Error No Rewrite Rule Found, Set Marker.
+        if (true !== in_array('index.php?robots=1', (array) $rules, true)) {
+            $this->update_option(['checkrewrite' => 'error']);
+            $message = true;
+        } else {
+            $this->del_setting('checkrewrite');
+        }
 
-		// Robots.txt File Found.
-		if (true === file_exists(get_home_path() . 'robots.txt')) {
-			$this->del_setting('checkphysical');
+        if (true === $message) {
+            add_action(
+                'admin_notices',
+                [
+                    $this->notices,
+                    'checkrewrite_notice',
+                ]
+            );
+        } else {
+            add_action(
+                'admin_notices',
+                [
+                    $this->notices,
+                    'checkrewrite_done',
+                ]
+            );
+        }
+    }
 
-			/**
-			 * Prints admin screen notices.
-			 *
-			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
-			add_action(
-				'admin_notices',
-				array(
-					$this->notices,
-					'checkphysical_error',
-				)
-			);
-		} else {
-			$this->checkphysical();
-		}
-	}
+    /**
+     * Add Missing Rewrite Rule.
+     */
+    public function addrewrite()
+    {
+        // Get Rewrite Rules.
+        $rules = get_option('rewrite_rules');
 
+        // Add Missing Rule.
+        if (true !== in_array('index.php?robots=1', (array) $rules, true)) {
+            // Set Proper Keys.
+            $rule_key = 'robots\.txt$';
+            $rules[$rule_key] = 'index.php?robots=1';
 
-	/**
-	 * Check For Missing Rewrite Rules
-	 */
-	public function checkrewrite() {
-		$message = false;
+            // Update Rules.
+            update_option('rewrite_rules', $rules);
 
-		// Get Rewrite Rules.
-		$rules = get_option('rewrite_rules');
+            // Flush Rules.
+            flush_rewrite_rules();
+        }
 
-		// Flush Rules If Needed.
-		if (empty($rules)) {
-			flush_rewrite_rules();
-		}
-
-		// Error No Rewrite Rule Found, Set Marker.
-		if (true !== in_array('index.php?robots=1', (array) $rules, true)) {
-			$this->update_option(array('checkrewrite' => 'error'));
-			$message = true;
-		} else {
-			$this->del_setting('checkrewrite');
-		}
-
-		if (true === $message) {
-			/**
-			 * Prints admin screen notices.
-			 *
-			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
-			add_action(
-				'admin_notices',
-				array(
-					$this->notices,
-					'checkrewrite_notice',
-				)
-			);
-		} else {
-			/**
-			 * Prints admin screen notices.
-			 *
-			 * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-			 */
-			add_action(
-				'admin_notices',
-				array(
-					$this->notices,
-					'checkrewrite_done',
-				)
-			);
-		}
-	}
-
-
-	/**
-	 * Add Missing Rewrite Rule
-	 */
-	public function addrewrite() {
-		// Get Rewrite Rules.
-		$rules = get_option('rewrite_rules');
-
-		// Add Missing Rule.
-		if (true !== in_array('index.php?robots=1', (array) $rules, true)) {
-			// Set Proper Keys.
-			$rule_key           = 'robots\.txt$';
-			$rules[ $rule_key ] = 'index.php?robots=1';
-
-			// Update Rules.
-			update_option('rewrite_rules', $rules);
-
-			// Flush Rules.
-			flush_rewrite_rules();
-		}
-
-		// Recheck Rewrite Rules.
-		$this->checkRewrite();
-	}
+        // Recheck Rewrite Rules.
+        $this->checkRewrite();
+    }
 }

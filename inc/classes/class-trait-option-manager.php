@@ -26,11 +26,6 @@ trait Trait_Option_Manager
      */
     public function get_option()
     {
-        /**
-         * Retrieves an option value based on an option name.
-         *
-         * @source https://developer.wordpress.org/reference/functions/get_option/
-         */
         $get_option = get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
         if (true !== empty($get_option)) {
@@ -71,11 +66,6 @@ trait Trait_Option_Manager
             return;
         }
 
-        /*
-         * Update the value of an option that was already added.
-         *
-         * @source https://developer.wordpress.org/reference/functions/update_option/
-         */
         update_option(
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
             $option_array
@@ -170,11 +160,6 @@ trait Trait_Option_Manager
         }
 
         if (defined('WP_DEBUG') && true === WP_DEBUG) {
-            /**
-             * Loads and caches all autoloaded options, if available or all options.
-             *
-             * @source https://developer.wordpress.org/reference/functions/wp_load_all_options/
-             */
             $loaded_options = wp_load_alloptions();
 
             foreach ($loaded_options as $name => $value) {
@@ -200,15 +185,6 @@ trait Trait_Option_Manager
     {
         $status = true;
 
-        /*
-         * Determines whether the current request is for an administrative interface page.
-         *
-         * @source https://developer.wordpress.org/reference/functions/is_admin/
-         *
-         * Whether the current user has a specific capability.
-         *
-         * @source https://developer.wordpress.org/reference/functions/current_user_can/
-         */
         if (false === is_admin() || false === current_user_can('manage_options')) {
             $status = false;
         }

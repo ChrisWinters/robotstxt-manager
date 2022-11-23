@@ -81,11 +81,6 @@ final class Plugin_Admin_Save
             return;
         }
 
-        /*
-         * Fires as an admin screen or script is being initialized.
-         *
-         * @source https://developer.wordpress.org/reference/hooks/admin_init/
-         */
         add_action(
             'admin_init',
             [
@@ -106,8 +101,6 @@ final class Plugin_Admin_Save
          * Sanitizes title, replacing whitespace with dashes.
          * Limits the output to alphanumeric characters,
          * underscore (_) and dash (-). Whitespace becomes a dash.
-         *
-         * @source https://developer.wordpress.org/reference/functions/sanitize_title_with_dashes/
          */
         $action = sanitize_title_with_dashes($this->action_post);
 
@@ -149,11 +142,6 @@ final class Plugin_Admin_Save
 
             return $post;
         } elseif (true === isset($post['section']) && 'update' !== $post['section']) {
-            /*
-             * Prints admin screen notices.
-             *
-             * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-             */
             add_action(
                 'admin_notices',
                 [
@@ -236,43 +224,18 @@ final class Plugin_Admin_Save
         $message = __('You are not authorized to perform this action.', 'robotstxt-manager');
 
         if (filter_input(INPUT_GET, 'page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
-            /*
-             * Kill WordPress execution with message.
-             *
-             * @source https://developer.wordpress.org/reference/functions/wp_die/
-             */
             wp_die(esc_html($message));
         }
 
-        /*
-         * Whether the current user has a specific capability.
-         *
-         * @source https://developer.wordpress.org/reference/functions/current_user_can/
-         */
         if (false === current_user_can('manage_options')) {
-            /*
-             * Kill WordPress execution and display message.
-             *
-             * @source https://developer.wordpress.org/reference/functions/wp_die/
-             */
             wp_die(esc_html($message));
         }
 
-        /*
-         * Makes sure that a user was referred from another admin page.
-         *
-         * @source https://developer.wordpress.org/reference/functions/check_admin_referer/
-         */
         if (false === check_admin_referer(
             ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
             ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
         )
         ) {
-            /*
-             * Kill WordPress execution and display message.
-             *
-             * @source https://developer.wordpress.org/reference/functions/wp_die/
-            */
             wp_die(esc_html($message));
         }
     }

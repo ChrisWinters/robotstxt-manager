@@ -45,11 +45,6 @@ final class Robotstxt
             header('Status: 200 OK', true, 200);
             header('Content-Type: text/plain; charset=utf-8');
 
-            /*
-             * Escaping for HTML blocks.
-             *
-             * @source https://developer.wordpress.org/reference/functions/esc_html/
-             */
             echo \esc_html($robotstxt);
             exit;
         }
@@ -60,37 +55,17 @@ final class Robotstxt
      */
     private function get_robotstxt(): string
     {
-        /**
-         * Retrieve the current site ID.
-         *
-         * @source https://developer.wordpress.org/reference/functions/get_current_blog_id/
-         */
         $blog_id = \get_current_blog_id();
 
         if ($blog_id > 0 &&
             true === function_exists('switch_to_blog')) {
-            /*
-             * Switch the current blog.
-             *
-             * @source https://developer.wordpress.org/reference/functions/switch_to_blog/
-             */
             \switch_to_blog($blog_id);
         }
 
-        /**
-         * Retrieves an option value based on an option name.
-         *
-         * @source https://developer.wordpress.org/reference/functions/get_option/
-         */
         $settings = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
         if ($blog_id > 0 &&
             true === function_exists('restore_current_blog')) {
-            /*
-             * Restore the current blog, after calling restore_current_blog().
-             *
-             * @source https://developer.wordpress.org/reference/functions/restore_current_blog/
-             */
             \restore_current_blog();
         }
 
@@ -133,11 +108,6 @@ final class Robotstxt
             );
         } else {
             if (isset($_SERVER['REQUEST_URI'])) {
-                /**
-                 * Remove slashes from a string or array of strings.
-                 *
-                 * @source https://developer.wordpress.org/reference/functions/wp_unslash/
-                 */
                 $request_uri = htmlspecialchars(\wp_unslash($_SERVER['REQUEST_URI']), ENT_QUOTES, 'UTF-8');
                 $filename = filter_var(
                     $request_uri,

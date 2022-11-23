@@ -99,11 +99,6 @@ final class Plugin_Admin_Presets
         }
 
         if (true === $message) {
-            /*
-             * Prints admin screen notices.
-             *
-             * @source https://developer.wordpress.org/reference/hooks/admin_notices/
-             */
             add_action(
                 'admin_notices',
                 [

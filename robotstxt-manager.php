@@ -32,26 +32,10 @@ define('ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_');
 
 require_once dirname(__FILE__).'/inc/autoload-classes.php';
 
-/*
- * Hooks a function on to a specific action.
- *
- * @source https://developer.wordpress.org/reference/functions/add_action/
- *
- * Fires once activated plugins have loaded.
- *
- * @source https://developer.wordpress.org/reference/hooks/plugins_loaded/
- */
 \add_action(
     'plugins_loaded',
     function () {
-        /**
-         * Call the functions added to a filter hook.
-         *
-         * @source https://developer.wordpress.org/reference/functions/apply_filters/
-         *
-         * Retrieves the current locale.
-         * @source https://developer.wordpress.org/reference/functions/get_locale/
-         */
+        // Retrieves the current locale.
         $get_locale = \apply_filters(
             'plugin_locale',
             \get_locale(),
@@ -62,33 +46,20 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
         $load_mo_file = $plugin_path.'/lang/'.$get_locale.'.mo';
 
         if (true === file_exists($load_mo_file)) {
-            /*
-             * Load a .mo file into the text domain $textdomain.
-             *
-             * @source https://developer.wordpress.org/reference/functions/load_textdomain/
-             */
+            // Load a .mo file into the text domain $textdomain.
             \load_textdomain(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
                 $load_mo_file
             );
         }
 
-        /*
-         * Loads a plugin’s translated strings.
-         *
-         * @source https://developer.wordpress.org/reference/functions/load_plugin_textdomain/
-         */
+        // Loads a plugin’s translated strings.
         \load_plugin_textdomain(
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
             false,
             ROBOTSTXT_MANAGER_FILE.'/lang/'
         );
 
-        /*
-         * Determines whether the current request is for an administrative interface page.
-         *
-         * @source https://developer.wordpress.org/reference/functions/is_admin/
-         */
         if (true === is_admin()) {
             $admin_save = new Plugin_Admin_Save();
             $admin_save->init();
@@ -101,11 +72,7 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
     }
 );
 
-/*
- * Set the activation hook for a plugin.
- *
- * @source https://developer.wordpress.org/reference/functions/register_activation_hook/
- */
+// Plugin activation checks.
 \register_activation_hook(
     __FILE__,
     [
@@ -114,9 +81,7 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
     ]
 );
 
-/*
- * Plugin update checker
- */
+// Plugin update checker
 if (true === file_exists(dirname(__FILE__).'/puc/plugin-update-checker.php')) {
     require_once dirname(__FILE__).'/puc/plugin-update-checker.php';
 

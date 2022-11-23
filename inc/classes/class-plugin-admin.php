@@ -67,11 +67,6 @@ final class Plugin_Admin
      */
     public function __construct()
     {
-        /*
-         * Escaping for HTML blocks.
-         *
-         * @source https://developer.wordpress.org/reference/functions/esc_html__/
-         */
         $this->admin_tabs = [
             'settings' => esc_html__('Settings', 'robotstxt-manager'),
             'cleaner' => esc_html__('Cleaner', 'robotstxt-manager'),
@@ -94,11 +89,6 @@ final class Plugin_Admin
      */
     public function init()
     {
-        /*
-         * Fires before the administration menu loads in the admin.
-         *
-         * @source https://developer.wordpress.org/reference/hooks/admin_menu/
-         */
         add_action(
             'admin_menu',
             [
@@ -108,11 +98,6 @@ final class Plugin_Admin
         );
 
         if ($this->query_string('page') === ROBOTSTXT_MANAGER_PLUGIN_NAME) {
-            /*
-             * Enqueue Scripts For Plugin Admin
-             *
-             * @source https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts/
-             */
             add_action(
                 'admin_enqueue_scripts',
                 [
@@ -130,11 +115,6 @@ final class Plugin_Admin
      */
     public function menu()
     {
-        /*
-         * Add Settings Page Options.
-         *
-         * @source https://developer.wordpress.org/reference/functions/add_submenu_page/
-         */
         add_submenu_page(
             'options-general.php',
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
@@ -155,15 +135,6 @@ final class Plugin_Admin
      */
     public function enqueue()
     {
-        /*
-         * Enqueue a CSS stylesheet.
-         *
-         * @source https://developer.wordpress.org/reference/functions/wp_enqueue_style/
-         *
-         * Retrieves a URL within the plugins directory.
-         *
-         * @source https://developer.wordpress.org/reference/functions/plugins_url/
-         */
         wp_enqueue_style(
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
             plugins_url('/assets/css/style.min.css', ROBOTSTXT_MANAGER_FILE),

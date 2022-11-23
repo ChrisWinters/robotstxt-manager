@@ -33,11 +33,6 @@ final class Plugin_Admin_Notices
      */
     public function __construct()
     {
-        /*
-         * Retrieve the translation of $text.
-         *
-         * @source https://developer.wordpress.org/reference/functions/__/
-         */
         $this->message = [
             'update_success' => __(
                 'Settings Updated.',

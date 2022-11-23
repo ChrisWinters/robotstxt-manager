@@ -13,20 +13,6 @@ namespace RobotstxtManager;
 if (false === defined('ABSPATH')) {
     exit;
 }
-
-/*
- * Display translated text.
- *
- * @source https://developer.wordpress.org/reference/functions/esc_html_e/
- *
- * Escaping for HTML attributes.
- *
- * @source https://developer.wordpress.org/reference/functions/esc_attr/
- *
- * Checks and cleans a URL.
- *
- * @source https://developer.wordpress.org/reference/functions/esc_url/
- */
 ?>
 <div class="postbox">
 	<div class="h5 p-1 font-weight-bold"><?php esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?></div>

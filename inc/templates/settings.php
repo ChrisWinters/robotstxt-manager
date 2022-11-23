@@ -13,32 +13,9 @@ namespace RobotstxtManager;
 if (false === defined('ABSPATH')) {
     exit;
 }
-
-/*
- * Retrieve the translation of $text and escapes it for safe use in HTML output.
- *
- * @source https://developer.wordpress.org/reference/functions/esc_html__/
- *
- * Checks and cleans a URL.
- *
- * @source  https://developer.wordpress.org/reference/functions/esc_url/
- *
- * Display translated text.
- *
- * @source https://developer.wordpress.org/reference/functions/esc_html_e/
- *
- * Echoes a submit button, with provided text and appropriate class(es).
- *
- * @source https://developer.wordpress.org/reference/functions/submit_button/
- */
 ?>
 <form enctype="multipart/form-data" method="post" action="">
 <?php
-/**
- * Retrieve or display nonce hidden field for forms.
- *
- * @source https://developer.wordpress.org/reference/functions/wp_nonce_field/
- */
 wp_nonce_field(
     ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
     ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
