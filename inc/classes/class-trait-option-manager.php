@@ -26,10 +26,10 @@ trait Trait_Option_Manager
      */
     public function get_option()
     {
-        $get_option = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
+        $getOption = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
-        if (true !== empty($get_option)) {
-            return $get_option;
+        if (true !== empty($getOption)) {
+            return $getOption;
         }
 
         return [];
@@ -38,16 +38,16 @@ trait Trait_Option_Manager
     /**
      * Get Option Setting.
      *
-     * @param mixed $setting_name Name Of Option To Get.
+     * @param mixed $settingName Name Of Option To Get.
      *
      * @return string
      */
-    public function get_setting($setting_name)
+    public function get_setting($settingName)
     {
-        $get_option = $this->get_option();
+        $getOption = $this->get_option();
 
-        if (true === isset($get_option[$setting_name])) {
-            return $get_option[$setting_name];
+        if (true === isset($getOption[$settingName])) {
+            return $getOption[$settingName];
         }
 
         return false;
@@ -56,11 +56,11 @@ trait Trait_Option_Manager
     /**
      * Update Option Array.
      *
-     * @param mixed $option_array Prepared Option Array.
+     * @param mixed $optionArray Prepared Option Array.
      *
      * @return void
      */
-    public function update_option($option_array)
+    public function update_option($optionArray)
     {
         if (false === $this->validate_update()) {
             return;
@@ -68,31 +68,31 @@ trait Trait_Option_Manager
 
         \update_option(
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
-            $option_array
+            $optionArray
         );
     }
 
     /**
      * Update Setting Within Option.
      *
-     * @param mixed $setting_name  Name Of Option To Save.
-     * @param mixed $setting_value The Value To Save.
+     * @param mixed $settingName  Name Of Option To Save.
+     * @param mixed $settingValue The Value To Save.
      */
-    public function update_setting($setting_name, $setting_value)
+    public function update_setting($settingName, $settingValue)
     {
         if (false === $this->validate_update()) {
             return;
         }
 
-        $get_option = $this->get_option();
+        $getOption = $this->get_option();
 
-        if (true !== empty($get_option[$setting_name])) {
-            unset($get_option[$setting_name]);
+        if (true !== empty($getOption[$settingName])) {
+            unset($getOption[$settingName]);
         }
 
-        $get_option[$setting_name] = $setting_value;
+        $getOption[$settingName] = $settingValue;
 
-        $this->update_option($get_option);
+        $this->update_option($getOption);
     }
 
     /**
@@ -106,9 +106,9 @@ trait Trait_Option_Manager
             return;
         }
 
-        $get_option = $this->get_option();
+        $getOption = $this->get_option();
 
-        if (true === isset($get_option)) {
+        if (true === isset($getOption)) {
             \delete_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
         }
     }
@@ -116,30 +116,30 @@ trait Trait_Option_Manager
     /**
      * Delete Option Setting.
      *
-     * @param mixed $setting_name Name Of Option To Delete.
+     * @param mixed $settingName Name Of Option To Delete.
      *
      * @return void
      */
-    public function del_setting($setting_name)
+    public function del_setting($settingName)
     {
         if (false === $this->validate_update()) {
             return;
         }
 
-        $get_option = $this->get_option();
+        $getOption = $this->get_option();
 
-        if (true === isset($get_option[$setting_name])) {
-            unset($get_option[$setting_name]);
+        if (true === isset($getOption[$settingName])) {
+            unset($getOption[$settingName]);
         }
 
-        if (true !== empty($get_option)) {
+        if (true !== empty($getOption)) {
             \update_option(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
-                $get_option
+                $getOption
             );
         }
 
-        if (true === empty($get_option)) {
+        if (true === empty($getOption)) {
             $this->del_option();
         }
     }
@@ -153,16 +153,16 @@ trait Trait_Option_Manager
     {
         $options = [];
 
-        $get_option = $this->get_option();
+        $getOption = $this->get_option();
 
-        if (true !== empty($get_option)) {
-            $options = $get_option;
+        if (true !== empty($getOption)) {
+            $options = $getOption;
         }
 
         if (defined('WP_DEBUG') && true === WP_DEBUG) {
-            $loaded_options = wp_load_alloptions();
+            $loadedOptions = wp_load_alloptions();
 
-            foreach ($loaded_options as $name => $value) {
+            foreach ($loadedOptions as $name => $value) {
                 if (false !== stristr($name, ROBOTSTXT_MANAGER_SETTING_PREFIX)) {
                     $options[$name] = $value;
                 }

@@ -27,14 +27,14 @@ final class Plugin_Admin_Robotstxt_Rules
     public function get_uploadpath()
     {
         // Get Upload Dir For This Website.
-        $upload_dir = \wp_upload_dir(null, false, true);
+        $uploadDir = \wp_upload_dir(null, false, true);
 
-        if (true === empty($upload_dir['basedir'])) {
+        if (true === empty($uploadDir['basedir'])) {
             return \esc_html__('Upload Path Not Set', 'robotstxt-manager');
         }
 
         // Split The Path.
-        $contents = explode('uploads', $upload_dir['basedir']);
+        $contents = explode('uploads', $uploadDir['basedir']);
 
         // Return The Path.
         return 'Allow: /wp-content/uploads'.end($contents).'/';
@@ -48,10 +48,10 @@ final class Plugin_Admin_Robotstxt_Rules
     public function get_themepath()
     {
         // Build Path For Theme.
-        $path_to_themes = \get_stylesheet_directory();
-        $theme_path = 'Allow: '.strstr($path_to_themes, '/wp-content/themes').'/';
+        $pathToThemes = \get_stylesheet_directory();
+        $themePath = 'Allow: '.strstr($pathToThemes, '/wp-content/themes').'/';
 
-        return $theme_path;
+        return $themePath;
     }
 
     /**
@@ -62,19 +62,19 @@ final class Plugin_Admin_Robotstxt_Rules
     public function get_sitemapurl()
     {
         // Get Site URL.
-        $sitemap_url_base = \get_option('siteurl');
+        $sitemapUrlBase = \get_option('siteurl');
 
         // Base XML File Locations To check.
-        $root_xml_file_location = get_headers($sitemap_url_base.'/sitemap.xml');
-        $alt_xml_file_location = get_headers($sitemap_url_base.'/sitemaps/sitemap.xml');
+        $rootXmlFileLocation = get_headers($sitemapUrlBase.'/sitemap.xml');
+        $altXmlFileLocation = get_headers($sitemapUrlBase.'/sitemaps/sitemap.xml');
 
         // Check if xml sitemap exists.
-        if (true === isset($root_xml_file_location[0]) && 'HTTP/1.1 200 OK' === $root_xml_file_location[0]) {
+        if (true === isset($rootXmlFileLocation[0]) && 'HTTP/1.1 200 OK' === $rootXmlFileLocation[0]) {
             // http://domain.com/sitemap.xml.
-            $url = $sitemap_url_base.'/sitemap.xml';
-        } elseif (true === isset($alt_xml_file_location[0]) && 'HTTP/1.1 200 OK' === $alt_xml_file_location[0]) {
+            $url = $sitemapUrlBase.'/sitemap.xml';
+        } elseif (true === isset($altXmlFileLocation[0]) && 'HTTP/1.1 200 OK' === $altXmlFileLocation[0]) {
             // http://domain.com/sitemaps/sitemap.xml.
-            $url = $sitemap_url_base.'/sitemaps/sitemap.xml';
+            $url = $sitemapUrlBase.'/sitemaps/sitemap.xml';
         } else {
             $url = '';
         }

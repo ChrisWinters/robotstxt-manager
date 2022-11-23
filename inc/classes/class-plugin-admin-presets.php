@@ -28,7 +28,7 @@ final class Plugin_Admin_Presets
      *
      * @var array
      */
-    public $post_object = [];
+    public $postObject = [];
 
     /**
      * Plugin_Admin_Notices.
@@ -40,12 +40,12 @@ final class Plugin_Admin_Presets
     /**
      * Setup Class.
      *
-     * @param array  $post_object Post Object Array.
-     * @param object $notices     Notices Class Object.
+     * @param array  $postObject Post Object Array.
+     * @param object $notices    Notices Class Object.
      */
-    public function __construct($post_object = [], $notices = [])
+    public function __construct($postObject = [], $notices = [])
     {
-        $this->post_object = $post_object;
+        $this->postObject = $postObject;
         $this->notices = $notices;
     }
 
@@ -57,8 +57,8 @@ final class Plugin_Admin_Presets
         $message = false;
         $preset = '';
 
-        if (true !== empty($this->post_object['preset'])) {
-            $preset = $this->post_object['preset'];
+        if (true !== empty($this->postObject['preset'])) {
+            $preset = $this->postObject['preset'];
         }
 
         switch ($preset) {

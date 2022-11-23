@@ -31,10 +31,10 @@ function robotstxtmanager_register_classes($class)
     }
 
     // Build Class Name.
-    $relative_class = strtolower(str_replace('_', '-', substr($class, $len)));
+    $relativeClass = strtolower(str_replace('_', '-', substr($class, $len)));
 
     // Replace Dir Separators and Replace Namespace with Base Dir.
-    $file = ROBOTSTXT_MANAGER_DIR.'/inc/classes/class-'.str_replace('\\', '/', $relative_class).'.php';
+    $file = ROBOTSTXT_MANAGER_DIR.'/inc/classes/class-'.str_replace('\\', '/', $relativeClass).'.php';
 
     // Include File.
     if (true === file_exists($file)) {

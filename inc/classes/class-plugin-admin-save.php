@@ -31,14 +31,14 @@ final class Plugin_Admin_Save
      *
      * @var array
      */
-    public $post_object = [];
+    public $postObject = [];
 
     /**
      * Plugin_Admin_Notices.
      *
      * @var object
      */
-    public $action_post;
+    public $postAction;
 
     /**
      * Plugin_Admin_Notices.
@@ -56,14 +56,14 @@ final class Plugin_Admin_Save
             return;
         }
 
-        $this->action_post = filter_input(INPUT_POST, 'action');
+        $this->postAction = filter_input(INPUT_POST, 'action');
 
-        if (true === empty($this->action_post)) {
+        if (true === empty($this->postAction)) {
             return;
         }
 
-        $post_object_array = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-        $this->post_object = $this->unset_post_items($post_object_array);
+        $postObjectArray = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+        $this->postObject = $this->unset_post_items($postObjectArray);
 
         $this->notices = new PluginAdminNotices();
     }
@@ -77,7 +77,7 @@ final class Plugin_Admin_Save
             return;
         }
 
-        if (true === empty($this->action_post)) {
+        if (true === empty($this->postAction)) {
             return;
         }
 
@@ -102,7 +102,7 @@ final class Plugin_Admin_Save
          * Limits the output to alphanumeric characters,
          * underscore (_) and dash (-). Whitespace becomes a dash.
          */
-        $action = sanitize_title_with_dashes($this->action_post);
+        $action = sanitize_title_with_dashes($this->postAction);
 
         if ('update' === $action) {
             $this->update_action();
@@ -113,12 +113,12 @@ final class Plugin_Admin_Save
         }
 
         if ('presets' === $action) {
-            $presets = new Plugin_Admin_Presets($this->post_object, $this->notices);
+            $presets = new Plugin_Admin_Presets($this->postObject, $this->notices);
             $presets->set_preset_robotstxt();
         }
 
         if ('cleaner' === $action) {
-            $cleaner = new Plugin_Admin_Cleaner($this->post_object, $this->notices);
+            $cleaner = new Plugin_Admin_Cleaner($this->postObject, $this->notices);
             $cleaner->cleaner_action();
         }
     }
@@ -161,12 +161,12 @@ final class Plugin_Admin_Save
 
         $count = 0;
 
-        if (true !== empty($this->post_object)) {
-            $this->update_option($this->post_object);
+        if (true !== empty($this->postObject)) {
+            $this->update_option($this->postObject);
             $message = true;
         }
 
-        if (true === empty($this->post_object)) {
+        if (true === empty($this->postObject)) {
             $this->del_option();
             $message = true;
         }

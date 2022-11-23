@@ -36,20 +36,20 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
     'plugins_loaded',
     function () {
         // Retrieves the current locale.
-        $get_locale = \apply_filters(
+        $getLocale = \apply_filters(
             'plugin_locale',
             \get_locale(),
             ROBOTSTXT_MANAGER_PLUGIN_NAME
         );
 
-        $plugin_path = ROBOTSTXT_MANAGER_PLUGIN_DIR;
-        $load_mo_file = $plugin_path.'/lang/'.$get_locale.'.mo';
+        $pluginPath = ROBOTSTXT_MANAGER_PLUGIN_DIR;
+        $loadMoFile = $pluginPath.'/lang/'.$getLocale.'.mo';
 
-        if (true === file_exists($load_mo_file)) {
+        if (true === file_exists($loadMoFile)) {
             // Load a .mo file into the text domain $textdomain.
             \load_textdomain(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
-                $load_mo_file
+                $loadMoFile
             );
         }
 
@@ -61,8 +61,8 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
         );
 
         if (true === \is_admin()) {
-            $admin_save = new Plugin_Admin_Save();
-            $admin_save->init();
+            $adminSave = new Plugin_Admin_Save();
+            $adminSave->init();
 
             $admin = new Plugin_Admin();
             $admin->init();

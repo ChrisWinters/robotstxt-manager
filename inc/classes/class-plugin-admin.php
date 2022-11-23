@@ -30,7 +30,7 @@ final class Plugin_Admin
      *
      * @var array
      */
-    public $admin_tabs = [];
+    public $adminTabs = [];
 
     /**
      * Saved Robots.txt File.
@@ -44,21 +44,21 @@ final class Plugin_Admin
      *
      * @var string
      */
-    public $uploadpath;
+    public $uploadPath;
 
     /**
      * Theme Path Rule.
      *
      * @var string
      */
-    public $themepath;
+    public $themePath;
 
     /**
      * Website Sitemap URL Rule.
      *
      * @var string
      */
-    public $sitemapurl;
+    public $sitemapUrl;
 
     /**
      * Set Class Params.
@@ -67,7 +67,7 @@ final class Plugin_Admin
      */
     public function __construct()
     {
-        $this->admin_tabs = [
+        $this->adminTabs = [
             'settings' => \esc_html__('Settings', 'robotstxt-manager'),
             'cleaner' => \esc_html__('Cleaner', 'robotstxt-manager'),
         ];
@@ -76,10 +76,10 @@ final class Plugin_Admin
         $this->robotstxt = $this->get_setting('robotstxt');
 
         // Settings Template Extra Robots.txt Rule Statements.
-        $robotstxt_rules = new Plugin_Admin_Robotstxt_Rules();
-        $this->uploadpath = $robotstxt_rules->get_uploadpath();
-        $this->themepath = $robotstxt_rules->get_themepath();
-        $this->sitemapurl = $robotstxt_rules->get_sitemapurl();
+        $robotstxtRules = new Plugin_Admin_Robotstxt_Rules();
+        $this->uploadPath = $robotstxtRules->get_uploadpath();
+        $this->themePath = $robotstxtRules->get_themepath();
+        $this->sitemapUrl = $robotstxtRules->get_sitemapurl();
     }
 
     /**
@@ -175,26 +175,26 @@ final class Plugin_Admin
         $html = '<h2 class="nav-tab-wrapper">';
 
         if (true !== empty($this->query_string('tab'))) {
-            $current_tab = $this->query_string('tab');
+            $currentTab = $this->query_string('tab');
         } else {
-            $current_tab = key($this->admin_tabs);
+            $currentTab = key($this->adminTabs);
         }
 
-        $pagename = $this->query_string('page');
+        $pageName = $this->query_string('page');
 
-        $posttype = '';
+        $postType = '';
         if (ROBOTSTXT_MANAGER_PLUGIN_NAME === $this->query_string('post_type')) {
-            $posttype = '&post_type='.$this->query_string('post_type');
+            $postType = '&post_type='.$this->query_string('post_type');
         }
 
-        foreach ($this->admin_tabs as $tab => $name) {
+        foreach ($this->adminTabs as $tab => $name) {
             $class = '';
-            if ($tab === $current_tab) {
+            if ($tab === $currentTab) {
                 $class = ' nav-tab-active';
             }
 
-            $html .= '<a href="?page='.$pagename.
-            '&tab='.$tab.$posttype.
+            $html .= '<a href="?page='.$pageName.
+            '&tab='.$tab.$postType.
             '" class="nav-tab'.$class.'">'.$name.'</a>';
         }
 

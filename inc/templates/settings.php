@@ -22,7 +22,7 @@ if (false === defined('ABSPATH')) {
 );
 
 // Get Saved Robots.txt File.
-$robotstxt_manager_robotstxt_file = $this->get_setting('robotstxt');
+$robotstxtFile = $this->get_setting('robotstxt');
 ?>
 <input type="hidden" name="action" value="update" />
 
@@ -57,15 +57,15 @@ $robotstxt_manager_robotstxt_file = $this->get_setting('robotstxt');
 		</tr>
 		<tr>
 		<th scope="row"><label><?php \esc_html_e('Upload Path', 'robotstxt-manager'); ?></label></th>
-		<td><input type="text" name="upload_path" value="<?php echo esc_html($this->uploadpath); ?>" class="regular-text" onclick="select()" /></td>
+		<td><input type="text" name="upload_path" value="<?php echo esc_html($this->uploadPath); ?>" class="regular-text" onclick="select()" /></td>
 		</tr>
 		<tr>
 		<th scope="row"><label><?php \esc_html_e('Theme Path', 'robotstxt-manager'); ?></label></th>
-		<td><input type="text" name="theme_path" value="<?php echo esc_html($this->themepath); ?>" class="regular-text" onclick="select()" /></td>
+		<td><input type="text" name="theme_path" value="<?php echo esc_html($this->themePath); ?>" class="regular-text" onclick="select()" /></td>
 		</tr>
 		<tr>
 		<th scope="row"><label><?php \esc_html_e('Sitemap URL', 'robotstxt-manager'); ?></label></th>
-		<td><input type="text" name="sitemap_url" value="<?php echo esc_html($this->sitemapurl); ?>" class="regular-text" onclick="select()" /></td>
+		<td><input type="text" name="sitemap_url" value="<?php echo esc_html($this->sitemapUrl); ?>" class="regular-text" onclick="select()" /></td>
 		</tr>
 	</tbody>
 </table>
@@ -128,10 +128,6 @@ $robotstxt_manager_robotstxt_file = $this->get_setting('robotstxt');
 
 <form enctype="multipart/form-data" method="post" action="">
 <?php
-/*
- * Retrieve or display nonce hidden field for forms.
- * https://developer.wordpress.org/reference/functions/wp_nonce_field/
- */
 \wp_nonce_field(
     ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
     ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'

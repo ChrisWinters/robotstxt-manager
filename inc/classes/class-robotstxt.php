@@ -35,9 +35,9 @@ final class Robotstxt
     private function display()
     {
         $robotstxt = $this->get_robotstxt();
-        $blog_public = \get_option('blog_public');
+        $blogPublic = \get_option('blog_public');
 
-        if ('0' === $blog_public) {
+        if ('0' === $blogPublic) {
             $robotstxt = "Disallow: /\n";
         }
 
@@ -55,16 +55,16 @@ final class Robotstxt
      */
     private function get_robotstxt(): string
     {
-        $blog_id = \get_current_blog_id();
+        $blogID = \get_current_blog_id();
 
-        if ($blog_id > 0 &&
+        if ($blogID > 0 &&
             true === function_exists('switch_to_blog')) {
-            \switch_to_blog($blog_id);
+            \switch_to_blog($blogID);
         }
 
         $settings = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
-        if ($blog_id > 0 &&
+        if ($blogID > 0 &&
             true === function_exists('restore_current_blog')) {
             \restore_current_blog();
         }
@@ -104,9 +104,9 @@ final class Robotstxt
             );
         } else {
             if (isset($_SERVER['REQUEST_URI'])) {
-                $request_uri = htmlspecialchars(\wp_unslash($_SERVER['REQUEST_URI']), ENT_QUOTES, 'UTF-8');
+                $requestUri = htmlspecialchars(\wp_unslash($_SERVER['REQUEST_URI']), ENT_QUOTES, 'UTF-8');
                 $filename = filter_var(
-                    $request_uri,
+                    $requestUri,
                     FILTER_UNSAFE_RAW,
                     FILTER_NULL_ON_FAILURE
                 );

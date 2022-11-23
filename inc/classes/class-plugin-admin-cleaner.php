@@ -28,7 +28,7 @@ final class Plugin_Admin_Cleaner
      *
      * @var array
      */
-    public $post_object = [];
+    public $postObject = [];
 
     /**
      * Notices Class Object.
@@ -40,12 +40,12 @@ final class Plugin_Admin_Cleaner
     /**
      * Setup Class.
      *
-     * @param array  $post_object Post Object Array.
-     * @param object $notices     Notices Class Object.
+     * @param array  $postObject Post Object Array.
+     * @param object $notices    Notices Class Object.
      */
-    public function __construct($post_object = [], $notices = [])
+    public function __construct($postObject = [], $notices = [])
     {
-        $this->post_object = $post_object;
+        $this->postObject = $postObject;
         $this->notices = $notices;
     }
 
@@ -55,32 +55,32 @@ final class Plugin_Admin_Cleaner
     public function cleaner_action()
     {
         // Check for old plugin data.
-        if (true !== empty($this->post_object['check-data'])) {
+        if (true !== empty($this->postObject['check-data'])) {
             $this->checkdata();
         }
 
         // Clean plugin data.
-        if (true !== empty($this->post_object['clean-data'])) {
+        if (true !== empty($this->postObject['clean-data'])) {
             $this->cleandata();
         }
 
         // Check for real robots.txt file.
-        if (true !== empty($this->post_object['check-physical'])) {
+        if (true !== empty($this->postObject['check-physical'])) {
             $this->checkphysical();
         }
 
         // Remove real robots.txt file.
-        if (true !== empty($this->post_object['clean-physical'])) {
+        if (true !== empty($this->postObject['clean-physical'])) {
             $this->cleanphysical();
         }
 
         // Check for robots.txt file rewrite rules.
-        if (true !== empty($this->post_object['check-rewrite'])) {
+        if (true !== empty($this->postObject['check-rewrite'])) {
             $this->checkrewrite();
         }
 
         // Add missing robots.txt file rewrite rules.
-        if (true !== empty($this->post_object['add-rewrite'])) {
+        if (true !== empty($this->postObject['add-rewrite'])) {
             $this->addrewrite();
         }
     }
@@ -251,8 +251,8 @@ final class Plugin_Admin_Cleaner
         // Add Missing Rule.
         if (true !== in_array('index.php?robots=1', (array) $rules, true)) {
             // Set Proper Keys.
-            $rule_key = 'robots\.txt$';
-            $rules[$rule_key] = 'index.php?robots=1';
+            $ruleKey = 'robots\.txt$';
+            $rules[$ruleKey] = 'index.php?robots=1';
 
             // Update Rules.
             \update_option('rewrite_rules', $rules);
