@@ -26,7 +26,7 @@ trait Trait_Option_Manager
      */
     public function get_option()
     {
-        $get_option = get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
+        $get_option = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
         if (true !== empty($get_option)) {
             return $get_option;
@@ -66,7 +66,7 @@ trait Trait_Option_Manager
             return;
         }
 
-        update_option(
+        \update_option(
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
             $option_array
         );
@@ -109,7 +109,7 @@ trait Trait_Option_Manager
         $get_option = $this->get_option();
 
         if (true === isset($get_option)) {
-            delete_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
+            \delete_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
         }
     }
 
@@ -133,7 +133,7 @@ trait Trait_Option_Manager
         }
 
         if (true !== empty($get_option)) {
-            update_option(
+            \update_option(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
                 $get_option
             );
@@ -185,7 +185,7 @@ trait Trait_Option_Manager
     {
         $status = true;
 
-        if (false === is_admin() || false === current_user_can('manage_options')) {
+        if (false === \is_admin() || false === \current_user_can('manage_options')) {
             $status = false;
         }
 

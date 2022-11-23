@@ -99,7 +99,7 @@ final class Plugin_Admin_Presets
         }
 
         if (true === $message) {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -107,7 +107,7 @@ final class Plugin_Admin_Presets
                 ]
             );
         } else {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,

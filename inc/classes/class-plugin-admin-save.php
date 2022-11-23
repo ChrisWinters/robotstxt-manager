@@ -81,7 +81,7 @@ final class Plugin_Admin_Save
             return;
         }
 
-        add_action(
+        \add_action(
             'admin_init',
             [
                 $this,
@@ -142,7 +142,7 @@ final class Plugin_Admin_Save
 
             return $post;
         } elseif (true === isset($post['section']) && 'update' !== $post['section']) {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -172,7 +172,7 @@ final class Plugin_Admin_Save
         }
 
         if (true === $message) {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -180,7 +180,7 @@ final class Plugin_Admin_Save
                 ]
             );
         } else {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -198,7 +198,7 @@ final class Plugin_Admin_Save
         $this->del_option();
 
         if (true === empty($this->get_option())) {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -206,7 +206,7 @@ final class Plugin_Admin_Save
                 ]
             );
         } else {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -224,19 +224,19 @@ final class Plugin_Admin_Save
         $message = __('You are not authorized to perform this action.', 'robotstxt-manager');
 
         if (filter_input(INPUT_GET, 'page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
-            wp_die(esc_html($message));
+            \wp_die(\esc_html($message));
         }
 
         if (false === current_user_can('manage_options')) {
-            wp_die(esc_html($message));
+            \wp_die(\esc_html($message));
         }
 
-        if (false === check_admin_referer(
+        if (false === \check_admin_referer(
             ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
             ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
         )
         ) {
-            wp_die(esc_html($message));
+            \wp_die(\esc_html($message));
         }
     }
 }

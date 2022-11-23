@@ -15,11 +15,11 @@ if (false === defined('ABSPATH')) {
 }
 ?>
 <div class="wrap">
-<h2><span class="dashicons dashicons-admin-site-alt3 mt-1 pt-1"></span> <?php esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?> &#8594; <small><?php esc_html_e('A Simple Robots.txt Manager Plugin For WordPress.', 'robotstxt-manager'); ?></small></h2>
+<h2><span class="dashicons dashicons-admin-site-alt3 mt-1 pt-1"></span> <?php \esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?> &#8594; <small><?php \esc_html_e('A Simple Robots.txt Manager Plugin For WordPress.', 'robotstxt-manager'); ?></small></h2>
 
 
 <?php
-echo wp_kses_post($this->tabs());
+echo \wp_kses_post($this->tabs());
 ?>
 
 <div id="poststuff">

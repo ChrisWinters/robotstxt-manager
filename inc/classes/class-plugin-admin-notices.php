@@ -98,7 +98,7 @@ final class Plugin_Admin_Notices
      */
     public function update_success()
     {
-        echo wp_kses_post($this->success_message($this->message['update_success']));
+        echo \wp_kses_post($this->success_message($this->message['update_success']));
     }
 
     /**
@@ -106,7 +106,7 @@ final class Plugin_Admin_Notices
      */
     public function update_error()
     {
-        echo wp_kses_post($this->error_message($this->message['update_error']));
+        echo \wp_kses_post($this->error_message($this->message['update_error']));
     }
 
     /**
@@ -114,7 +114,7 @@ final class Plugin_Admin_Notices
      */
     public function input_error()
     {
-        echo wp_kses_post($this->error_message($this->message['input_error']));
+        echo \wp_kses_post($this->error_message($this->message['input_error']));
     }
 
     /**
@@ -122,7 +122,7 @@ final class Plugin_Admin_Notices
      */
     public function delete_success()
     {
-        echo wp_kses_post($this->success_message($this->message['delete_success']));
+        echo \wp_kses_post($this->success_message($this->message['delete_success']));
     }
 
     /**
@@ -130,7 +130,7 @@ final class Plugin_Admin_Notices
      */
     public function delete_error()
     {
-        echo wp_kses_post($this->error_message($this->message['delete_error']));
+        echo \wp_kses_post($this->error_message($this->message['delete_error']));
     }
 
     /**
@@ -138,7 +138,7 @@ final class Plugin_Admin_Notices
      */
     public function preset_success()
     {
-        echo wp_kses_post($this->success_message($this->message['preset_success']));
+        echo \wp_kses_post($this->success_message($this->message['preset_success']));
     }
 
     /**
@@ -146,7 +146,7 @@ final class Plugin_Admin_Notices
      */
     public function preset_error()
     {
-        echo wp_kses_post($this->error_message($this->message['preset_error']));
+        echo \wp_kses_post($this->error_message($this->message['preset_error']));
     }
 
     /**
@@ -154,7 +154,7 @@ final class Plugin_Admin_Notices
      */
     public function checkdata_notice()
     {
-        echo wp_kses_post($this->success_message($this->message['checkdata_notice']));
+        echo \wp_kses_post($this->success_message($this->message['checkdata_notice']));
     }
 
     /**
@@ -162,7 +162,7 @@ final class Plugin_Admin_Notices
      */
     public function checkdata_done()
     {
-        echo wp_kses_post($this->success_message($this->message['checkdata_done']));
+        echo \wp_kses_post($this->success_message($this->message['checkdata_done']));
     }
 
     /**
@@ -170,7 +170,7 @@ final class Plugin_Admin_Notices
      */
     public function checkphysical_notice()
     {
-        echo wp_kses_post($this->success_message($this->message['checkphysical_notice']));
+        echo \wp_kses_post($this->success_message($this->message['checkphysical_notice']));
     }
 
     /**
@@ -178,7 +178,7 @@ final class Plugin_Admin_Notices
      */
     public function checkphysical_done()
     {
-        echo wp_kses_post($this->success_message($this->message['checkphysical_done']));
+        echo \wp_kses_post($this->success_message($this->message['checkphysical_done']));
     }
 
     /**
@@ -186,7 +186,7 @@ final class Plugin_Admin_Notices
      */
     public function checkphysical_error()
     {
-        echo wp_kses_post($this->error_message($this->message['checkphysical_error']));
+        echo \wp_kses_post($this->error_message($this->message['checkphysical_error']));
     }
 
     /**
@@ -194,7 +194,7 @@ final class Plugin_Admin_Notices
      */
     public function checkrewrite_notice()
     {
-        echo wp_kses_post($this->success_message($this->message['checkrewrite_notice']));
+        echo \wp_kses_post($this->success_message($this->message['checkrewrite_notice']));
     }
 
     /**
@@ -202,7 +202,7 @@ final class Plugin_Admin_Notices
      */
     public function checkrewrite_done()
     {
-        echo wp_kses_post($this->success_message($this->message['checkrewrite_done']));
+        echo \wp_kses_post($this->success_message($this->message['checkrewrite_done']));
     }
 
     /**

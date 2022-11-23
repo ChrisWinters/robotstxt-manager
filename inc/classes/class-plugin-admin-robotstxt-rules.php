@@ -27,10 +27,10 @@ final class Plugin_Admin_Robotstxt_Rules
     public function get_uploadpath()
     {
         // Get Upload Dir For This Website.
-        $upload_dir = wp_upload_dir(null, false, true);
+        $upload_dir = \wp_upload_dir(null, false, true);
 
         if (true === empty($upload_dir['basedir'])) {
-            return esc_html__('Upload Path Not Set', 'robotstxt-manager');
+            return \esc_html__('Upload Path Not Set', 'robotstxt-manager');
         }
 
         // Split The Path.
@@ -48,7 +48,7 @@ final class Plugin_Admin_Robotstxt_Rules
     public function get_themepath()
     {
         // Build Path For Theme.
-        $path_to_themes = get_stylesheet_directory();
+        $path_to_themes = \get_stylesheet_directory();
         $theme_path = 'Allow: '.strstr($path_to_themes, '/wp-content/themes').'/';
 
         return $theme_path;
@@ -62,7 +62,7 @@ final class Plugin_Admin_Robotstxt_Rules
     public function get_sitemapurl()
     {
         // Get Site URL.
-        $sitemap_url_base = get_option('siteurl') ? get_option('siteurl') : ROBOTSTXT_MANAGER_BASE_URL;
+        $sitemap_url_base = \get_option('siteurl') ? \get_option('siteurl') : ROBOTSTXT_MANAGER_BASE_URL;
 
         // Base XML File Locations To check.
         $root_xml_file_location = get_headers($sitemap_url_base.'/sitemap.xml');

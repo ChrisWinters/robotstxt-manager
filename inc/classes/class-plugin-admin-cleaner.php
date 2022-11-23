@@ -93,7 +93,7 @@ final class Plugin_Admin_Cleaner
         $message = false;
 
         // Old Data Found, Set Marker.
-        if (get_option('pc_robotstxt') || get_option('kb_robotstxt') || get_option('cd_rdte_content')) {
+        if (\get_option('pc_robotstxt') || \get_option('kb_robotstxt') || \get_option('cd_rdte_content')) {
             $this->update_option(['checkdata' => 'error']);
             $message = true;
         } else {
@@ -101,7 +101,7 @@ final class Plugin_Admin_Cleaner
         }
 
         if (true === $message) {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -109,7 +109,7 @@ final class Plugin_Admin_Cleaner
                 ]
             );
         } else {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -125,14 +125,14 @@ final class Plugin_Admin_Cleaner
     public function cleandata()
     {
         // Remove Options.
-        delete_option('pc_robotstxt');
-        delete_option('kb_robotstxt');
-        delete_option('cd_rdte_content');
+        \delete_option('pc_robotstxt');
+        \delete_option('kb_robotstxt');
+        \delete_option('cd_rdte_content');
 
         // Remove Filters.
-        remove_filter('robots_txt', 'cd_rdte_filter_robots');
-        remove_filter('robots_txt', 'ljpl_filter_robots_txt');
-        remove_filter('robots_txt', 'robots_txt_filter');
+        \remove_filter('robots_txt', 'cd_rdte_filter_robots');
+        \remove_filter('robots_txt', 'ljpl_filter_robots_txt');
+        \remove_filter('robots_txt', 'robots_txt_filter');
 
         // Run Check Again.
         $this->checkData();
@@ -146,7 +146,7 @@ final class Plugin_Admin_Cleaner
         $message = false;
 
         // Robots.txt File Found.
-        if (true === file_exists(get_home_path().'robots.txt')) {
+        if (true === file_exists(\get_home_path().'robots.txt')) {
             $this->update_option(['checkphysical' => 'error']);
             $message = true;
         } else {
@@ -154,7 +154,7 @@ final class Plugin_Admin_Cleaner
         }
 
         if (true === $message) {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -162,7 +162,7 @@ final class Plugin_Admin_Cleaner
                 ]
             );
         } else {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -178,15 +178,15 @@ final class Plugin_Admin_Cleaner
     public function cleanphysical()
     {
         // Remove Robots.txt File.
-        if (true === file_exists(get_home_path().'robots.txt') && true === is_writable(get_home_path().'robots.txt')) {
-            unlink(realpath(get_home_path().'robots.txt'));
+        if (true === file_exists(\get_home_path().'robots.txt') && true === is_writable(\get_home_path().'robots.txt')) {
+            unlink(realpath(\get_home_path().'robots.txt'));
         }
 
         // Robots.txt File Found.
-        if (true === file_exists(get_home_path().'robots.txt')) {
+        if (true === file_exists(\get_home_path().'robots.txt')) {
             $this->del_setting('checkphysical');
 
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -206,11 +206,11 @@ final class Plugin_Admin_Cleaner
         $message = false;
 
         // Get Rewrite Rules.
-        $rules = get_option('rewrite_rules');
+        $rules = \get_option('rewrite_rules');
 
         // Flush Rules If Needed.
         if (empty($rules)) {
-            flush_rewrite_rules();
+            \flush_rewrite_rules();
         }
 
         // Error No Rewrite Rule Found, Set Marker.
@@ -222,7 +222,7 @@ final class Plugin_Admin_Cleaner
         }
 
         if (true === $message) {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -230,7 +230,7 @@ final class Plugin_Admin_Cleaner
                 ]
             );
         } else {
-            add_action(
+            \add_action(
                 'admin_notices',
                 [
                     $this->notices,
@@ -246,7 +246,7 @@ final class Plugin_Admin_Cleaner
     public function addrewrite()
     {
         // Get Rewrite Rules.
-        $rules = get_option('rewrite_rules');
+        $rules = \get_option('rewrite_rules');
 
         // Add Missing Rule.
         if (true !== in_array('index.php?robots=1', (array) $rules, true)) {
@@ -255,10 +255,10 @@ final class Plugin_Admin_Cleaner
             $rules[$rule_key] = 'index.php?robots=1';
 
             // Update Rules.
-            update_option('rewrite_rules', $rules);
+            \update_option('rewrite_rules', $rules);
 
             // Flush Rules.
-            flush_rewrite_rules();
+            \flush_rewrite_rules();
         }
 
         // Recheck Rewrite Rules.

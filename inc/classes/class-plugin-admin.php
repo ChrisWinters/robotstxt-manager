@@ -68,8 +68,8 @@ final class Plugin_Admin
     public function __construct()
     {
         $this->admin_tabs = [
-            'settings' => esc_html__('Settings', 'robotstxt-manager'),
-            'cleaner' => esc_html__('Cleaner', 'robotstxt-manager'),
+            'settings' => \esc_html__('Settings', 'robotstxt-manager'),
+            'cleaner' => \esc_html__('Cleaner', 'robotstxt-manager'),
         ];
 
         // Saved Robots.txt File.
@@ -89,7 +89,7 @@ final class Plugin_Admin
      */
     public function init()
     {
-        add_action(
+        \add_action(
             'admin_menu',
             [
                 $this,
@@ -98,7 +98,7 @@ final class Plugin_Admin
         );
 
         if ($this->query_string('page') === ROBOTSTXT_MANAGER_PLUGIN_NAME) {
-            add_action(
+            \add_action(
                 'admin_enqueue_scripts',
                 [
                     $this,
@@ -115,7 +115,7 @@ final class Plugin_Admin
      */
     public function menu()
     {
-        add_submenu_page(
+        \add_submenu_page(
             'options-general.php',
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
             __('Robots.txt Manager', 'robotstxt-manager'),
@@ -135,9 +135,9 @@ final class Plugin_Admin
      */
     public function enqueue()
     {
-        wp_enqueue_style(
+        \wp_enqueue_style(
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
-            plugins_url('/assets/css/style.min.css', ROBOTSTXT_MANAGER_FILE),
+            \plugins_url('/assets/css/style.min.css', ROBOTSTXT_MANAGER_FILE),
             '',
             gmdate('YmdHis', time()),
             'all'

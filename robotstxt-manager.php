@@ -60,7 +60,7 @@ require_once dirname(__FILE__).'/inc/autoload-classes.php';
             ROBOTSTXT_MANAGER_FILE.'/lang/'
         );
 
-        if (true === is_admin()) {
+        if (true === \is_admin()) {
             $admin_save = new Plugin_Admin_Save();
             $admin_save->init();
 
