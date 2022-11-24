@@ -32,59 +32,59 @@ final class Plugin_Admin_Notices
     public function __construct()
     {
         $this->message = [
-            'update_success' => __(
+            'update_success' => \__(
                 'Settings Updated.',
                 'includes'
             ),
-            'update_error' => __(
+            'update_error' => \__(
                 'Settings Update Failed.',
                 'includes'
             ),
-            'input_error' => __(
+            'input_error' => \__(
                 'A Selection Is Required.',
                 'includes'
             ),
-            'delete_success' => __(
+            'delete_success' => \__(
                 'Settings Deleted.',
                 'includes'
             ),
-            'delete_fail' => __(
+            'delete_fail' => \__(
                 'Settings Delete Failed.',
                 'includes'
             ),
-            'preset_success' => __(
+            'preset_success' => \__(
                 'Robots.txt file updated with selected preset.',
                 'includes'
             ),
-            'preset_error' => __(
+            'preset_error' => \__(
                 'The robots.txt file was not updated.',
                 'includes'
             ),
-            'checkdata_notice' => __(
+            'checkdata_notice' => \__(
                 'Old robots.txt file data found! Click the "remove old data" button to remove the old data.',
                 'includes'
             ),
-            'checkdata_done' => __(
+            'checkdata_done' => \__(
                 'No old robots.txt file data found.',
                 'includes'
             ),
-            'checkphysical_notice' => __(
+            'checkphysical_notice' => \__(
                 'A real robots.txt file was found within the websites root directory. Click the "delete physical file" to delete the robots.txt file.',
                 'includes'
             ),
-            'checkphysical_done' => __(
+            'checkphysical_done' => \__(
                 'A physical robots.txt file was not found.',
                 'includes'
             ),
-            'checkphysical_error' => __(
+            'checkphysical_error' => \__(
                 'The plugin was unable to delete the robots.txt file due to file permissions. Manual deletion required.',
                 'includes'
             ),
-            'checkrewrite_notice' => __(
+            'checkrewrite_notice' => \__(
                 'This website is missing the robots.txt Rewrite Rule. Click the "correct missing rules" button to add the missing rule.',
                 'includes'
             ),
-            'checkrewrite_done' => __(
+            'checkrewrite_done' => \__(
                 'Proper Rewrite Rule found.',
                 'includes'
             ),

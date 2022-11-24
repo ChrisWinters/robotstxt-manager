@@ -120,7 +120,7 @@ final class Plugin_Admin
         \add_submenu_page(
             'options-general.php',
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
-            __('Robots.txt Manager', 'robotstxt-manager'),
+            \__('Robots.txt Manager', 'robotstxt-manager'),
             'manage_options',
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
             [

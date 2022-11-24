@@ -223,7 +223,7 @@ final class Plugin_Admin_Save
      */
     private function security_check()
     {
-        $message = __('You are not authorized to perform this action.', 'robotstxt-manager');
+        $message = \__('You are not authorized to perform this action.', 'robotstxt-manager');
 
         if (filter_input(INPUT_GET, 'page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
             \wp_die(\esc_html($message));
