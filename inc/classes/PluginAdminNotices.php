@@ -94,113 +94,113 @@ final class PluginAdminNotices
     /**
      * Update Success Notice.
      */
-    public function update_success()
+    public function updateSuccess()
     {
-        echo \wp_kses_post($this->success_message($this->message['update_success']));
+        echo \wp_kses_post($this->successMessage($this->message['update_success']));
     }
 
     /**
      * Update Error Notice.
      */
-    public function update_error()
+    public function updateError()
     {
-        echo \wp_kses_post($this->error_message($this->message['update_error']));
+        echo \wp_kses_post($this->errorMessage($this->message['update_error']));
     }
 
     /**
      * Invalid Input Error Notice.
      */
-    public function input_error()
+    public function inputError()
     {
-        echo \wp_kses_post($this->error_message($this->message['input_error']));
+        echo \wp_kses_post($this->errorMessage($this->message['input_error']));
     }
 
     /**
      * Delete Success Notice.
      */
-    public function delete_success()
+    public function deleteSuccess()
     {
-        echo \wp_kses_post($this->success_message($this->message['delete_success']));
+        echo \wp_kses_post($this->successMessage($this->message['delete_success']));
     }
 
     /**
      * Delete Error Notice.
      */
-    public function delete_error()
+    public function deleteError()
     {
-        echo \wp_kses_post($this->error_message($this->message['delete_error']));
+        echo \wp_kses_post($this->errorMessage($this->message['delete_error']));
     }
 
     /**
      * Preset Update Success Notice.
      */
-    public function preset_success()
+    public function presetSuccess()
     {
-        echo \wp_kses_post($this->success_message($this->message['preset_success']));
+        echo \wp_kses_post($this->successMessage($this->message['preset_success']));
     }
 
     /**
      * Preset Update Error Notice.
      */
-    public function preset_error()
+    public function presetError()
     {
-        echo \wp_kses_post($this->error_message($this->message['preset_error']));
+        echo \wp_kses_post($this->errorMessage($this->message['preset_error']));
     }
 
     /**
      * Cleaner Check Data Notice.
      */
-    public function checkdata_notice()
+    public function checkDataNotice()
     {
-        echo \wp_kses_post($this->success_message($this->message['checkdata_notice']));
+        echo \wp_kses_post($this->successMessage($this->message['checkdata_notice']));
     }
 
     /**
      * Cleaner Check Data Done.
      */
-    public function checkdata_done()
+    public function checkDataDone()
     {
-        echo \wp_kses_post($this->success_message($this->message['checkdata_done']));
+        echo \wp_kses_post($this->successMessage($this->message['checkdata_done']));
     }
 
     /**
      * Cleaner Check Physical Robots.txt Notice.
      */
-    public function checkphysical_notice()
+    public function checkPhysicalNotice()
     {
-        echo \wp_kses_post($this->success_message($this->message['checkphysical_notice']));
+        echo \wp_kses_post($this->successMessage($this->message['checkphysical_notice']));
     }
 
     /**
      * Cleaner Check Physical Robots.txt Done.
      */
-    public function checkphysical_done()
+    public function checkPhysicalDone()
     {
-        echo \wp_kses_post($this->success_message($this->message['checkphysical_done']));
+        echo \wp_kses_post($this->successMessage($this->message['checkphysical_done']));
     }
 
     /**
      * Cleaner Check Physical Robots.txt Permission Error.
      */
-    public function checkphysical_error()
+    public function checkPhysicalError()
     {
-        echo \wp_kses_post($this->error_message($this->message['checkphysical_error']));
+        echo \wp_kses_post($this->errorMessage($this->message['checkphysical_error']));
     }
 
     /**
      * Cleaner Check Rewrite Rules Notice.
      */
-    public function checkrewrite_notice()
+    public function checkRewriteNotice()
     {
-        echo \wp_kses_post($this->success_message($this->message['checkrewrite_notice']));
+        echo \wp_kses_post($this->successMessage($this->message['checkrewrite_notice']));
     }
 
     /**
      * Cleaner Check Rewrite Rules Done.
      */
-    public function checkrewrite_done()
+    public function checkRewriteDone()
     {
-        echo \wp_kses_post($this->success_message($this->message['checkrewrite_done']));
+        echo \wp_kses_post($this->successMessage($this->message['checkrewrite_done']));
     }
 
     /**
@@ -210,7 +210,7 @@ final class PluginAdminNotices
      *
      * @return html
      */
-    public function success_message($message)
+    public function successMessage($message)
     {
         return '<div class="notice notice-success is-dismissible"><p>'.$message.'</p></div>';
     }
@@ -222,7 +222,7 @@ final class PluginAdminNotices
      *
      * @return html
      */
-    public function error_message($message)
+    public function errorMessage($message)
     {
         return '<div class="notice notice-error is-dismissible"><p>'.$message.'</p></div>';
     }

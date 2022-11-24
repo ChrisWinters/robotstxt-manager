@@ -27,7 +27,7 @@ if (false === defined('ABSPATH')) {
 		<input type="submit" name="check-data" id="submit" class="button button-secondary" value="scan for old data">
 	</div>
 
-	<?php if ('error' === $this->get_setting('checkdata')) { ?>
+	<?php if ('error' === $this->getSetting('checkdata')) { ?>
 		<hr />
 		<p class="text-danger font-weight-bold h4"><?php \esc_html_e('Old Robots.txt File Settings Found', 'robotstxt-manager'); ?></p>
 		<p class="description"><?php \esc_html_e('Click the "remove old data" button below to purge the old settings.', 'robotstxt-manager'); ?></p>
@@ -44,7 +44,7 @@ if (false === defined('ABSPATH')) {
 		<input type="submit" name="check-physical" id="submit" class="button button-secondary" value="scan for physical file">
 	</div>
 
-	<?php if ('error' === $this->get_setting('checkphysical')) { ?>
+	<?php if ('error' === $this->getSetting('checkphysical')) { ?>
 		<hr />
 		<p class="text-danger font-weight-bold h4"><?php \esc_html_e('A Real Robots.txt File Was Found', 'robotstxt-manager'); ?></p>
 		<p class="description"><?php \esc_html_e('Click the "delete physical file" button below to delete the real robots.txt file.', 'robotstxt-manager'); ?></p>
@@ -61,7 +61,7 @@ if (false === defined('ABSPATH')) {
 		<input type="submit" name="check-rewrite" id="submit" class="button button-secondary" value="scan for missing rule">
 	</div>
 
-	<?php if ('error' === $this->get_setting('checkrewrite')) { ?>
+	<?php if ('error' === $this->getSetting('checkrewrite')) { ?>
 		<hr />
 		<p class="text-danger font-weight-bold h4"><?php \esc_html_e('Website Rewrite Rule Missing', 'robotstxt-manager'); ?></p>
 		<p class="description"><?php \esc_html_e('Click the "add missing rule" button below to add the missing rule.', 'robotstxt-manager'); ?></p>

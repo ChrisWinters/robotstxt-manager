@@ -22,7 +22,7 @@ final class Robotstxt
      */
     public function __construct()
     {
-        if (true === $this->is_robotstxt_file()) {
+        if (true === $this->isRobotstxtFile()) {
             $this->display();
         }
     }
@@ -32,7 +32,7 @@ final class Robotstxt
      */
     private function display()
     {
-        $robotstxt = $this->get_robotstxt();
+        $robotstxt = $this->getRobotstxt();
         $blogPublic = \get_option('blog_public');
 
         if ('0' === $blogPublic) {
@@ -51,7 +51,7 @@ final class Robotstxt
     /**
      * Get robots.txt file.
      */
-    private function get_robotstxt(): string
+    private function getRobotstxt(): string
     {
         $blogID = \get_current_blog_id();
 
@@ -91,7 +91,7 @@ final class Robotstxt
     /**
      * Check if called file is robots.txt file.
      */
-    private function is_robotstxt_file(): bool
+    private function isRobotstxtFile(): bool
     {
         if (true === filter_has_var(INPUT_SERVER, 'REQUEST_URI')) {
             $filename = filter_input(

@@ -48,7 +48,7 @@ final class PluginAdminPresets
     /**
      * Save Preset Robots.txt As Main Robots.txt.
      */
-    public function set_preset_robotstxt()
+    public function setPresetRobotstxt()
     {
         $message = false;
         $preset = '';
@@ -59,37 +59,37 @@ final class PluginAdminPresets
 
         switch ($preset) {
             case 'default-robotstxt':
-                $this->update_option(['robotstxt' => $this->default_robotstxt()]);
+                $this->updateOption(['robotstxt' => $this->defaultRobotstxt()]);
                 $message = true;
                 break;
 
             case 'defaultalt-robotstxt':
-                $this->update_option(['robotstxt' => $this->defaultAlt_robotstxt()]);
+                $this->updateOption(['robotstxt' => $this->defaultAltRobotstxt()]);
                 $message = true;
                 break;
 
             case 'wordpress-robotstxt':
-                $this->update_option(['robotstxt' => $this->wordpress_robotstxt()]);
+                $this->updateOption(['robotstxt' => $this->wordpressRobotstxt()]);
                 $message = true;
                 break;
 
             case 'open-robotstxt':
-                $this->update_option(['robotstxt' => $this->open_robotstxt()]);
+                $this->updateOption(['robotstxt' => $this->openRobotstxt()]);
                 $message = true;
                 break;
 
             case 'blogger-robotstxt':
-                $this->update_option(['robotstxt' => $this->blogger_robotstxt()]);
+                $this->updateOption(['robotstxt' => $this->bloggerRobotstxt()]);
                 $message = true;
                 break;
 
             case 'block-robotstxt':
-                $this->update_option(['robotstxt' => $this->blocked_robotstxt()]);
+                $this->updateOption(['robotstxt' => $this->blockedRobotstxt()]);
                 $message = true;
                 break;
 
             case 'google-robotstxt':
-                $this->update_option(['robotstxt' => $this->google_robotstxt()]);
+                $this->updateOption(['robotstxt' => $this->googleRobotstxt()]);
                 $message = true;
                 break;
         }
@@ -99,7 +99,7 @@ final class PluginAdminPresets
                 'admin_notices',
                 [
                     $this->notices,
-                    'preset_success',
+                    'presetSuccess',
                 ]
             );
         } else {
@@ -107,7 +107,7 @@ final class PluginAdminPresets
                 'admin_notices',
                 [
                     $this->notices,
-                    'preset_error',
+                    'presetError',
                 ]
             );
         }
@@ -116,7 +116,7 @@ final class PluginAdminPresets
     /**
      * Default Robots.txt File.
      */
-    private function default_robotstxt()
+    private function defaultRobotstxt()
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -141,7 +141,7 @@ final class PluginAdminPresets
     /**
      * Default-Alt Robots.txt File.
      */
-    private function defaultalt_robotstxt()
+    private function defaultAltRobotstxt()
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -174,7 +174,7 @@ final class PluginAdminPresets
     /**
      * WordPress Only Robots.txt File.
      */
-    private function wordpress_robotstxt()
+    private function wordpressRobotstxt()
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -188,7 +188,7 @@ final class PluginAdminPresets
     /**
      * Open Robots.txt File.
      */
-    private function open_robotstxt()
+    private function openRobotstxt()
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -200,7 +200,7 @@ final class PluginAdminPresets
     /**
      * Blogger Robots.txt File.
      */
-    private function blogger_robotstxt()
+    private function bloggerRobotstxt()
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -244,7 +244,7 @@ final class PluginAdminPresets
     /**
      * Disallow Website Robots.txt File.
      */
-    private function blocked_robotstxt()
+    private function blockedRobotstxt()
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -256,7 +256,7 @@ final class PluginAdminPresets
     /**
      * Google Friendly Robots.txt File.
      */
-    private function google_robotstxt()
+    private function googleRobotstxt()
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";

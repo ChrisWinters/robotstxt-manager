@@ -20,7 +20,7 @@ if (false === defined('ABSPATH')) {
     );
 
 // Get Saved Robots.txt File.
-$robotstxtFile = $this->get_setting('robotstxt');
+$robotstxtFile = $this->getSetting('robotstxt');
 ?>
 	<input type="hidden" name="action" value="update" />
 
@@ -36,7 +36,7 @@ $robotstxtFile = $this->get_setting('robotstxt');
 			</tr>
 			<tr>
 			<td>
-				<textarea name="robotstxt" cols="65" rows="20" class="w-100"><?php echo esc_html($this->get_setting('robotstxt')); ?></textarea><br />
+				<textarea name="robotstxt" cols="65" rows="20" class="w-100"><?php echo esc_html($this->getSetting('robotstxt')); ?></textarea><br />
 				<span class="description small"><?php \esc_html_e('Saving an empty robots.txt file will restore the default WordPress robots.txt file.', 'robotstxt-manager'); ?></span>
 			</td>
 			</tr>

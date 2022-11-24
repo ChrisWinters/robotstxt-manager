@@ -24,7 +24,7 @@ trait TraitQueryString
      *
      * @return string Query String Item Sanitized
      */
-    final public function query_string($get)
+    final public function queryString($get)
     {
         $string = filter_input(
             INPUT_GET,

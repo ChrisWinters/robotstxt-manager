@@ -50,7 +50,7 @@ final class PluginAdminSave
             return;
         }
 
-        if ($this->query_string('page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
+        if ($this->queryString('page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
             return;
         }
 
@@ -61,7 +61,7 @@ final class PluginAdminSave
         }
 
         $postObjectArray = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-        $this->postObject = $this->unset_post_items($postObjectArray);
+        $this->postObject = $this->unsetPostItems($postObjectArray);
 
         $this->notices = $notices;
     }
@@ -71,7 +71,7 @@ final class PluginAdminSave
      */
     public function init()
     {
-        if ($this->query_string('page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
+        if ($this->queryString('page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
             return;
         }
 
@@ -93,31 +93,31 @@ final class PluginAdminSave
      */
     public function update()
     {
-        $this->security_check();
+        $this->securityCheck();
 
         /**
          * Sanitizes title, replacing whitespace with dashes.
          * Limits the output to alphanumeric characters,
          * underscore (_) and dash (-). Whitespace becomes a dash.
          */
-        $action = sanitize_title_with_dashes($this->postAction);
+        $action = \sanitize_title_with_dashes($this->postAction);
 
         if ('update' === $action) {
-            $this->update_action();
+            $this->updateAction();
         }
 
         if ('delete' === $action) {
-            $this->delete_action();
+            $this->deleteAction();
         }
 
         if ('presets' === $action) {
             $presets = new PluginAdminPresets($this->postObject, $this->notices);
-            $presets->set_preset_robotstxt();
+            $presets->setPresetRobotstxt();
         }
 
         if ('cleaner' === $action) {
             $cleaner = new PluginAdminCleaner($this->postObject, $this->notices);
-            $cleaner->cleaner_action();
+            $cleaner->cleanerAction();
         }
     }
 
@@ -128,7 +128,7 @@ final class PluginAdminSave
      *
      * @return array|void
      */
-    public function unset_post_items($post)
+    public function unsetPostItems($post)
     {
         unset($post['action']);
         unset($post['submit']);
@@ -144,7 +144,7 @@ final class PluginAdminSave
                 'admin_notices',
                 [
                     $this->notices,
-                    'input_error',
+                    'inputError',
                 ]
             );
         }
@@ -153,19 +153,19 @@ final class PluginAdminSave
     /**
      * Update Plugin Setting.
      */
-    private function update_action()
+    private function updateAction()
     {
         $message = false;
 
         $count = 0;
 
         if (true !== empty($this->postObject)) {
-            $this->update_option($this->postObject);
+            $this->updateOption($this->postObject);
             $message = true;
         }
 
         if (true === empty($this->postObject)) {
-            $this->del_option();
+            $this->delOption();
             $message = true;
         }
 
@@ -174,7 +174,7 @@ final class PluginAdminSave
                 'admin_notices',
                 [
                     $this->notices,
-                    'update_success',
+                    'updateSuccess',
                 ]
             );
         } else {
@@ -182,7 +182,7 @@ final class PluginAdminSave
                 'admin_notices',
                 [
                     $this->notices,
-                    'update_error',
+                    'updateError',
                 ]
             );
         }
@@ -191,16 +191,16 @@ final class PluginAdminSave
     /**
      * Delete Plugin Setting.
      */
-    private function delete_action()
+    private function deleteAction()
     {
-        $this->del_option();
+        $this->delOption();
 
-        if (true === empty($this->get_option())) {
+        if (true === empty($this->getOption())) {
             \add_action(
                 'admin_notices',
                 [
                     $this->notices,
-                    'delete_success',
+                    'deleteSuccess',
                 ]
             );
         } else {
@@ -208,7 +208,7 @@ final class PluginAdminSave
                 'admin_notices',
                 [
                     $this->notices,
-                    'delete_error',
+                    'deleteError',
                 ]
             );
         }
@@ -217,7 +217,7 @@ final class PluginAdminSave
     /**
      * Form Validation.
      */
-    private function security_check()
+    private function securityCheck()
     {
         $message = \__('You are not authorized to perform this action.', 'robotstxt-manager');
 

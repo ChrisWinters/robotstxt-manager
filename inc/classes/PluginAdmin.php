@@ -72,13 +72,13 @@ final class PluginAdmin
         ];
 
         // Saved Robots.txt File.
-        $this->robotstxt = $this->get_setting('robotstxt');
+        $this->robotstxt = $this->getSetting('robotstxt');
 
         // Settings Template Extra Robots.txt Rule Statements.
         $robotstxtRules = new PluginAdminRobotstxtRules();
-        $this->uploadPath = $robotstxtRules->get_uploadpath();
-        $this->themePath = $robotstxtRules->get_themepath();
-        $this->sitemapUrl = $robotstxtRules->get_sitemapurl();
+        $this->uploadPath = $robotstxtRules->getUploadPath();
+        $this->themePath = $robotstxtRules->getThemePath();
+        $this->sitemapUrl = $robotstxtRules->getSitemapUrl();
     }
 
     /**
@@ -96,7 +96,7 @@ final class PluginAdmin
             ]
         );
 
-        if ($this->query_string('page') === ROBOTSTXT_MANAGER_PLUGIN_NAME) {
+        if ($this->queryString('page') === ROBOTSTXT_MANAGER_PLUGIN_NAME) {
             \add_action(
                 'admin_enqueue_scripts',
                 [
@@ -151,7 +151,7 @@ final class PluginAdmin
     public function display()
     {
         $dir = dirname(ROBOTSTXT_MANAGER_FILE);
-        $tab = $this->query_string('tab');
+        $tab = $this->queryString('tab');
 
         include_once $dir.'/inc/templates/header.php';
 
@@ -173,17 +173,17 @@ final class PluginAdmin
     {
         $html = '<h2 class="nav-tab-wrapper">';
 
-        if (true !== empty($this->query_string('tab'))) {
-            $currentTab = $this->query_string('tab');
+        if (true !== empty($this->queryString('tab'))) {
+            $currentTab = $this->queryString('tab');
         } else {
             $currentTab = key($this->adminTabs);
         }
 
-        $pageName = $this->query_string('page');
+        $pageName = $this->queryString('page');
 
         $postType = '';
-        if (ROBOTSTXT_MANAGER_PLUGIN_NAME === $this->query_string('post_type')) {
-            $postType = '&post_type='.$this->query_string('post_type');
+        if (ROBOTSTXT_MANAGER_PLUGIN_NAME === $this->queryString('post_type')) {
+            $postType = '&post_type='.$this->queryString('post_type');
         }
 
         foreach ($this->adminTabs as $tab => $name) {

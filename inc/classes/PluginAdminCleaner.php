@@ -48,52 +48,52 @@ final class PluginAdminCleaner
     /**
      * Cleaner Actions.
      */
-    public function cleaner_action()
+    public function cleanerAction()
     {
         // Check for old plugin data.
         if (true !== empty($this->postObject['check-data'])) {
-            $this->checkdata();
+            $this->checkData();
         }
 
         // Clean plugin data.
         if (true !== empty($this->postObject['clean-data'])) {
-            $this->cleandata();
+            $this->cleanData();
         }
 
         // Check for real robots.txt file.
         if (true !== empty($this->postObject['check-physical'])) {
-            $this->checkphysical();
+            $this->checkPhysical();
         }
 
         // Remove real robots.txt file.
         if (true !== empty($this->postObject['clean-physical'])) {
-            $this->cleanphysical();
+            $this->cleanPhysical();
         }
 
         // Check for robots.txt file rewrite rules.
         if (true !== empty($this->postObject['check-rewrite'])) {
-            $this->checkrewrite();
+            $this->checkRewrite();
         }
 
         // Add missing robots.txt file rewrite rules.
         if (true !== empty($this->postObject['add-rewrite'])) {
-            $this->addrewrite();
+            $this->addRewrite();
         }
     }
 
     /**
      * Check For Old Plugin Data.
      */
-    public function checkdata()
+    public function checkData()
     {
         $message = false;
 
         // Old Data Found, Set Marker.
         if (\get_option('pc_robotstxt') || \get_option('kb_robotstxt') || \get_option('cd_rdte_content')) {
-            $this->update_option(['checkdata' => 'error']);
+            $this->updateOption(['checkdata' => 'error']);
             $message = true;
         } else {
-            $this->del_setting('checkdata');
+            $this->delSetting('checkdata');
         }
 
         if (true === $message) {
@@ -101,7 +101,7 @@ final class PluginAdminCleaner
                 'admin_notices',
                 [
                     $this->notices,
-                    'checkdata_notice',
+                    'checkDataNotice',
                 ]
             );
         } else {
@@ -109,7 +109,7 @@ final class PluginAdminCleaner
                 'admin_notices',
                 [
                     $this->notices,
-                    'checkdata_done',
+                    'checkDataDone',
                 ]
             );
         }
@@ -118,7 +118,7 @@ final class PluginAdminCleaner
     /**
      * Remove Old Plugin Data.
      */
-    public function cleandata()
+    public function cleanData()
     {
         // Remove Options.
         \delete_option('pc_robotstxt');
@@ -135,18 +135,18 @@ final class PluginAdminCleaner
     }
 
     /**
-     * Check For Phsyical Robots.txt File.
+     * Check For Physical Robots.txt File.
      */
-    public function checkphysical()
+    public function checkPhysical()
     {
         $message = false;
 
         // Robots.txt File Found.
         if (true === file_exists(\get_home_path().'robots.txt')) {
-            $this->update_option(['checkphysical' => 'error']);
+            $this->updateOption(['checkphysical' => 'error']);
             $message = true;
         } else {
-            $this->del_setting('checkphysical');
+            $this->delSetting('checkphysical');
         }
 
         if (true === $message) {
@@ -154,7 +154,7 @@ final class PluginAdminCleaner
                 'admin_notices',
                 [
                     $this->notices,
-                    'checkphysical_notice',
+                    'checkPhysicalNotice',
                 ]
             );
         } else {
@@ -162,7 +162,7 @@ final class PluginAdminCleaner
                 'admin_notices',
                 [
                     $this->notices,
-                    'checkphysical_done',
+                    'checkPhysicalDone',
                 ]
             );
         }
@@ -171,7 +171,7 @@ final class PluginAdminCleaner
     /**
      * Remove Physical Robots.txt File.
      */
-    public function cleanphysical()
+    public function cleanPhysical()
     {
         // Remove Robots.txt File.
         if (true === file_exists(\get_home_path().'robots.txt') && true === is_writable(\get_home_path().'robots.txt')) {
@@ -180,24 +180,24 @@ final class PluginAdminCleaner
 
         // Robots.txt File Found.
         if (true === file_exists(\get_home_path().'robots.txt')) {
-            $this->del_setting('checkphysical');
+            $this->delSetting('checkphysical');
 
             \add_action(
                 'admin_notices',
                 [
                     $this->notices,
-                    'checkphysical_error',
+                    'checkPhysicalError',
                 ]
             );
         } else {
-            $this->checkphysical();
+            $this->checkPhysical();
         }
     }
 
     /**
      * Check For Missing Rewrite Rules.
      */
-    public function checkrewrite()
+    public function checkRewrite()
     {
         $message = false;
 
@@ -211,10 +211,10 @@ final class PluginAdminCleaner
 
         // Error No Rewrite Rule Found, Set Marker.
         if (true !== in_array('index.php?robots=1', (array) $rules, true)) {
-            $this->update_option(['checkrewrite' => 'error']);
+            $this->updateOption(['checkrewrite' => 'error']);
             $message = true;
         } else {
-            $this->del_setting('checkrewrite');
+            $this->delSetting('checkrewrite');
         }
 
         if (true === $message) {
@@ -222,7 +222,7 @@ final class PluginAdminCleaner
                 'admin_notices',
                 [
                     $this->notices,
-                    'checkrewrite_notice',
+                    'checkRewriteNotice',
                 ]
             );
         } else {
@@ -230,7 +230,7 @@ final class PluginAdminCleaner
                 'admin_notices',
                 [
                     $this->notices,
-                    'checkrewrite_done',
+                    'checkRewriteDone',
                 ]
             );
         }
@@ -239,7 +239,7 @@ final class PluginAdminCleaner
     /**
      * Add Missing Rewrite Rule.
      */
-    public function addrewrite()
+    public function addRewrite()
     {
         // Get Rewrite Rules.
         $rules = \get_option('rewrite_rules');

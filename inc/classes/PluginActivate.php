@@ -27,28 +27,28 @@ final class PluginActivate
         }
 
         // Maybe Save Robots.txt As Plugin Robots.txt.
-        self::set_robotstxt();
+        self::setRobotstxt();
     }
 
     /**
      * Maybe Set Plugin Robots.txt.
      */
-    public static function set_robotstxt()
+    public static function setRobotstxt()
     {
         $settings = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
         // Set Plugin Robots.txt From Website Robots.txt.
-        if (true === empty($settings['robotstxt']) && true !== empty(self::get_website_robotstxt())) {
+        if (true === empty($settings['robotstxt']) && true !== empty(self::getWebsiteRobotstxt())) {
             \update_option(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
                 [
-                    'robotstxt' => self::get_website_robotstxt(),
+                    'robotstxt' => self::getWebsiteRobotstxt(),
                 ]
             );
         }
 
         // Set Plugin Robots.txt Based On Default WordPress robots.txt - Unable To Read Robots.txt.
-        if (true === empty($settings['robotstxt']) && true === empty(self::get_website_robotstxt())) {
+        if (true === empty($settings['robotstxt']) && true === empty(self::getWebsiteRobotstxt())) {
             $presetRobotstxt = "User-agent: *\n";
             $presetRobotstxt .= "Disallow: /wp-admin/\n";
             $presetRobotstxt .= "Allow: /wp-admin/admin-ajax.php\n";
@@ -65,15 +65,11 @@ final class PluginActivate
     /**
      * Get Local Website Robots.txt File Body.
      */
-    public static function get_website_robotstxt()
+    public static function getWebsiteRobotstxt()
     {
         $robotstxt = '';
 
-        /*
-         * Retrieve the raw response from the HTTP request using the GET method.
-         *
-         * https://developer.wordpress.org/reference/functions/wp_remote_get/
-         */
+        // Retrieve the raw response from the HTTP request using the GET method.
         $websiteRobotstxt = \wp_remote_get(\get_home_url().'/robots.txt');
 
         if (true !== empty($websiteRobotstxt['response']['code']) && '200' === $websiteRobotstxt['response']['code'] && true !== empty($websiteRobotstxt['body'])) {

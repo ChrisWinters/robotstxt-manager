@@ -22,7 +22,7 @@ trait TraitOptionManager
      *
      * @return array
      */
-    public function get_option()
+    public function getOption()
     {
         $getOption = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
@@ -40,9 +40,9 @@ trait TraitOptionManager
      *
      * @return string
      */
-    public function get_setting($settingName)
+    public function getSetting($settingName)
     {
-        $getOption = $this->get_option();
+        $getOption = $this->getOption();
 
         if (true === isset($getOption[$settingName])) {
             return $getOption[$settingName];
@@ -58,9 +58,9 @@ trait TraitOptionManager
      *
      * @return void
      */
-    public function update_option($optionArray)
+    public function updateOption($optionArray)
     {
-        if (false === $this->validate_update()) {
+        if (false === $this->validateUpdate()) {
             return;
         }
 
@@ -76,13 +76,13 @@ trait TraitOptionManager
      * @param mixed $settingName  Name Of Option To Save.
      * @param mixed $settingValue The Value To Save.
      */
-    public function update_setting($settingName, $settingValue)
+    public function updateSetting($settingName, $settingValue)
     {
-        if (false === $this->validate_update()) {
+        if (false === $this->validateUpdate()) {
             return;
         }
 
-        $getOption = $this->get_option();
+        $getOption = $this->getOption();
 
         if (true !== empty($getOption[$settingName])) {
             unset($getOption[$settingName]);
@@ -90,7 +90,7 @@ trait TraitOptionManager
 
         $getOption[$settingName] = $settingValue;
 
-        $this->update_option($getOption);
+        $this->updateOption($getOption);
     }
 
     /**
@@ -98,13 +98,13 @@ trait TraitOptionManager
      *
      * @return void
      */
-    public function del_option()
+    public function delOption()
     {
-        if (false === $this->validate_update()) {
+        if (false === $this->validateUpdate()) {
             return;
         }
 
-        $getOption = $this->get_option();
+        $getOption = $this->getOption();
 
         if (true === isset($getOption)) {
             \delete_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
@@ -118,13 +118,13 @@ trait TraitOptionManager
      *
      * @return void
      */
-    public function del_setting($settingName)
+    public function delSetting($settingName)
     {
-        if (false === $this->validate_update()) {
+        if (false === $this->validateUpdate()) {
             return;
         }
 
-        $getOption = $this->get_option();
+        $getOption = $this->getOption();
 
         if (true === isset($getOption[$settingName])) {
             unset($getOption[$settingName]);
@@ -138,7 +138,7 @@ trait TraitOptionManager
         }
 
         if (true === empty($getOption)) {
-            $this->del_option();
+            $this->delOption();
         }
     }
 
@@ -147,18 +147,18 @@ trait TraitOptionManager
      *
      * @return array
      */
-    public function all_options()
+    public function allOptions()
     {
         $options = [];
 
-        $getOption = $this->get_option();
+        $getOption = $this->getOption();
 
         if (true !== empty($getOption)) {
             $options = $getOption;
         }
 
         if (defined('WP_DEBUG') && true === WP_DEBUG) {
-            $loadedOptions = wp_load_alloptions();
+            $loadedOptions = \wp_load_alloptions();
 
             foreach ($loadedOptions as $name => $value) {
                 if (false !== stristr($name, ROBOTSTXT_MANAGER_SETTING_PREFIX)) {
@@ -179,7 +179,7 @@ trait TraitOptionManager
      *
      * @return array
      */
-    private function validate_update()
+    private function validateUpdate()
     {
         $status = true;
 
