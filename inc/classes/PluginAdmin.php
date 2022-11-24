@@ -157,33 +157,33 @@ final class PluginAdmin
      */
     public function tabs(): string
     {
-        $html = '<h2 class="nav-tab-wrapper">';
+        $menuItem = \__('Menu item', 'robotstxt-manager');
+        $currentTab = key($this->adminTabs);
+
+        $html = '<div class="nav-tab-wrapper" role="navigation" aria-label="Plugin tab menu">';
+        $html .= '<a href="#post-body-content" class="screen-reader-shortcut">Skip to plugin settings</a>';
 
         if (true !== empty($this->queryString('tab'))) {
             $currentTab = $this->queryString('tab');
-        } else {
-            $currentTab = key($this->adminTabs);
         }
 
         $pageName = $this->queryString('page');
 
-        $postType = '';
-        if (ROBOTSTXT_MANAGER_PLUGIN_NAME === $this->queryString('post_type')) {
-            $postType = '&post_type='.$this->queryString('post_type');
-        }
-
         foreach ($this->adminTabs as $tab => $name) {
+            $active = '';
             $class = '';
+
             if ($tab === $currentTab) {
                 $class = ' nav-tab-active';
+                $active = \__('Active ', 'robotstxt-manager');
             }
 
             $html .= '<a href="?page='.$pageName.
-            '&tab='.$tab.$postType.
-            '" class="nav-tab'.$class.'">'.$name.'</a>';
+            '&tab='.$tab.
+            '" class="nav-tab'.$class.'" aria-label="'.$active.$menuItem.': '.$name.'">'.$name.'</a>';
         }
 
-        $html .= '</h2><br />';
+        $html .= '</div><br />';
 
         return $html;
     }
