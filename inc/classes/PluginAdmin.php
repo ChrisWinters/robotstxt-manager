@@ -79,10 +79,8 @@ final class PluginAdmin
 
     /**
      * Init Admin Display.
-     *
-     * @return void
      */
-    public function init()
+    public function init(): void
     {
         \add_action(
             'admin_menu',
@@ -105,10 +103,8 @@ final class PluginAdmin
 
     /**
      * Generate Settings Menu.
-     *
-     * @return void
      */
-    public function menu()
+    public function menu(): void
     {
         \add_submenu_page(
             'options-general.php',
@@ -125,10 +121,8 @@ final class PluginAdmin
 
     /**
      * Enqueue Stylesheet and jQuery.
-     *
-     * @return void
      */
-    public function enqueue()
+    public function enqueue(): void
     {
         \wp_enqueue_style(
             ROBOTSTXT_MANAGER_PLUGIN_NAME,
@@ -141,10 +135,8 @@ final class PluginAdmin
 
     /**
      * Display Admin Templates.
-     *
-     * @return void
      */
-    public function display()
+    public function display(): void
     {
         $dir = dirname(ROBOTSTXT_MANAGER_FILE);
         $tab = $this->queryString('tab');
@@ -162,10 +154,8 @@ final class PluginAdmin
 
     /**
      * Display Admin Area Tabs.
-     *
-     * @return string $html Tab Display
      */
-    public function tabs()
+    public function tabs(): string
     {
         $html = '<h2 class="nav-tab-wrapper">';
 

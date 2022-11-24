@@ -19,10 +19,8 @@ trait TraitOptionManager
 {
     /**
      * Get Option Data.
-     *
-     * @return array
      */
-    public function getOption()
+    public function getOption(): array
     {
         $getOption = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
@@ -36,11 +34,9 @@ trait TraitOptionManager
     /**
      * Get Option Setting.
      *
-     * @param mixed $settingName Name Of Option To Get.
-     *
-     * @return string
+     * @param string $settingName Name Of Option To Get.
      */
-    public function getSetting($settingName)
+    public function getSetting(string $settingName): string
     {
         $getOption = $this->getOption();
 
@@ -48,17 +44,15 @@ trait TraitOptionManager
             return $getOption[$settingName];
         }
 
-        return false;
+        return '';
     }
 
     /**
      * Update Option Array.
      *
-     * @param mixed $optionArray Prepared Option Array.
-     *
-     * @return void
+     * @param array $optionArray Prepared Option Array.
      */
-    public function updateOption($optionArray)
+    public function updateOption(array $optionArray): void
     {
         if (false === $this->validateUpdate()) {
             return;
@@ -73,10 +67,10 @@ trait TraitOptionManager
     /**
      * Update Setting Within Option.
      *
-     * @param mixed $settingName  Name Of Option To Save.
-     * @param mixed $settingValue The Value To Save.
+     * @param string $settingName  Name Of Option To Save.
+     * @param mixed  $settingValue The Value To Save.
      */
-    public function updateSetting($settingName, $settingValue)
+    public function updateSetting(string $settingName, mixed $settingValue): void
     {
         if (false === $this->validateUpdate()) {
             return;
@@ -95,10 +89,8 @@ trait TraitOptionManager
 
     /**
      * Delete Option.
-     *
-     * @return void
      */
-    public function delOption()
+    public function delOption(): void
     {
         if (false === $this->validateUpdate()) {
             return;
@@ -114,11 +106,9 @@ trait TraitOptionManager
     /**
      * Delete Option Setting.
      *
-     * @param mixed $settingName Name Of Option To Delete.
-     *
-     * @return void
+     * @param string $settingName Name Of Option To Delete.
      */
-    public function delSetting($settingName)
+    public function delSetting(string $settingName): void
     {
         if (false === $this->validateUpdate()) {
             return;
@@ -144,10 +134,8 @@ trait TraitOptionManager
 
     /**
      * Get All Saved Plugin Options.
-     *
-     * @return array
      */
-    public function allOptions()
+    public function allOptions(): array
     {
         $options = [];
 
@@ -172,10 +160,8 @@ trait TraitOptionManager
 
     /**
      * Admin Area / Admin Level User Only.
-     *
-     * @return array
      */
-    private function validateUpdate()
+    private function validateUpdate(): bool
     {
         $status = false;
 

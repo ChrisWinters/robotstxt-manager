@@ -71,7 +71,7 @@ final class PluginAdminSave
     /**
      * Init Admin Update.
      */
-    public function init()
+    public function init(): void
     {
         if ($this->queryString('page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
             return;
@@ -93,7 +93,7 @@ final class PluginAdminSave
     /**
      * Update Plugin Settings.
      */
-    public function update()
+    public function update(): void
     {
         $this->securityCheck();
 
@@ -127,11 +127,11 @@ final class PluginAdminSave
      * Unset Post Objects.
      *
      * @param array $post Form Post Object.
-     *
-     * @return array|void
      */
-    public function unsetPostItems($post)
+    public function unsetPostItems(array $post): array
     {
+        $postData = [];
+
         unset($post['action']);
         unset($post['submit']);
         unset($post[ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce']);
@@ -139,8 +139,7 @@ final class PluginAdminSave
 
         if (true !== empty($post)) {
             unset($post['section']);
-
-            return $post;
+            $postData = $post;
         } elseif (true === isset($post['section']) && 'update' !== $post['section']) {
             \add_action(
                 'admin_notices',
@@ -150,6 +149,8 @@ final class PluginAdminSave
                 ]
             );
         }
+
+        return $postData;
     }
 
     /**

@@ -34,7 +34,7 @@ final class PluginLocale
     /**
      * Load .mo files into the text domain and load translated strings.
      */
-    public function init()
+    public function init(): void
     {
         // Retrieves the current locale.
         $getLocale = \apply_filters(

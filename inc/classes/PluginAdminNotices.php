@@ -206,11 +206,9 @@ final class PluginAdminNotices
     /**
      * Success Message HTML.
      *
-     * @param string $message The Notice To Display.
-     *
-     * @return html
+     * @param string $message The Notice To Display
      */
-    public function successMessage($message)
+    public function successMessage(string $message): string
     {
         return '<div class="notice notice-success is-dismissible"><p>'.$message.'</p></div>';
     }
@@ -219,10 +217,8 @@ final class PluginAdminNotices
      * Error Message HTML.
      *
      * @param string $message The Notice To Display.
-     *
-     * @return html
      */
-    public function errorMessage($message)
+    public function errorMessage(string $message): string
     {
         return '<div class="notice notice-error is-dismissible"><p>'.$message.'</p></div>';
     }

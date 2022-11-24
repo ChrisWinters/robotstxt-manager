@@ -24,7 +24,7 @@ trait TraitQueryString
      *
      * @return string Query String Item Sanitized
      */
-    final public function queryString($get)
+    final public function queryString($get): string
     {
         $string = filter_input(
             INPUT_GET,
@@ -34,7 +34,7 @@ trait TraitQueryString
         );
 
         if (true !== isset($string)) {
-            return false;
+            return '';
         }
 
         $string = strtolower($string);

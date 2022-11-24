@@ -19,10 +19,8 @@ final class PluginAdminRobotstxtRules
 {
     /**
      * Get the Upload Path Rule.
-     *
-     * @return string
      */
-    public function getUploadPath()
+    public function getUploadPath(): string
     {
         // Get Upload Dir For This Website.
         $uploadDir = \wp_upload_dir(null, false, true);
@@ -40,10 +38,8 @@ final class PluginAdminRobotstxtRules
 
     /**
      * Get Theme Path Rule.
-     *
-     * @return string
      */
-    public function getThemePath()
+    public function getThemePath(): string
     {
         // Build Path For Theme.
         $pathToThemes = \get_stylesheet_directory();
@@ -54,10 +50,8 @@ final class PluginAdminRobotstxtRules
 
     /**
      * Get Website Sitemap URL Rule.
-     *
-     * @return string
      */
-    public function getSitemapUrl()
+    public function getSitemapUrl(): string
     {
         // Get Site URL.
         $sitemapUrlBase = \get_option('siteurl');

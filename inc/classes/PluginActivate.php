@@ -20,7 +20,7 @@ final class PluginActivate
     /**
      * Init Plugin Activation.
      */
-    public static function init()
+    public static function init(): void
     {
         if (true === version_compare(\get_bloginfo('version'), 3.8, '<')) {
             \wp_die(\esc_html__('WordPress 3.8 is required. Please upgrade WordPress and try again.', 'robotstxt-manager'));
@@ -33,7 +33,7 @@ final class PluginActivate
     /**
      * Maybe Set Plugin Robots.txt.
      */
-    public static function setRobotstxt()
+    public static function setRobotstxt(): void
     {
         $settings = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
@@ -65,7 +65,7 @@ final class PluginActivate
     /**
      * Get Local Website Robots.txt File Body.
      */
-    public static function getWebsiteRobotstxt()
+    public static function getWebsiteRobotstxt(): string
     {
         $robotstxt = '';
 

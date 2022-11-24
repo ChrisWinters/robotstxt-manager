@@ -48,7 +48,7 @@ final class PluginAdminPresets
     /**
      * Save Preset Robots.txt As Main Robots.txt.
      */
-    public function setPresetRobotstxt()
+    public function setPresetRobotstxt(): void
     {
         $message = false;
         $preset = '';
@@ -116,7 +116,7 @@ final class PluginAdminPresets
     /**
      * Default Robots.txt File.
      */
-    private function defaultRobotstxt()
+    private function defaultRobotstxt(): string
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -141,7 +141,7 @@ final class PluginAdminPresets
     /**
      * Default-Alt Robots.txt File.
      */
-    private function defaultAltRobotstxt()
+    private function defaultAltRobotstxt(): string
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -174,7 +174,7 @@ final class PluginAdminPresets
     /**
      * WordPress Only Robots.txt File.
      */
-    private function wordpressRobotstxt()
+    private function wordpressRobotstxt(): string
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -188,7 +188,7 @@ final class PluginAdminPresets
     /**
      * Open Robots.txt File.
      */
-    private function openRobotstxt()
+    private function openRobotstxt(): string
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -200,7 +200,7 @@ final class PluginAdminPresets
     /**
      * Blogger Robots.txt File.
      */
-    private function bloggerRobotstxt()
+    private function bloggerRobotstxt(): string
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -244,7 +244,7 @@ final class PluginAdminPresets
     /**
      * Disallow Website Robots.txt File.
      */
-    private function blockedRobotstxt()
+    private function blockedRobotstxt(): string
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";
@@ -256,7 +256,7 @@ final class PluginAdminPresets
     /**
      * Google Friendly Robots.txt File.
      */
-    private function googleRobotstxt()
+    private function googleRobotstxt(): string
     {
         $txt = "# robots.txt\n";
         $txt .= "User-agent: *\n";

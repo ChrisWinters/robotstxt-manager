@@ -39,7 +39,7 @@ final class PluginAdminCleaner
      * @param array  $postObject Post Object Array.
      * @param object $notices    Notices Class Object.
      */
-    public function init($postObject = [], $notices = [])
+    public function init($postObject = [], $notices = []): void
     {
         $this->postObject = $postObject;
         $this->notices = $notices;
@@ -48,7 +48,7 @@ final class PluginAdminCleaner
     /**
      * Cleaner Actions.
      */
-    public function cleanerAction()
+    public function cleanerAction(): void
     {
         // Check for old plugin data.
         if (true !== empty($this->postObject['check-data'])) {
@@ -84,7 +84,7 @@ final class PluginAdminCleaner
     /**
      * Check For Old Plugin Data.
      */
-    public function checkData()
+    public function checkData(): void
     {
         $message = false;
 
@@ -118,7 +118,7 @@ final class PluginAdminCleaner
     /**
      * Remove Old Plugin Data.
      */
-    public function cleanData()
+    public function cleanData(): void
     {
         // Remove Options.
         \delete_option('pc_robotstxt');
@@ -137,7 +137,7 @@ final class PluginAdminCleaner
     /**
      * Check For Physical Robots.txt File.
      */
-    public function checkPhysical()
+    public function checkPhysical(): void
     {
         $message = false;
 
@@ -171,7 +171,7 @@ final class PluginAdminCleaner
     /**
      * Remove Physical Robots.txt File.
      */
-    public function cleanPhysical()
+    public function cleanPhysical(): void
     {
         // Remove Robots.txt File.
         if (true === file_exists(\get_home_path().'robots.txt') && true === is_writable(\get_home_path().'robots.txt')) {
@@ -197,7 +197,7 @@ final class PluginAdminCleaner
     /**
      * Check For Missing Rewrite Rules.
      */
-    public function checkRewrite()
+    public function checkRewrite(): void
     {
         $message = false;
 
@@ -239,7 +239,7 @@ final class PluginAdminCleaner
     /**
      * Add Missing Rewrite Rule.
      */
-    public function addRewrite()
+    public function addRewrite(): void
     {
         // Get Rewrite Rules.
         $rules = \get_option('rewrite_rules');

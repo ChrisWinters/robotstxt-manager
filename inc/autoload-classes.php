@@ -17,7 +17,7 @@ if (false === defined('ABSPATH')) {
  *
  * @param string $class Loaded Classes.
  */
-function AutoloadClasses($class)
+function AutoloadClasses($class): void
 {
     // Namespace Prefix.
     $prefix = 'RobotstxtManager\\';
