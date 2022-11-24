@@ -42,15 +42,6 @@ final class InitPlugin
                 'admin',
             ]
         );
-
-        // Plugin activation checks.
-        \register_activation_hook(
-            __FILE__,
-            [
-                'RobotstxtManager\Plugin_Activate',
-                'init',
-            ]
-        );
     }
 
     /**
@@ -58,19 +49,35 @@ final class InitPlugin
      */
     public function admin(): void
     {
+        $notices = new \RobotstxtManager\PluginAdminNotices();
+
         // Save plugin settings.
-        $adminSave = new Plugin_Admin_Save();
+        $adminSave = new PluginAdminSave($notices);
         $adminSave->init();
 
         // Display plugin admin area.
-        $adminArea = new Plugin_Admin();
+        $adminArea = new PluginAdmin();
         $adminArea->init();
     }
 }
 
+// Display Robots.txt file.
 new \RobotstxtManager\Robotstxt();
-new \RobotstxtManager\Plugin_Locale();
+
+// Plugin translation strings.
+new \RobotstxtManager\PluginLocale();
+
+// Init plugin backend.
 new \RobotstxtManager\InitPlugin();
+
+// Plugin activation checks.
+\register_activation_hook(
+    __FILE__,
+    [
+        'RobotstxtManager\PluginActivate',
+        'init',
+    ]
+);
 /*
 // Plugin update checker
 if (true === file_exists(dirname(__FILE__).'/puc/plugin-update-checker.php')) {

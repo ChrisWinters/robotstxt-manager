@@ -12,12 +12,10 @@ if (false === defined('ABSPATH')) {
     exit;
 }
 
-use RobotstxtManager\Trait_Option_Manager as TraitOptionManager;
-
 /**
  * Manage Robots.txt File Presets.
  */
-final class Plugin_Admin_Presets
+final class PluginAdminPresets
 {
     use TraitOptionManager;
 
@@ -29,7 +27,7 @@ final class Plugin_Admin_Presets
     public $postObject = [];
 
     /**
-     * Plugin_Admin_Notices.
+     * Plugin Admin Notices.
      *
      * @var object
      */

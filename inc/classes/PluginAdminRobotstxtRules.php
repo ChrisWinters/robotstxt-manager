@@ -15,7 +15,7 @@ if (false === defined('ABSPATH')) {
 /**
  * Extra Robots.txt Rule Statements.
  */
-final class Plugin_Admin_Robotstxt_Rules
+final class PluginAdminRobotstxtRules
 {
     /**
      * Get the Upload Path Rule.

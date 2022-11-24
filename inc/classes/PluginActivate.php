@@ -15,7 +15,7 @@ if (false === defined('ABSPATH')) {
 /**
  * Activation Rules.
  */
-final class Plugin_Activate
+final class PluginActivate
 {
     /**
      * Init Plugin Activation.

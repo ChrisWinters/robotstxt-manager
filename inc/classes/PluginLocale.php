@@ -15,7 +15,7 @@ if (false === defined('ABSPATH')) {
 /**
  * Loads translation files and strings.
  */
-final class Plugin_Locale
+final class PluginLocale
 {
     /**
      * Get the current locale and init loading of translation files.

@@ -12,14 +12,10 @@ if (false === defined('ABSPATH')) {
     exit;
 }
 
-use RobotstxtManager\Plugin_Admin_Notices as PluginAdminNotices;
-use RobotstxtManager\Trait_Option_Manager as TraitOptionManager;
-use RobotstxtManager\Trait_Query_String as TraitQueryString;
-
 /**
  * Save/Update Plugin Settings.
  */
-final class Plugin_Admin_Save
+final class PluginAdminSave
 {
     use TraitOptionManager;
     use TraitQueryString;
@@ -32,14 +28,14 @@ final class Plugin_Admin_Save
     public $postObject = [];
 
     /**
-     * Plugin_Admin_Notices.
+     * Form post action.
      *
      * @var object
      */
     public $postAction;
 
     /**
-     * Plugin_Admin_Notices.
+     * Plugin Admin Notices.
      *
      * @var object
      */
@@ -48,7 +44,7 @@ final class Plugin_Admin_Save
     /**
      * Setup Class.
      */
-    public function __construct()
+    public function __construct(PluginAdminNotices $notices)
     {
         if (false === \is_admin()) {
             return;
@@ -67,7 +63,7 @@ final class Plugin_Admin_Save
         $postObjectArray = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
         $this->postObject = $this->unset_post_items($postObjectArray);
 
-        $this->notices = new PluginAdminNotices();
+        $this->notices = $notices;
     }
 
     /**
@@ -115,12 +111,12 @@ final class Plugin_Admin_Save
         }
 
         if ('presets' === $action) {
-            $presets = new Plugin_Admin_Presets($this->postObject, $this->notices);
+            $presets = new PluginAdminPresets($this->postObject, $this->notices);
             $presets->set_preset_robotstxt();
         }
 
         if ('cleaner' === $action) {
-            $cleaner = new Plugin_Admin_Cleaner($this->postObject, $this->notices);
+            $cleaner = new PluginAdminCleaner($this->postObject, $this->notices);
             $cleaner->cleaner_action();
         }
     }

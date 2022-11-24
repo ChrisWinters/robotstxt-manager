@@ -15,7 +15,7 @@ if (false === defined('ABSPATH')) {
 /**
  * Plugin Admin Area Notices.
  */
-final class Plugin_Admin_Notices
+final class PluginAdminNotices
 {
     /**
      * Plugin Admin Notices.

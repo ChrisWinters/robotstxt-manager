@@ -15,7 +15,7 @@ if (false === defined('ABSPATH')) {
 /**
  * Get and Set Plugin Options.
  */
-trait Trait_Option_Manager
+trait TraitOptionManager
 {
     /**
      * Get Option Data.

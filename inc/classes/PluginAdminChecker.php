@@ -12,12 +12,10 @@ if (false === defined('ABSPATH')) {
     exit;
 }
 
-use RobotstxtManager\Trait_Option_Manager as TraitOptionManager;
-
 /**
  * Robots.txt Cleaner Tool.
  */
-final class Plugin_Admin_Cleaner
+final class PluginAdminCleaner
 {
     use TraitOptionManager;
 

@@ -15,7 +15,7 @@ if (false === defined('ABSPATH')) {
 /**
  * Process Plugin Admin Query String.
  */
-trait Trait_Query_String
+trait TraitQueryString
 {
     /**
      * Get Query String Item & Sanitize.

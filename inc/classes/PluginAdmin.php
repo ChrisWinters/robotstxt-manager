@@ -12,13 +12,10 @@ if (false === defined('ABSPATH')) {
     exit;
 }
 
-use RobotstxtManager\Trait_Option_Manager as TraitOptionManager;
-use RobotstxtManager\Trait_Query_String as TraitQueryString;
-
 /**
  * Load WordPress Plugin Admin Area.
  */
-final class Plugin_Admin
+final class PluginAdmin
 {
     use TraitOptionManager;
     use TraitQueryString;
@@ -78,7 +75,7 @@ final class Plugin_Admin
         $this->robotstxt = $this->get_setting('robotstxt');
 
         // Settings Template Extra Robots.txt Rule Statements.
-        $robotstxtRules = new Plugin_Admin_Robotstxt_Rules();
+        $robotstxtRules = new PluginAdminRobotstxtRules();
         $this->uploadPath = $robotstxtRules->get_uploadpath();
         $this->themePath = $robotstxtRules->get_themepath();
         $this->sitemapUrl = $robotstxtRules->get_sitemapurl();
