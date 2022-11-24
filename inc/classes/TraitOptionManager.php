@@ -164,10 +164,6 @@ trait TraitOptionManager
                 if (false !== stristr($name, ROBOTSTXT_MANAGER_SETTING_PREFIX)) {
                     $options[$name] = $value;
                 }
-
-                if (false !== stristr($name, 'Fs_')) {
-                    $options[$name] = $value;
-                }
             }
         }
 
