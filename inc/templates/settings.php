@@ -106,7 +106,7 @@ if (false === defined('ABSPATH')) {
 				<label for="default"><?php \esc_html_e('Default Robots.txt File', 'robotstxt-manager'); ?></label>
 			</th>
 			<td>
-				<input type="radio" name="preset" value="default-robotstxt" id="default" /> <span class="description"><?php \esc_html_e('The plugins default installed robots.txt file.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/default-robots.txt" target="_blank">view</a>]</span>
+				<input type="radio" name="preset" value="default-robotstxt" id="default" /> <label for="default" class="description" for="default"><?php \esc_html_e('The plugins default installed robots.txt file.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/default-robots.txt" target="_blank">view</a>]</label>
 			</td>
 			</tr>
 			<tr>
@@ -114,7 +114,7 @@ if (false === defined('ABSPATH')) {
 				<label for="default-alt"><?php \esc_html_e('Alternative Robots.txt File', 'robotstxt-manager'); ?></label>
 			</th>
 			<td>
-				<input type="radio" name="preset" value="defaultalt-robotstxt" id="default-alt" /> <span class="description"><?php \esc_html_e('Similar to the plugins default robots.txt file, with more disallows.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/defaultalt-robots.txt" target="_blank">view</a>]</span>
+				<input type="radio" name="preset" value="defaultalt-robotstxt" id="default-alt" /> <label for="default-alt" class="description"><?php \esc_html_e('Similar to the plugins default robots.txt file, with more disallows.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/defaultalt-robots.txt" target="_blank">view</a>]</label>
 			</td>
 			</tr>
 			<tr>
@@ -122,7 +122,7 @@ if (false === defined('ABSPATH')) {
 				<label for="wordpress"><?php \esc_html_e('WordPress Limited Robots.txt File', 'robotstxt-manager'); ?></label>
 			</th>
 			<td>
-				<input type="radio" name="preset" value="wordpress-robotstxt" id="wordpress" /> <span class="description"><?php \esc_html_e('Only disallows wp-includes and wp-admin.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/wordpress-robots.txt" target="_blank">view</a>]</span>
+				<input type="radio" name="preset" value="wordpress-robotstxt" id="wordpress" /> <label for="wordpress" class="description"><?php \esc_html_e('Only disallows wp-includes and wp-admin.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/wordpress-robots.txt" target="_blank">view</a>]</label>
 			</td>
 			</tr>
 			<tr>
@@ -130,7 +130,7 @@ if (false === defined('ABSPATH')) {
 				<label for="open"><?php \esc_html_e('Open Robots.txt File', 'robotstxt-manager'); ?></label>
 			</th>
 			<td>
-				<input type="radio" name="preset" value="open-robotstxt" id="open" /> <span class="description"><?php \esc_html_e('Fully open robots.txt file, no disallows.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/open-robots.txt" target="_blank">view</a>]</span>
+				<input type="radio" name="preset" value="open-robotstxt" id="open" /> <label for="open" class="description"><?php \esc_html_e('Fully open robots.txt file, no disallows.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/open-robots.txt" target="_blank">view</a>]</label>
 			</td>
 			</tr>
 			<tr>
@@ -138,7 +138,7 @@ if (false === defined('ABSPATH')) {
 				<label for="blogger"><?php \esc_html_e('A Bloggers Robots.txt File', 'robotstxt-manager'); ?></label>
 			</th>
 			<td>
-				<input type="radio" name="preset" value="blogger-robotstxt" id="blogger" /> <span class="description"><?php \esc_html_e('Optimized for blog focused WordPress websites.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/blogger-robots.txt" target="_blank">view</a>]</span>
+				<input type="radio" name="preset" value="blogger-robotstxt" id="blogger" /> <label for="blogger" class="description"><?php \esc_html_e('Optimized for blog focused WordPress websites.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/blogger-robots.txt" target="_blank">view</a>]</label>
 			</td>
 			</tr>
 			<tr>
@@ -146,7 +146,7 @@ if (false === defined('ABSPATH')) {
 				<label for="google"><?php \esc_html_e('Google Robots.txt File', 'robotstxt-manager'); ?></label>
 			</th>
 			<td>
-				<input type="radio" name="preset" value="google-robotstxt" id="google" /> <span class="description"><?php \esc_html_e('A Google friendly robots.txt file.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/google-robots.txt" target="_blank">view</a>]</span>
+				<input type="radio" name="preset" value="google-robotstxt" id="google" /> <label for="google" class="description"><?php \esc_html_e('A Google friendly robots.txt file.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/google-robots.txt" target="_blank">view</a>]</label>
 			</td>
 			</tr>
 			<tr>
@@ -154,7 +154,7 @@ if (false === defined('ABSPATH')) {
 				<label for="block"><?php \esc_html_e('Lockdown Robots.txt File', 'robotstxt-manager'); ?></label>
 			</th>
 			<td>
-				<input type="radio" name="preset" value="block-robotstxt" id="block" /> <span class="description"><?php \esc_html_e('Disallow everything, prevent spiders from indexing the website.', 'robotstxt-manager'); ?> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/blocked-robots.txt" target="_blank">view</a>]</span></span>
+				<input type="radio" name="preset" value="block-robotstxt" id="block" /> <label for="block" class="description"><?php \esc_html_e('Disallow everything, prevent spiders from indexing the website.', 'robotstxt-manager'); ?> <span class="small">[<a href="../wp-content/plugins/robotstxt-manager/assets/examples/blocked-robots.txt" target="_blank">view</a>]</label></span>
 			</td>
 			</tr>
 		</tbody>
@@ -176,7 +176,7 @@ if (false === defined('ABSPATH')) {
 		<tbody>
 			<tr>
 			<td class="text-right">
-				<span class="description"><?php \esc_html_e('WARNING: Delete all settings related to the Robots.txt Manager plugin.', 'robotstxt-manager'); ?></span> <input type="radio" name="action" value="delete" />
+				<label class="description"><?php \esc_html_e('WARNING: Delete all settings related to the Robots.txt Manager plugin.', 'robotstxt-manager'); ?></span> <input type="radio" name="action" value="delete" />
 			</td>
 			</tr>
 		</tbody>
