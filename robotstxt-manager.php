@@ -32,24 +32,46 @@ define('ROBOTSTXT_MANAGER_SETTING_PREFIX', 'robotstxt_manager_');
 
 require_once dirname(__FILE__).'/inc/autoload-classes.php';
 
-new \RobotstxtManager\Plugin_Locale();
+final class InitPlugin
+{
+    public function __construct()
+    {
+        // Hook admin area.
+        \add_action(
+            'init',
+            [
+                $this,
+                'admin',
+            ]
+        );
 
-$adminSave = new \RobotstxtManager\Plugin_Admin_Save();
-$adminSave->init();
+        // Plugin activation checks.
+        \register_activation_hook(
+            __FILE__,
+            [
+                'RobotstxtManager\Plugin_Activate',
+                'init',
+            ]
+        );
+    }
 
-$admin = new \RobotstxtManager\Plugin_Admin();
-$admin->init();
+    /**
+     * Admin area management.
+     */
+    public function admin(): void
+    {
+        // Save plugin settings.
+        $adminSave = new Plugin_Admin_Save();
+        $adminSave->init();
+
+        // Display plugin admin area.
+        $adminArea = new Plugin_Admin();
+        $adminArea->init();
+    }
+}
 
 new \RobotstxtManager\Robotstxt();
-
-// Plugin activation checks.
-\register_activation_hook(
-    __FILE__,
-    [
-        'RobotstxtManager\Plugin_Activate',
-        'init',
-    ]
-);
+new \RobotstxtManager\InitPlugin();
 /*
 // Plugin update checker
 if (true === file_exists(dirname(__FILE__).'/puc/plugin-update-checker.php')) {
