@@ -17,7 +17,7 @@ if (false === defined('ABSPATH')) {
  *
  * @param string $class Loaded Classes.
  */
-function RegisterClasses($class)
+function AutoloadClasses($class)
 {
     // Namespace Prefix.
     $prefix = 'RobotstxtManager\\';
@@ -40,4 +40,4 @@ function RegisterClasses($class)
     }
 }
 
-spl_autoload_register('RobotstxtManager\RegisterClasses');
+spl_autoload_register('RobotstxtManager\AutoloadClasses');
