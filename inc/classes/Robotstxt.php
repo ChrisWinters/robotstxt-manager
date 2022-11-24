@@ -30,7 +30,7 @@ final class Robotstxt
     /**
      * Display robots.txt file.
      */
-    private function display()
+    private function display(): void
     {
         $robotstxt = $this->getRobotstxt();
         $blogPublic = \get_option('blog_public');
