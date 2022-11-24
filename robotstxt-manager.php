@@ -59,7 +59,8 @@ final class InitPlugin
         $adminSave->init();
 
         // Display plugin admin area.
-        $adminArea = new \RobotstxtManager\PluginAdmin();
+        $robotstxtRules = new PluginAdminRobotstxtRules();
+        $adminArea = new \RobotstxtManager\PluginAdmin($robotstxtRules);
         $adminArea->init();
     }
 }

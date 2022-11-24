@@ -60,7 +60,7 @@ final class PluginAdmin
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PluginAdminRobotstxtRules $robotstxtRules)
     {
         if (false === \is_admin()) {
             return;
@@ -75,7 +75,6 @@ final class PluginAdmin
         $this->robotstxt = $this->getSetting('robotstxt');
 
         // Settings Template Extra Robots.txt Rule Statements.
-        $robotstxtRules = new PluginAdminRobotstxtRules();
         $this->uploadPath = $robotstxtRules->getUploadPath();
         $this->themePath = $robotstxtRules->getThemePath();
         $this->sitemapUrl = $robotstxtRules->getSitemapUrl();
