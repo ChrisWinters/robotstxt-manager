@@ -13,16 +13,13 @@ if (false === defined('ABSPATH')) {
 }
 ?>
 <form enctype="multipart/form-data" method="post" action="">
-	<?php
-    \wp_nonce_field(
-        ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
-        ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
-    );
-
-// Get Saved Robots.txt File.
-$robotstxtFile = $this->getSetting('robotstxt');
+<?php
+\wp_nonce_field(
+    ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
+    ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
+);
 ?>
-	<input type="hidden" name="action" value="update" />
+<input type="hidden" name="action" value="update" />
 
 	<table class="form-table">
 		<tbody>

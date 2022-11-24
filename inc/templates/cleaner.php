@@ -13,13 +13,13 @@ if (false === defined('ABSPATH')) {
 }
 ?>
 <form enctype="multipart/form-data" method="post" action="">
-	<?php
-    \wp_nonce_field(
-        ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
-        ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
-    );
+<?php
+\wp_nonce_field(
+    ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
+    ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
+);
 ?>
-	<input type="hidden" name="action" value="cleaner" />
+<input type="hidden" name="action" value="cleaner" />
 
 	<p class="text-dark font-weight-bold h4"><?php \esc_html_e('Check For Old Robots.txt File Settings', 'robotstxt-manager'); ?></p>
 	<p class="description"><?php \esc_html_e('If you are having problems with a websites robots.txt file to displaying properly, it is possible that old robots.txt file data left over from other plugins is conflicting. Click the "scan for old data" button below to scan the network for left over data. If any is found, a notice will display with a new button to automatically clean out the left over data.', 'robotstxt-manager'); ?></p>
