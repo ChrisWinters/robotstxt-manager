@@ -49,14 +49,17 @@ final class InitPlugin
      */
     public function admin(): void
     {
-        $notices = new \RobotstxtManager\PluginAdminNotices();
-
         // Save plugin settings.
-        $adminSave = new PluginAdminSave($notices);
+        $adminSave = new \RobotstxtManager\PluginAdminSave(
+            new \RobotstxtManager\PluginAdminNotices(),
+            new \RobotstxtManager\PluginAdminPresets(),
+            new \RobotstxtManager\PluginAdminCleaner()
+        );
+
         $adminSave->init();
 
         // Display plugin admin area.
-        $adminArea = new PluginAdmin();
+        $adminArea = new \RobotstxtManager\PluginAdmin();
         $adminArea->init();
     }
 }

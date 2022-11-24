@@ -39,7 +39,7 @@ final class PluginAdminCleaner
      * @param array  $postObject Post Object Array.
      * @param object $notices    Notices Class Object.
      */
-    public function __construct($postObject = [], $notices = [])
+    public function init($postObject = [], $notices = [])
     {
         $this->postObject = $postObject;
         $this->notices = $notices;

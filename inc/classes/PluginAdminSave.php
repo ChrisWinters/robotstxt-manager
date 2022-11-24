@@ -42,10 +42,13 @@ final class PluginAdminSave
     public $notices;
 
     /**
-     * Setup Class.
+     * Setup class.
      */
-    public function __construct(PluginAdminNotices $notices)
-    {
+    public function __construct(
+        PluginAdminNotices $notices,
+        PluginAdminPresets $presets,
+        PluginAdminCleaner $cleaner
+    ) {
         if (false === \is_admin()) {
             return;
         }
@@ -60,10 +63,13 @@ final class PluginAdminSave
             return;
         }
 
+        // Post data object.
         $postObjectArray = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
         $this->postObject = $this->unsetPostItems($postObjectArray);
 
         $this->notices = $notices;
+        $this->presets = $presets;
+        $this->cleaner = $cleaner;
     }
 
     /**
@@ -111,13 +117,13 @@ final class PluginAdminSave
         }
 
         if ('presets' === $action) {
-            $presets = new PluginAdminPresets($this->postObject, $this->notices);
-            $presets->setPresetRobotstxt();
+            $this->presets->init($this->postObject, $this->notices);
+            $this->presets->setPresetRobotstxt();
         }
 
         if ('cleaner' === $action) {
-            $cleaner = new PluginAdminCleaner($this->postObject, $this->notices);
-            $cleaner->cleanerAction();
+            $this->cleaner->init($this->postObject, $this->notices);
+            $this->cleaner->cleanerAction();
         }
     }
 
@@ -156,8 +162,6 @@ final class PluginAdminSave
     private function updateAction()
     {
         $message = false;
-
-        $count = 0;
 
         if (true !== empty($this->postObject)) {
             $this->updateOption($this->postObject);
