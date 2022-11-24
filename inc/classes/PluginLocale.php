@@ -36,10 +36,6 @@ final class PluginLocale
      */
     public function init()
     {
-        if (false === \is_admin()) {
-            return;
-        }
-
         // Retrieves the current locale.
         $getLocale = \apply_filters(
             'plugin_locale',

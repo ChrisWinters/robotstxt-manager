@@ -49,6 +49,10 @@ final class InitPlugin
      */
     public function admin(): void
     {
+        if (false === \is_admin()) {
+            return;
+        }
+
         // Save plugin settings.
         $adminSave = new \RobotstxtManager\PluginAdminSave(
             new \RobotstxtManager\PluginAdminNotices(),

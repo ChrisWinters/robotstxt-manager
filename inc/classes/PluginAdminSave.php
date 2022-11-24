@@ -49,10 +49,6 @@ final class PluginAdminSave
         PluginAdminPresets $presets,
         PluginAdminCleaner $cleaner
     ) {
-        if (false === \is_admin()) {
-            return;
-        }
-
         if ($this->queryString('page') !== ROBOTSTXT_MANAGER_PLUGIN_NAME) {
             return;
         }

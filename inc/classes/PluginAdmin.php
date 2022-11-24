@@ -62,10 +62,6 @@ final class PluginAdmin
      */
     public function __construct(PluginAdminRobotstxtRules $robotstxtRules)
     {
-        if (false === \is_admin()) {
-            return;
-        }
-
         // Plugin admin navigation tabs.
         $this->adminTabs = [
             'settings' => \esc_html__('Settings', 'robotstxt-manager'),
