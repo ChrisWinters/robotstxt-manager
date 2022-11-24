@@ -33,7 +33,7 @@ if (false === defined('ABSPATH')) {
 			</tr>
 			<tr>
 			<td>
-				<textarea name="robotstxt" cols="65" rows="20" class="w-100"><?php echo esc_html($this->getSetting('robotstxt')); ?></textarea><br />
+				<textarea name="robotstxt" cols="65" rows="20" class="w-100"><?php echo \esc_html($this->getSetting('robotstxt')); ?></textarea><br />
 				<span class="description small"><?php \esc_html_e('Saving an empty robots.txt file will restore the default WordPress robots.txt file.', 'robotstxt-manager'); ?></span>
 			</td>
 			</tr>
@@ -58,7 +58,7 @@ if (false === defined('ABSPATH')) {
 			<label><?php \esc_html_e('Upload Path', 'robotstxt-manager'); ?></label>
 		</th>
 		<td>
-			<input type="text" name="upload_path" value="<?php echo esc_html($this->uploadPath); ?>" class="regular-text" onclick="select()" />
+			<input type="text" name="upload_path" value="<?php echo \esc_html($this->uploadPath); ?>" class="regular-text" onclick="select()" />
 		</td>
 		</tr>
 		<tr>
@@ -66,7 +66,7 @@ if (false === defined('ABSPATH')) {
 			<label><?php \esc_html_e('Theme Path', 'robotstxt-manager'); ?></label>
 		</th>
 		<td>
-			<input type="text" name="theme_path" value="<?php echo esc_html($this->themePath); ?>" class="regular-text" onclick="select()" />
+			<input type="text" name="theme_path" value="<?php echo \esc_html($this->themePath); ?>" class="regular-text" onclick="select()" />
 		</td>
 		</tr>
 		<tr>
@@ -74,7 +74,7 @@ if (false === defined('ABSPATH')) {
 			<label><?php \esc_html_e('Sitemap URL', 'robotstxt-manager'); ?></label>
 		</th>
 		<td>
-			<input type="text" name="sitemap_url" value="<?php echo esc_html($this->sitemapUrl); ?>" class="regular-text" onclick="select()" />
+			<input type="text" name="sitemap_url" value="<?php echo \esc_html($this->sitemapUrl); ?>" class="regular-text" onclick="select()" />
 		</td>
 		</tr>
 	</tbody>
