@@ -9,7 +9,7 @@
  * Copyright (c) 2017-2022 Chris W.
  * Author: Chris Winters
  * Author URI: https://github.com/ChrisWinters
- * Text Domain: robotstxt-manager
+ * Text Domain: robotstxt-manager.
  *
  * @author Chris W. <chrisw@null.net>
  * @license GNU GPL
@@ -54,7 +54,7 @@ final class InitPlugin
     }
 
     /**
-     * Admin area management.
+     * Plugin admin area management.
      */
     public function admin(): void
     {
@@ -69,6 +69,7 @@ final class InitPlugin
 }
 
 new \RobotstxtManager\Robotstxt();
+new \RobotstxtManager\Plugin_Locale();
 new \RobotstxtManager\InitPlugin();
 /*
 // Plugin update checker
