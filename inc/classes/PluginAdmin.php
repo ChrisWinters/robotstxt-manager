@@ -162,6 +162,7 @@ final class PluginAdmin
 
         $html = '<div class="nav-tab-wrapper" role="navigation" aria-label="Plugin tab menu">';
         $html .= '<a href="#post-body-content" class="screen-reader-shortcut">Skip to plugin settings</a>';
+        $html .= '<ul>';
 
         if (true !== empty($this->queryString('tab'))) {
             $currentTab = $this->queryString('tab');
@@ -178,11 +179,12 @@ final class PluginAdmin
                 $active = \__('Active ', 'robotstxt-manager');
             }
 
-            $html .= '<a href="?page='.$pageName.
-            '&tab='.$tab.
-            '" class="nav-tab'.$class.'" aria-label="'.$active.$menuItem.': '.$name.'">'.$name.'</a>';
+            $html .= '<li class="nav-tab'.$class.'">';
+            $html .= '<a href="?page='.$pageName.'&tab='.$tab.'" aria-label="'.$active.$menuItem.': '.$name.'">'.$name.'</a>';
+            $html .= '</li>';
         }
 
+        $html .= '</ul>';
         $html .= '</div><br />';
 
         return $html;

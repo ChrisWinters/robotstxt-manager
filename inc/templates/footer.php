@@ -29,7 +29,7 @@ if (false === defined('ABSPATH')) {
 			<small>&#9829; <?php \esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?></small>
 		</div>
 		<div class="float-right text-right">
-			<a href="#top"><span class="dashicons-before dashicons-arrow-up"><?php \esc_html_e('top', 'robotstxt-manager'); ?></span></a>
+			<a href="#top" aria-label="<?php \esc_html_e('Click to return to plugin settings.', 'robotstxt-manager'); ?>"><span class="dashicons-before dashicons-arrow-up"><?php \esc_html_e('top', 'robotstxt-manager'); ?></span></a>
 		</div>
 	</div>
 </div><!-- .wrap -->

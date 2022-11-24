@@ -210,7 +210,7 @@ final class PluginAdminNotices
      */
     public function successMessage(string $message): string
     {
-        return '<div class="notice notice-success is-dismissible"><p>'.$message.'</p></div>';
+        return '<div class="notice notice-success is-dismissible"><h2>'.$message.'</h2></div>';
     }
 
     /**
@@ -220,6 +220,6 @@ final class PluginAdminNotices
      */
     public function errorMessage(string $message): string
     {
-        return '<div class="notice notice-error is-dismissible"><p>'.$message.'</p></div>';
+        return '<div class="notice notice-error is-dismissible"><h2>'.$message.'</h2></div>';
     }
 }

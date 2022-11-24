@@ -12,6 +12,7 @@ if (false === defined('ABSPATH')) {
     exit;
 }
 ?>
+<section>
 <form enctype="multipart/form-data" method="post" action="">
 <?php
 \wp_nonce_field(
@@ -20,13 +21,15 @@ if (false === defined('ABSPATH')) {
 );
 ?>
 <input type="hidden" name="action" value="update" />
-	<h2 class="text-dark font-weight-bold pl-0"><?php \esc_html_e('Saved Robots.txt File', 'robotstxt-manager'); ?></h2>
-	<p class="description"><?php \esc_html_e('Saving an empty robots.txt file will restore the default WordPress robots.txt file.', 'robotstxt-manager'); ?></p>
+	<h2 class="text-dark font-weight-bold pl-0"><?php \esc_html_e('Plugin settings.', 'robotstxt-manager'); ?></h2>
+	<p class="description"><?php \esc_html_e('Displaying the currently saved robots.txt file. Saving an empty file will restore the default WordPress robots.txt file.', 'robotstxt-manager'); ?></p>
 	<p class="description pb-4"><a href="<?php \esc_url(\get_bloginfo('url')); ?>/robots.txt" target="_blank"><?php \esc_html_e('View the websites robots.txt file in a new tab or window.', 'robotstxt-manager'); ?></a></p>
-	<textarea name="robotstxt" cols="65" rows="20" class="w-100"><?php echo \esc_html($this->getSetting('robotstxt')); ?></textarea>
+	<textarea name="robotstxt" cols="65" rows="20" class="w-100" aria-label="<?php echo (true === empty($this->getSetting('robotstxt'))) ? \esc_html__('No robots.txt file is currently saved.', 'robotstxt-manager') : \esc_html__('Displaying the currently saved robots.txt file.', 'robotstxt-manager'); ?>"><?php echo \esc_html($this->getSetting('robotstxt')); ?></textarea>
 	<?php \submit_button(\esc_html__('update robots.txt file', 'robotstxt-manager')); ?>
 </form>
+</section>
 
+<section>
 <h2 class="text-dark font-weight-bold pl-0" id="manualRulesTitle">
 	<?php \esc_html_e('Recommended Robots.txt File Rules', 'robotstxt-manager'); ?>
 </h2>
@@ -61,9 +64,11 @@ if (false === defined('ABSPATH')) {
 		</tr>
 	</tbody>
 </table>
+</section>
 
 <hr />
 
+<section>
 <form enctype="multipart/form-data" method="post" action="">
 	<?php
 \wp_nonce_field(
@@ -77,9 +82,9 @@ if (false === defined('ABSPATH')) {
 	<?php \esc_html_e('Robots.txt File Presets', 'robotstxt-manager'); ?>
 </h2>
 
-<p class="description"><?php \esc_html_e('Select a preset robots.txt file to load and use. Click the view button to inspect the preset robots.txt file in a new tab or window.', 'robotstxt-manager'); ?></p>
+<p class="description" id="presets"><?php \esc_html_e('Select a preset robots.txt file to load and use. Click the view button to inspect the preset robots.txt file in a new tab or window.', 'robotstxt-manager'); ?></p>
 
-<table class="form-table">
+<table class="form-table" aria-labelledby="presets">
 	<tbody>
 		<tr>
 		<th scope="row">
@@ -142,9 +147,11 @@ if (false === defined('ABSPATH')) {
 
 	<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php \esc_html_e('change robots.txt file', 'robotstxt-manager'); ?>"></p>
 </form>
+</section>
 
 <br /><br /><hr />
 
+<section>
 <form enctype="multipart/form-data" method="post" action="">
 	<?php
 \wp_nonce_field(
@@ -156,3 +163,4 @@ if (false === defined('ABSPATH')) {
 	<p class="text-right"><label class="description" for="deleteSettings"><?php \esc_html_e('WARNING: This action will delete all plugin settings.', 'robotstxt-manager'); ?></span> <input type="radio" name="action" value="delete" id="deleteSettings" /></p>
 	<p class="text-right"><input type="submit" name="submit" value=" submit " onclick="return confirm('Are You Sure?');" aria-label="<?php \esc_html_e('Delete all plugin settings.', 'robotstxt-manager'); ?>" /></p>
 </form>
+</section>
