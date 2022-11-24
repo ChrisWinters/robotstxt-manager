@@ -56,9 +56,9 @@ final class PluginAdmin
     public $sitemapUrl;
 
     /**
-     * Set Class Params.
+     * Maybe setup admin area variables.
      *
-     * @return void
+     * @param PluginAdminRobotstxtRules $robotstxtRules Manual Rule Suggestions.
      */
     public function __construct(PluginAdminRobotstxtRules $robotstxtRules)
     {
@@ -66,6 +66,7 @@ final class PluginAdmin
             return;
         }
 
+        // Plugin admin navigation tabs.
         $this->adminTabs = [
             'settings' => \esc_html__('Settings', 'robotstxt-manager'),
             'cleaner' => \esc_html__('Cleaner', 'robotstxt-manager'),

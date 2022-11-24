@@ -13,7 +13,7 @@ if (false === defined('ABSPATH')) {
 }
 
 /**
- * Extra Robots.txt Rule Statements.
+ * Manual Rule Detection & Suggestions.
  */
 final class PluginAdminRobotstxtRules
 {
