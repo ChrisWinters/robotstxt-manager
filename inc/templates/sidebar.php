@@ -13,9 +13,9 @@ if (false === defined('ABSPATH')) {
 }
 ?>
 <div class="postbox">
-	<div class="h5 p-1 font-weight-bold">
+	<h3 class="text-dark font-weight-bold pb-0">
 		<?php \esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?>
-	</div>
+	</h3>
 	<div class="inside" style="clear:both;padding-top:1px;">
 		<div class="para">
 			<ul>
@@ -27,9 +27,9 @@ if (false === defined('ABSPATH')) {
 </div>
 
 <div class="postbox">
-	<div class="h5 p-1 font-weight-bold">
+	<h3 class="text-dark font-weight-bold pb-0">
 		<?php \esc_html_e('Robots.txt Help', 'robotstxt-manager'); ?>
-	</div>
+	</h3>
 	<div class="inside" style="clear:both;padding-top:1px;">
 		<div class="para">
 			<ul>
