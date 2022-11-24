@@ -5,16 +5,14 @@
  * Description: A Simple Robots.txt Manager For WordPress.
  * Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
  * Version: 1.1.0
- * License: GNU GPLv3
+ * License: GNU GPL
  * Copyright (c) 2017-2022 Chris W.
- * Author: tribalNerd, Chris Winters
+ * Author: Chris Winters
  * Author URI: https://github.com/ChrisWinters
- * Text Domain: robotstxt-manager.
+ * Text Domain: robotstxt-manager
  *
- * @author     Chris W. <chrisw@null.net>
- * @license    GNU GPLv3
- *
- * @see       /LICENSE
+ * @author Chris W. <chrisw@null.net>
+ * @license GNU GPL
  */
 
 namespace RobotstxtManager;

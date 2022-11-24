@@ -2,10 +2,8 @@
 /**
  * Class Trait.
  *
- * @author     Chris W. <chrisw@null.net>
- * @license    GNU GPLv3
- *
- * @see       /LICENSE
+ * @author Chris W. <chrisw@null.net>
+ * @license GNU GPL
  */
 
 namespace RobotstxtManager;
