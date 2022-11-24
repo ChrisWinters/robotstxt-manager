@@ -181,10 +181,11 @@ trait TraitOptionManager
      */
     private function validateUpdate()
     {
-        $status = true;
+        $status = false;
 
-        if (false === \is_admin() || false === \current_user_can('manage_options')) {
-            $status = false;
+        if (true === \is_admin() &&
+            true === \current_user_can('manage_options')) {
+            $status = true;
         }
 
         return $status;
