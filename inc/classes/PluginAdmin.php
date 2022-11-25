@@ -161,8 +161,8 @@ final class PluginAdmin
         $currentTab = key($this->adminTabs);
 
         $html = '<div class="nav-tab-wrapper" role="navigation" aria-label="Plugin tab menu">';
-        $html .= '<a href="#post-body-content" class="screen-reader-shortcut">Skip to plugin settings</a>';
-        $html .= '<ul>';
+        $html .= '<a href="#post-body-content" class="screen-reader-shortcut">'.\__('Skip to plugin settings', 'robotstxt-manager').'</a>';
+        $html .= '<ul class="p-0 m-0" id="nav">';
 
         if (true !== empty($this->queryString('tab'))) {
             $currentTab = $this->queryString('tab');
@@ -172,7 +172,7 @@ final class PluginAdmin
 
         foreach ($this->adminTabs as $tab => $name) {
             $active = '';
-            $class = '';
+            $class = ' mb-0';
 
             if ($tab === $currentTab) {
                 $class = ' nav-tab-active';
@@ -180,12 +180,12 @@ final class PluginAdmin
             }
 
             $html .= '<li class="nav-tab'.$class.'">';
-            $html .= '<a href="?page='.$pageName.'&tab='.$tab.'" aria-label="'.$active.$menuItem.': '.$name.'">'.$name.'</a>';
+            $html .= '<a href="?page='.$pageName.'&tab='.$tab.'#wpbody-content" aria-label="'.$active.$menuItem.': '.$name.'">'.$name.'</a>';
             $html .= '</li>';
         }
 
         $html .= '</ul>';
-        $html .= '</div><br />';
+        $html .= '</div>';
 
         return $html;
     }
