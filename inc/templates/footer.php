@@ -25,11 +25,11 @@ if (false === defined('ABSPATH')) {
 	</div><!-- #poststuff -->
 
 	<div class="clearfix">
-		<div class="float-left text-left">
+		<div class="float-start text-left">
 			<small>&#9829; <?php \esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?></small>
 		</div>
-		<div class="float-right text-right">
-			<a href="#top" aria-label="<?php \esc_html_e('Click to return to plugin settings.', 'robotstxt-manager'); ?>"><span class="dashicons-before dashicons-arrow-up"><?php \esc_html_e('top', 'robotstxt-manager'); ?></span></a>
+		<div class="float-end text-right">
+			<a href="#wpbody-content" aria-label="<?php \esc_html_e('Click to return to plugin settings.', 'robotstxt-manager'); ?>"><span class="dashicons-before dashicons-arrow-up"><?php \esc_html_e('top', 'robotstxt-manager'); ?></span></a>
 		</div>
 	</div>
 </div><!-- .wrap -->
