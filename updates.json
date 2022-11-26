@@ -1,5 +1,24 @@
 {
+	"name": "Robots.txt Manager",
 	"version": "1.1.0",
-    "details_url": "https://github.com/ChrisWinters/",
-    "download_url": "https://github.com/ChrisWinters/robotstxt-manager/archive/1.0.5.zip"
+	"download_url": "https://github.com/ChrisWinters/robotstxt-manager/archive/1.1.0.zip",
+	"homepage": "https://github.com/ChrisWinters/robotstxt-manager/",
+	"requires": "7.2",
+	"tested": "6.1.1",
+	"last_updated": "2022-11-26 00:00:00",
+	"upgrade_notice": "An update is available.",
+	"author": "Chris W.",
+	"author_homepage": "https://github.com/ChrisWinters/",
+	"sections": {
+		"description": "A simple to use Robots.txt Manager Plugin for WordPress, with 7 pre-created robots.txt files to help you get started.",
+		"installation": "Manually download, install, and activate the plugin. Once activated the Robots.txt Manager plugin will update just like other WordPress plugin."
+	},
+	"icons" : {
+		"1x" : "https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/icon-128x128.png",
+		"2x" : "https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/icon-256x256.png"
+    },
+	"banners": {
+		"low": "https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/banner-772x250.png",
+		"high": "https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/banner-1544x500.png"
+	}
 }
