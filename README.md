@@ -133,4 +133,3 @@ Permissions of this strong copyleft license are conditioned on making available 
 * **Allowed for**: Commercial use, modification, distribution, patent use, private use
 * **Limitations**: No liability, no warranty
 * **Conditions**: License and copyright notice, state changes, disclose source, same license
-  
