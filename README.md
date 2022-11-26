@@ -97,6 +97,14 @@ A better solution is to use the [Multisite Robots.txt Manager](https://github.co
 
 The plugin will now use the selected robots.txt file for your website.
 
+#### Question: Can I get the Robots.txt Manager plugin from the WordPress repo?
+
+**Answer:** No, the Robots.txt Manager plugin is hosted on GitHub only.
+
+#### Question: How do I update the Robots.txt Manager plugin then?
+
+**Answer:** Once activated, the Robots.txt Manager plugin updates like any other WordPress plugin.
+
 ### Testing robots.txt files
 
 Use the [Google Search Console](https://search.google.com/search-console) to validate your websites robots.txt files.
