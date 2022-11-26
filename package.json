@@ -46,6 +46,7 @@
         "postcss": "^8.4.19",
         "postcss-cli": "^10.0.0",
         "replace-in-file": "^6.3.5",
-        "sass": "^1.56.1"
+        "sass": "^1.56.1",
+        "wp-pot-cli": "^1.5.0"
     }
 }
