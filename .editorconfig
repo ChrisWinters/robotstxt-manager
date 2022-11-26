@@ -17,3 +17,6 @@ indent_size = 2
 [*.{pug}]
 indent_style = space
 indent_size = 4
+
+[*.{po,mo,pot}]
+end_of_line = lf
