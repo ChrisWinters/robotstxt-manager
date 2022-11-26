@@ -4,62 +4,67 @@
  * Update plugin version.
  */
 
-'use strict'
-
-const inquirer = require('inquirer')
+import inquirer from 'inquirer';
+import replace from 'replace-in-file';
 
 // Configuration.
-const packageJson = require('../package.json')
-const packageVersion = packageJson.version
+import fs from 'node:fs/promises';
+const packageJson = JSON.parse(await fs.readFile('package.json'));
+const packageVersion = packageJson.version;
 
-inquirer.prompt([{
-  type: 'input',
-  name: 'version',
-  message: 'What version are we moving to? (Current version is ' + packageVersion + ')'
-}]).then(function(res) {
-  try {
-    const replace = require('replace-in-file')
+inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "version",
+      message:
+        "What version are we moving to? (Current version is " +
+        packageVersion +
+        ")",
+    },
+  ])
+  .then(function (res) {
+    try {
+      // Tags to update.
+      const currentStableTag = "Current version:** " + res.version;
+      const previousStableTag = "Current version:** " + packageVersion;
 
-    // Tags to update.
-    const currentStableTag = 'Stable tag:** ' + res.version
-    const previousStableTag = 'Stable tag:** ' + packageVersion
+      const currentHeaderTag = "Version: " + res.version;
+      const previousHeaderTag = "Version: " + packageVersion;
 
-    const currentHeaderTag = 'Version: ' + res.version
-    const previousHeaderTag = 'Version: ' + packageVersion
+      const currentConstantTag =
+        "'ROBOTSTXT_MANAGER_VERSION', '" + res.version + "'";
+      const previousConstantTag =
+        "'ROBOTSTXT_MANAGER_VERSION', '" + packageVersion + "'";
 
-    const currentConstantTag = '\'ROBOTSTXT_MANAGER_VERSION\', \'' + res.version + '\''
-    const previousConstantTag = '\'ROBOTSTXT_MANAGER_VERSION\', \'' + packageVersion + '\''
+      const currentUpdatesTag = '"version": "' + res.version + '"';
+      const previousUpdatesTag = '"version": "' + packageVersion + '"';
 
-    const currentUpdatesTag = '"version": "' + res.version + '"'
-    const previousUpdatesTag = '"version": "' + packageVersion + '"'
-
-    // Update version.
-    replace.sync(
-      {
+      // Update version.
+      replace.sync({
         files: [
-          './readme.txt',
-          './README.md',
-          './robotstxt-manager.php',
-          './updates.json',
-          './package.json',
+          "./readme.txt",
+          "./README.md",
+          "./robotstxt-manager.php",
+          "./updates.json",
+          "./package.json",
         ],
         from: [
           previousStableTag,
           previousHeaderTag,
           previousConstantTag,
-          previousUpdatesTag
+          previousUpdatesTag,
         ],
         to: [
           currentStableTag,
           currentHeaderTag,
           currentConstantTag,
-          currentUpdatesTag
+          currentUpdatesTag,
         ],
-      }
-    )
+      });
 
-    console.log('Version updated to: ' + res.version )
-  } catch(error) {
-      console.log('Packages missing: Type `npm install`\n')
-  }
-})
+      console.log("Version updated to: " + res.version);
+    } catch (error) {
+      console.log("Packages missing: Type `npm install`\n");
+    }
+  });
