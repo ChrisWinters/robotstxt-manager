@@ -1,4 +1,4 @@
-# Copyright (C) 2019 robotstxt-manager
+# Copyright (C) 2022 robotstxt-manager
 # This file is distributed under the same license as the robotstxt-manager package.
 msgid ""
 msgstr ""
@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language-Team: ChrisW. <chrisw@null.net>\n"
-"Last-Translator: ChrisW. <chrisw@null.net>\n"
+"POT-Creation-Date: 2022-11-26 22:40+0000\n"
+"Project-Id-Version: undefined\n"
 "Report-Msgid-Bugs-To: https://github.com/ChrisWinters/robotstxt-manager/issues\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -16,222 +16,290 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/classes/class-plugin-activate.php:41
+#: ../inc/classes/PluginActivate.php:26
 msgid "WordPress 3.8 is required. Please upgrade WordPress and try again."
 msgstr ""
 
-#: inc/classes/class-plugin-admin-robotstxt-rules.php:32
-msgid "Upload Path Not Set"
-msgstr ""
-
-#: inc/classes/class-plugin-admin-save.php:249
-msgid "You are not authorized to perform this action."
-msgstr ""
-
-#: inc/classes/class-plugin-admin.php:75
+#: ../inc/classes/PluginAdmin.php:67
 msgid "Settings"
 msgstr ""
 
-#: inc/classes/class-plugin-admin.php:76
+#: ../inc/classes/PluginAdmin.php:68
 msgid "Cleaner"
 msgstr ""
 
-#: inc/classes/class-plugin-admin.php:137, inc/templates/footer.php:38, inc/templates/header.php:24, inc/templates/sidebar.php:30
+#: ../inc/classes/PluginAdmin.php:112, ../inc/templates/footer.php:29, ../inc/templates/header.php:16, ../inc/templates/sidebar.php:17
 msgid "Robots.txt Manager"
 msgstr ""
 
-#: inc/templates/cleaner.php:50
-msgid "Check For Old Robots.txt File Settings"
+#: ../inc/classes/PluginAdmin.php:160
+msgid "Menu item"
 msgstr ""
 
-#: inc/templates/cleaner.php:51
+#: ../inc/classes/PluginAdmin.php:164
+msgid "Skip to plugin settings"
+msgstr ""
+
+#: ../inc/classes/PluginAdmin.php:179
+msgid "Active "
+msgstr ""
+
+#: ../inc/classes/PluginAdminRobotstxtRules.php:29
+msgid "Upload Path Not Set"
+msgstr ""
+
+#: ../inc/classes/PluginAdminSave.php:223
+msgid "You are not authorized to perform this action."
+msgstr ""
+
+#: ../inc/templates/cleaner.php:15
+msgid "Robots.txt cleaner"
+msgstr ""
+
+#: ../inc/templates/cleaner.php:16
+msgid "Tools to help you with robots.txt file issues."
+msgstr ""
+
+#: ../inc/templates/cleaner.php:28
+msgid "Check for other robots.txt file settings"
+msgstr ""
+
+#: ../inc/templates/cleaner.php:29
 msgid "If you are having problems with a websites robots.txt file to displaying properly, it is possible that old robots.txt file data left over from other plugins is conflicting. Click the \"scan for old data\" button below to scan the network for left over data. If any is found, a notice will display with a new button to automatically clean out the left over data."
 msgstr ""
 
-#: inc/templates/cleaner.php:56
-msgid "Old Robots.txt File Settings Found"
+#: ../inc/templates/cleaner.php:31
+msgid "Select to scan for old Robots.txt file data."
 msgstr ""
 
-#: inc/templates/cleaner.php:57
+#: ../inc/templates/cleaner.php:37
+msgid "Old robots.txt file settings found"
+msgstr ""
+
+#: ../inc/templates/cleaner.php:38
 msgid "Click the \"remove old data\" button below to purge the old settings."
 msgstr ""
 
-#: inc/templates/cleaner.php:63
-msgid "Check For Real (physical) Robots.txt File"
+#: ../inc/templates/cleaner.php:40
+msgid "Select to remove old Robots.txt file data."
 msgstr ""
 
-#: inc/templates/cleaner.php:64
+#: ../inc/templates/cleaner.php:48
+msgid "Check for a real robots.txt file"
+msgstr ""
+
+#: ../inc/templates/cleaner.php:49
 msgid "If network/website changes do not appear to override the robots.txt file or if the file is blank, it is possible that a plugin created a physical (hard) robots.txt file. Click the \"scan for physical file\" button below to check the website for a real robots.txt file. If one is found, a notice will display with a new button allowing you to delete the file."
 msgstr ""
 
-#: inc/templates/cleaner.php:69
-msgid "A Real Robots.txt File Was Found"
+#: ../inc/templates/cleaner.php:51
+msgid "Select to scan for a real robots.txt file."
 msgstr ""
 
-#: inc/templates/cleaner.php:70
+#: ../inc/templates/cleaner.php:58
+msgid "A real robots.txt file was found"
+msgstr ""
+
+#: ../inc/templates/cleaner.php:59
 msgid "Click the \"delete physical file\" button below to delete the real robots.txt file."
 msgstr ""
 
-#: inc/templates/cleaner.php:76
-msgid "Check For Robots.txt Rewrite Rule"
+#: ../inc/templates/cleaner.php:61
+msgid "Select to delete the robots.txt file."
 msgstr ""
 
-#: inc/templates/cleaner.php:77
+#: ../inc/templates/cleaner.php:69
+msgid "Check for robots.txt rewrite rule"
+msgstr ""
+
+#: ../inc/templates/cleaner.php:70
 msgid "If your robots.txt files are blank, it is possible the website is missing the rewrite rule index.php?robots=1. Click the \"scan for missing rule\" button below to scan the for the missing rule. If the rule is missing, a notice will display with a new button to automatically add the rule for you."
 msgstr ""
 
-#: inc/templates/cleaner.php:82
-msgid "Website Rewrite Rule Missing"
+#: ../inc/templates/cleaner.php:72
+msgid "Select to scan for missing rewrite rule."
 msgstr ""
 
-#: inc/templates/cleaner.php:83
-msgid "Click the \"add missing rule\" button below to add the missing rule."
+#: ../inc/templates/cleaner.php:79
+msgid "The rewrite rule is missing"
 msgstr ""
 
-#: inc/templates/footer.php:39
+#: ../inc/templates/cleaner.php:80
+msgid "Click the \"correct missing rule\" button below to add the missing rule."
+msgstr ""
+
+#: ../inc/templates/cleaner.php:82
+msgid "Select to add the missing rewrite rule."
+msgstr ""
+
+#: ../inc/templates/footer.php:32
+msgid "Click to return to plugin settings."
+msgstr ""
+
+#: ../inc/templates/footer.php:32
 msgid "top"
 msgstr ""
 
-#: inc/templates/header.php:24
+#: ../inc/templates/header.php:16
 msgid "A Simple Robots.txt Manager Plugin For WordPress."
 msgstr ""
 
-#: inc/templates/settings.php:53
-msgid "Saved Robots.txt File"
+#: ../inc/templates/settings.php:15
+msgid "Plugin settings"
 msgstr ""
 
-#: inc/templates/settings.php:54
-msgid "View robots.txt file"
+#: ../inc/templates/settings.php:27
+msgid "Saved robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:60
-msgid "Saving an empty robots.txt file will restore the default WordPress robots.txt file."
+#: ../inc/templates/settings.php:28
+msgid "Displaying the currently saved robots.txt file. Saving an empty file will restore the default WordPress robots.txt file."
 msgstr ""
 
-#: inc/templates/settings.php:66
-msgid "update robots.txt file"
+#: ../inc/templates/settings.php:29
+msgid "View this websites current robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:74
-msgid "Manual Rule Suggestions"
+#: ../inc/templates/settings.php:30
+msgid "No robots.txt file is currently saved."
 msgstr ""
 
-#: inc/templates/settings.php:75
-msgid "The rules below will need to be manually added to the end of the robots.txt file."
+#: ../inc/templates/settings.php:30
+msgid "Displaying the currently saved robots.txt file."
 msgstr ""
 
-#: inc/templates/settings.php:79
-msgid "Upload Path"
+#: ../inc/templates/settings.php:31
+msgid "save robots.txt file changes"
 msgstr ""
 
-#: inc/templates/settings.php:83
-msgid "Theme Path"
+#: ../inc/templates/settings.php:37
+msgid "Recommended robots.txt file rules"
 msgstr ""
 
-#: inc/templates/settings.php:87
+#: ../inc/templates/settings.php:40
+msgid "To help ensure the entire website is indexed by search engines; Copy and paste the rules below into the above robots.txt file."
+msgstr ""
+
+#: ../inc/templates/settings.php:43
+msgid "Media upload path"
+msgstr ""
+
+#: ../inc/templates/settings.php:47
+msgid "Current themes path"
+msgstr ""
+
+#: ../inc/templates/settings.php:51
 msgid "Sitemap URL"
 msgstr ""
 
-#: inc/templates/settings.php:113
-msgid "Robots.txt File Presets"
+#: ../inc/templates/settings.php:66
+msgid "Robots.txt file presets"
 msgstr ""
 
-#: inc/templates/settings.php:114
-msgid "Select a preset robots.txt file to load and use."
+#: ../inc/templates/settings.php:69
+msgid "Select a predefined robots.txt file to load and use."
 msgstr ""
 
-#: inc/templates/settings.php:118
+#: ../inc/templates/settings.php:75
 msgid "Default Robots.txt File"
 msgstr ""
 
-#: inc/templates/settings.php:119
-msgid "The plugins default installed robots.txt file."
+#: ../inc/templates/settings.php:75
+msgid "View the default robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:122
+#: ../inc/templates/settings.php:82
 msgid "Alternative Robots.txt File"
 msgstr ""
 
-#: inc/templates/settings.php:123
-msgid "Similar to the plugins default robots.txt file, with more disallows."
+#: ../inc/templates/settings.php:82
+msgid "View the alternative robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:126
+#: ../inc/templates/settings.php:89
 msgid "WordPress Limited Robots.txt File"
 msgstr ""
 
-#: inc/templates/settings.php:127
-msgid "Only disallows wp-includes and wp-admin."
+#: ../inc/templates/settings.php:89
+msgid "View the WordPress robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:130
+#: ../inc/templates/settings.php:96
 msgid "Open Robots.txt File"
 msgstr ""
 
-#: inc/templates/settings.php:131
-msgid "Fully open robots.txt file, no disallows."
+#: ../inc/templates/settings.php:96
+msgid "View the fully open robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:134
+#: ../inc/templates/settings.php:103
 msgid "A Bloggers Robots.txt File"
 msgstr ""
 
-#: inc/templates/settings.php:135
-msgid "Optimized for blog focused WordPress websites."
+#: ../inc/templates/settings.php:103
+msgid "View the bloggers robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:138
+#: ../inc/templates/settings.php:110
 msgid "Google Robots.txt File"
 msgstr ""
 
-#: inc/templates/settings.php:139
-msgid "A Google friendly robots.txt file."
+#: ../inc/templates/settings.php:110
+msgid "View the Google friendly robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:142
-msgid "Lockdown Robots.txt File"
+#: ../inc/templates/settings.php:117
+msgid "Locked Down Robots.txt File"
 msgstr ""
 
-#: inc/templates/settings.php:143
-msgid "Disallow everything, prevent spiders from indexing the website."
+#: ../inc/templates/settings.php:117
+msgid "View the locked down robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:148
-msgid "change robots.txt file"
+#: ../inc/templates/settings.php:121
+msgid "update saved robots.txt file"
 msgstr ""
 
-#: inc/templates/settings.php:169
-msgid "WARNING: Delete all settings related to the Robots.txt Manager plugin."
+#: ../inc/templates/settings.php:133
+msgid "Delete all plugin settings"
 msgstr ""
 
-#: inc/templates/sidebar.php:34
+#: ../inc/templates/settings.php:138
+msgid "WARNING: This action cannot be undone."
+msgstr ""
+
+#: ../inc/templates/settings.php:142
+msgid "Delete all plugin settings."
+msgstr ""
+
+#: ../inc/templates/sidebar.php:22
 msgid "Plugin Home Page"
 msgstr ""
 
-#: inc/templates/sidebar.php:35
+#: ../inc/templates/sidebar.php:23
 msgid "Bugs & Feature Request"
 msgstr ""
 
-#: inc/templates/sidebar.php:46
+#: ../inc/templates/sidebar.php:31
 msgid "Robots.txt Help"
 msgstr ""
 
-#: inc/templates/sidebar.php:50
+#: ../inc/templates/sidebar.php:36
 msgid "Robots.txt Optimization Tips"
 msgstr ""
 
-#: inc/templates/sidebar.php:51
+#: ../inc/templates/sidebar.php:37
 msgid "AskAapche Robots.txt Example"
 msgstr ""
 
-#: inc/templates/sidebar.php:52
+#: ../inc/templates/sidebar.php:38
 msgid "Google Robots.txt F.A.Q."
 msgstr ""
 
-#: inc/templates/sidebar.php:53
+#: ../inc/templates/sidebar.php:39
 msgid "Robots.txt Specifications"
 msgstr ""
 
-#: inc/templates/sidebar.php:54
+#: ../inc/templates/sidebar.php:40
 msgid "Web Robots Database"
 msgstr ""
