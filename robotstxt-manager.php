@@ -86,15 +86,14 @@ new \RobotstxtManager\InitPlugin();
         'init',
     ]
 );
-/*
-// Plugin update checker
-if (true === file_exists(dirname(__FILE__).'/puc/plugin-update-checker.php')) {
-    require_once dirname(__FILE__).'/puc/plugin-update-checker.php';
 
-    $robotstxt_manager_updater = \Puc_v4_Factory::buildUpdateChecker(
-        'https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/updates.json',
-        __FILE__,
-        'robotstxt-manager'
-    );
-}
+/*
+ * Plugin update checker 5.0.
  */
+require_once dirname(__FILE__).'/puc/load-v5p0.php';
+
+\YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+    'https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/updates.json',
+    __FILE__,
+    'robotstxt-manager'
+);
