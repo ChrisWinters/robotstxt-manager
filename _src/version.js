@@ -52,29 +52,29 @@ inquirer
     },
   ])
   .then(function (res) {
-    // readme.txt file.
+    // File: readme.txt file
     const currentStableTag = "Current version:** " + res.version;
     const previousStableTag = "Current version:** " + packageVersion;
 
-    // README.MD file.
+    // File: README.MD
     const currentHeaderTag = "Version: " + res.version;
     const previousHeaderTag = "Version: " + packageVersion;
 
-    // robotstxt-manager.php file.
+    // File: robotstxt-manager.php
     const currentConstantTag =
       "'ROBOTSTXT_MANAGER_VERSION', '" + res.version + "'";
     const previousConstantTag =
       "'ROBOTSTXT_MANAGER_VERSION', '" + packageVersion + "'";
 
-    // package.json, package-lock.json, updates.json
+    // Fils: package.json, package-lock.json, updates.json
     const currentVersionTag = '"version": "' + res.version + '"';
     const previousVersionTag = '"version": "' + packageVersion + '"';
 
-    // updates.json
+    // File: updates.json
     const currentZipFileTag = 'tag/' + res.version;
     const previousZipFileTag = 'tag/' + packageVersion;
 
-    // updates.json
+    // File: updates.json
     const currentUpdatedTag = '"last_updated": "' + packageLastUpdated;
     const previousUpdatedTag = '"last_updated": "'+ getDateTime();
 
