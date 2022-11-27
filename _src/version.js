@@ -42,6 +42,10 @@ inquirer
     const currentVersionTag = '"version": "' + res.version + '"';
     const previousVersionTag = '"version": "' + packageVersion + '"';
 
+    // updates.json
+    const currentZipFileTag = 'tag/' + res.version;
+    const previousZipFileTag = 'tag/' + packageVersion;
+
     // Update version.
     replace.sync({
       files: [
@@ -57,12 +61,14 @@ inquirer
         previousHeaderTag,
         previousConstantTag,
         previousVersionTag,
+        previousZipFileTag,
       ],
       to: [
         currentStableTag,
         currentHeaderTag,
         currentConstantTag,
         currentVersionTag,
+        currentZipFileTag,
       ],
     });
 
