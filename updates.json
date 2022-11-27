@@ -1,7 +1,7 @@
 {
 	"name": "Robots.txt Manager",
 	"version": "1.1.0",
-	"download_url": "https://github.com/ChrisWinters/robotstxt-manager/archive/1.1.0.zip",
+	"download_url": "https://github.com/ChrisWinters/robotstxt-manager/releases/tag/1.1.0",
 	"homepage": "https://github.com/ChrisWinters/robotstxt-manager/",
 	"requires": "7.2",
 	"tested": "6.1.1",
