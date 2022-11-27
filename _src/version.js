@@ -24,47 +24,47 @@ inquirer
     },
   ])
   .then(function (res) {
-    try {
-      // Tags to update.
-      const currentStableTag = "Current version:** " + res.version;
-      const previousStableTag = "Current version:** " + packageVersion;
+    // readme.txt file.
+    const currentStableTag = "Current version:** " + res.version;
+    const previousStableTag = "Current version:** " + packageVersion;
 
-      const currentHeaderTag = "Version: " + res.version;
-      const previousHeaderTag = "Version: " + packageVersion;
+    // README.MD file.
+    const currentHeaderTag = "Version: " + res.version;
+    const previousHeaderTag = "Version: " + packageVersion;
 
-      const currentConstantTag =
-        "'ROBOTSTXT_MANAGER_VERSION', '" + res.version + "'";
-      const previousConstantTag =
-        "'ROBOTSTXT_MANAGER_VERSION', '" + packageVersion + "'";
+    // robotstxt-manager.php file.
+    const currentConstantTag =
+      "'ROBOTSTXT_MANAGER_VERSION', '" + res.version + "'";
+    const previousConstantTag =
+      "'ROBOTSTXT_MANAGER_VERSION', '" + packageVersion + "'";
 
-      const currentUpdatesTag = '"version": "' + res.version + '"';
-      const previousUpdatesTag = '"version": "' + packageVersion + '"';
+    // package.json, package-lock.json, updates.json
+    const currentVersionTag = '"version": "' + res.version + '"';
+    const previousVersionTag = '"version": "' + packageVersion + '"';
 
-      // Update version.
-      replace.sync({
-        files: [
-          "./readme.txt",
-          "./README.md",
-          "./robotstxt-manager.php",
-          "./updates.json",
-          "./package.json",
-        ],
-        from: [
-          previousStableTag,
-          previousHeaderTag,
-          previousConstantTag,
-          previousUpdatesTag,
-        ],
-        to: [
-          currentStableTag,
-          currentHeaderTag,
-          currentConstantTag,
-          currentUpdatesTag,
-        ],
-      });
+    // Update version.
+    replace.sync({
+      files: [
+        "./readme.txt",
+        "./README.md",
+        "./robotstxt-manager.php",
+        "./package.json",
+        "./package-lock.json",
+        "./updates.json",
+      ],
+      from: [
+        previousStableTag,
+        previousHeaderTag,
+        previousConstantTag,
+        previousVersionTag,
+      ],
+      to: [
+        currentStableTag,
+        currentHeaderTag,
+        currentConstantTag,
+        currentVersionTag,
+      ],
+    });
 
-      console.log("Version updated to: " + res.version);
-    } catch (error) {
-      console.log("Packages missing: Type `npm install`\n");
-    }
+    console.log("Version updated to: " + res.version);
   });
