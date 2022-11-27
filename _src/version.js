@@ -4,18 +4,17 @@
  * Update plugin version.
  */
 
-import inquirer from 'inquirer';
-import replace from 'replace-in-file';
+import inquirer from "inquirer";
+import replace from "replace-in-file";
+import fs from "node:fs/promises";
 
-// Configuration.
-import fs from 'node:fs/promises';
-const packageJson = JSON.parse(await fs.readFile('package.json'));
+const packageJson = JSON.parse(await fs.readFile("package.json"));
 const packageVersion = packageJson.version;
 
-const updatesJson = JSON.parse(await fs.readFile('updates.json'));
+const updatesJson = JSON.parse(await fs.readFile("updates.json"));
 const packageLastUpdated = updatesJson.last_updated;
 
-const getDateTime = function() {
+const getDateTime = function () {
   const dateObject = new Date();
 
   // current date
@@ -37,8 +36,20 @@ const getDateTime = function() {
   // current seconds
   const seconds = dateObject.getSeconds();
 
-  return year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
-}
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    date +
+    " " +
+    hours +
+    ":" +
+    minutes +
+    ":" +
+    seconds
+  );
+};
 
 inquirer
   .prompt([
@@ -71,12 +82,12 @@ inquirer
     const previousVersionTag = '"version": "' + packageVersion + '"';
 
     // File: updates.json
-    const currentZipFileTag = 'tag/' + res.version;
-    const previousZipFileTag = 'tag/' + packageVersion;
+    const currentZipFileTag = "tag/" + res.version;
+    const previousZipFileTag = "tag/" + packageVersion;
 
     // File: updates.json
     const currentUpdatedTag = '"last_updated": "' + packageLastUpdated;
-    const previousUpdatedTag = '"last_updated": "'+ getDateTime();
+    const previousUpdatedTag = '"last_updated": "' + getDateTime();
 
     // Update version.
     replace.sync({
