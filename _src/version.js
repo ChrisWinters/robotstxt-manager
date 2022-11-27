@@ -12,6 +12,9 @@ import fs from 'node:fs/promises';
 const packageJson = JSON.parse(await fs.readFile('package.json'));
 const packageVersion = packageJson.version;
 
+const updatesJson = JSON.parse(await fs.readFile('updates.json'));
+const packageLastUpdated = updatesJson.last_updated;
+
 const getDateTime = function() {
   const dateObject = new Date();
 
@@ -71,6 +74,10 @@ inquirer
     const currentZipFileTag = 'tag/' + res.version;
     const previousZipFileTag = 'tag/' + packageVersion;
 
+    // updates.json
+    const currentUpdatedTag = '"last_updated": "' + packageLastUpdated;
+    const previousUpdatedTag = '"last_updated": "'+ getDateTime();
+
     // Update version.
     replace.sync({
       files: [
@@ -87,6 +94,7 @@ inquirer
         previousConstantTag,
         previousVersionTag,
         previousZipFileTag,
+        currentUpdatedTag,
       ],
       to: [
         currentStableTag,
@@ -94,6 +102,7 @@ inquirer
         currentConstantTag,
         currentVersionTag,
         currentZipFileTag,
+        previousUpdatedTag,
       ],
     });
 
