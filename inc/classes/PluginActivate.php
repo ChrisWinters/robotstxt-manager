@@ -22,8 +22,10 @@ final class PluginActivate
      */
     public static function init(): void
     {
-        if (true === version_compare(\get_bloginfo('version'), 3.8, '<')) {
-            \wp_die(\esc_html__('WordPress 3.8 is required. Please upgrade WordPress and try again.', 'robotstxt-manager'));
+        $requiredWPVersion = 3.8;
+
+        if (true === version_compare(\get_bloginfo('version'), $requiredWPVersion, '<')) {
+            \wp_die(\esc_html__('WordPress version '.$requiredWPVersion.' is required.', 'robotstxt-manager'));
         }
 
         // Maybe Save Robots.txt As Plugin Robots.txt.
