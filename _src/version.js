@@ -1,121 +1,120 @@
 #!/usr/bin/env node
 
 /*!
- * Update plugin version.
+ * Bump plugin version, required PHP version, and required/tested WordPress version.
  */
 
 import inquirer from "inquirer";
-import replace from "replace-in-file";
 import fs from "node:fs/promises";
+import replacer from "./replacer.js";
+import {
+  pluginVersionFiles,
+  pluginVersionFrom,
+  pluginVersionTo,
+} from "./configPluginVersion.js";
+import {
+  requiredPHPFiles,
+  requiredPHPFrom,
+  requiredPHPTo,
+} from "./configRequiredPHP.js";
+import {
+  requiredWPFiles,
+  requiredWPFrom,
+  requiredWPTo,
+} from "./configRequiredWP.js";
+import {
+  lastUpdatedFiles,
+  lastUpdatedFrom,
+  lastUpdatedTo,
+} from "./configLastUpdated.js";
+import { testedWPFiles, testedWPFrom, testedWPTo } from "./configTestedWP.js";
+import { inquirerQuestions } from "./configInquirer.js";
+import { getDateTime } from "./dateTime.js";
 
-const packageJson = JSON.parse(await fs.readFile("package.json"));
-const packageVersion = packageJson.version;
-
+const extraLogging = false; // Set to true to display updated files.
+const dateAndTime = getDateTime();
 const updatesJson = JSON.parse(await fs.readFile("updates.json"));
-const packageLastUpdated = updatesJson.last_updated;
+const oldPluginVersion = updatesJson.version;
+const requiredPHPVersion = updatesJson.required_php;
+const requiredWPVersion = updatesJson.required_wp;
+const testedWPVersion = updatesJson.tested_wp;
+const lastUpdatedPlugin = updatesJson.last_updated;
+const questions = inquirerQuestions(
+  oldPluginVersion,
+  requiredPHPVersion,
+  requiredWPVersion,
+  testedWPVersion
+);
 
-const getDateTime = function () {
-  const dateObject = new Date();
+// Prompt questions and answers.
+inquirer.prompt(questions).then((answers) => {
+  let answer = false;
 
-  // current date
-  // adjust 0 before single digit date
-  const date = ("0" + dateObject.getDate()).slice(-2);
+  // Bump plugin version.
+  if (answers.new_plugin_version) {
+    replacer(
+      extraLogging,
+      "Plugin version updated to: " + answers.new_plugin_version,
+      pluginVersionFiles(),
+      pluginVersionFrom(oldPluginVersion),
+      pluginVersionTo(answers.new_plugin_version)
+    );
 
-  // current month
-  const month = ("0" + (dateObject.getMonth() + 1)).slice(-2);
+    answer = true;
+  }
 
-  // current year
-  const year = dateObject.getFullYear();
+  // Bump required php version.
+  if (answers.new_required_php_version) {
+    replacer(
+      extraLogging,
+      "Updated minimum PHP version to: " + answers.new_required_php_version,
+      requiredPHPFiles(),
+      requiredPHPFrom(requiredPHPVersion),
+      requiredPHPTo(answers.new_required_php_version)
+    );
 
-  // current hours
-  const hours = dateObject.getHours();
+    answer = true;
+  }
 
-  // current minutes
-  const minutes = dateObject.getMinutes();
+  // Bump required WordPress version.
+  if (answers.new_required_wp_version) {
+    replacer(
+      extraLogging,
+      "Updated required WordPress Version to: " +
+        answers.new_required_wp_version,
+      requiredWPFiles(),
+      requiredWPFrom(requiredWPVersion),
+      requiredWPTo(answers.new_required_wp_version)
+    );
 
-  // current seconds
-  const seconds = dateObject.getSeconds();
+    answer = true;
+  }
 
-  return (
-    year +
-    "-" +
-    month +
-    "-" +
-    date +
-    " " +
-    hours +
-    ":" +
-    minutes +
-    ":" +
-    seconds
-  );
-};
+  // Bump tested WordPress version.
+  if (answers.new_tested_wp_version) {
+    replacer(
+      extraLogging,
+      "Updated tested WordPress version to:" + answers.new_tested_wp_version,
+      testedWPFiles(),
+      testedWPFrom(testedWPVersion),
+      testedWPTo(answers.new_tested_wp_version)
+    );
 
-inquirer
-  .prompt([
-    {
-      type: "input",
-      name: "version",
-      message:
-        "What version are we moving to? (Current version is " +
-        packageVersion +
-        ")",
-    },
-  ])
-  .then(function (res) {
-    // File: readme.txt file
-    const currentStableTag = "Current version:** " + res.version;
-    const previousStableTag = "Current version:** " + packageVersion;
+    answer = true;
+  }
 
-    // File: README.MD
-    const currentHeaderTag = "Version: " + res.version;
-    const previousHeaderTag = "Version: " + packageVersion;
+  // Bump updated date and time.
+  if (answer) {
+    replacer(
+      extraLogging,
+      "Last updated: " + dateAndTime,
+      lastUpdatedFiles(),
+      lastUpdatedFrom(lastUpdatedPlugin),
+      lastUpdatedTo(dateAndTime)
+    );
+  }
 
-    // File: robotstxt-manager.php
-    const currentConstantTag =
-      "'ROBOTSTXT_MANAGER_VERSION', '" + res.version + "'";
-    const previousConstantTag =
-      "'ROBOTSTXT_MANAGER_VERSION', '" + packageVersion + "'";
-
-    // Fils: package.json, package-lock.json, updates.json
-    const currentVersionTag = '"version": "' + res.version + '"';
-    const previousVersionTag = '"version": "' + packageVersion + '"';
-
-    // File: updates.json
-    const currentZipFileTag = "tag/" + res.version;
-    const previousZipFileTag = "tag/" + packageVersion;
-
-    // File: updates.json
-    const currentUpdatedTag = '"last_updated": "' + packageLastUpdated;
-    const previousUpdatedTag = '"last_updated": "' + getDateTime();
-
-    // Update version.
-    replace.sync({
-      files: [
-        "./readme.txt",
-        "./README.md",
-        "./robotstxt-manager.php",
-        "./package.json",
-        "./package-lock.json",
-        "./updates.json",
-      ],
-      from: [
-        previousStableTag,
-        previousHeaderTag,
-        previousConstantTag,
-        previousVersionTag,
-        previousZipFileTag,
-        currentUpdatedTag,
-      ],
-      to: [
-        currentStableTag,
-        currentHeaderTag,
-        currentConstantTag,
-        currentVersionTag,
-        currentZipFileTag,
-        previousUpdatedTag,
-      ],
-    });
-
-    console.log("Version updated to: " + res.version);
-  });
+  if (!answer) {
+    console.log("\nNo answers provided.\n");
+  }
+});
