@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*!
- * Replace config: Plugin last tested with WordPress version
+ * Replace config: Set last updated date and time
  */
 
 // Files replace will update.

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*!
- * Replace config: Required WordPress version
+ * Replace config: Update required WordPress version
  */
 
 // Files replace will update.

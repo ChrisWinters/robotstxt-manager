@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*!
- * Replace config: Plugin version
+ * Replace config: Update plugin version
  */
 
 // Files replace will update.

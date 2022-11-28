@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*!
- * Replace config: Required PHP version
+ * Replace config: Update required PHP version
  */
 
 // Files replace will update.
