@@ -6,6 +6,8 @@ A simple to use Robots.txt Manager Plugin for WordPress, with 7 pre-created robo
 * **Requires PHP:** 7.2
 * **WordPress version:** 6.1.1
 
+  ![The robots.txt manger WordPress plugin allows you to quickly and easily manage your websites robots.txt file.](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/icon-256x256.png)
+
 ## Plugin features
 
 * Updates like any other WordPress plugin once installed and activated
