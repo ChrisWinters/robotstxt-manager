@@ -57,11 +57,15 @@ final class PluginAdminRobotstxtRules
         $sitemapUrlBase = \get_option('siteurl');
 
         // Base XML File Locations To check.
+        $wpXmlFileLocation = get_headers($sitemapUrlBase.'/wp-sitemap.xml');
         $rootXmlFileLocation = get_headers($sitemapUrlBase.'/sitemap.xml');
         $altXmlFileLocation = get_headers($sitemapUrlBase.'/sitemaps/sitemap.xml');
 
         // Check if xml sitemap exists.
-        if (true === isset($rootXmlFileLocation[0]) && 'HTTP/1.1 200 OK' === $rootXmlFileLocation[0]) {
+        if (true === isset($wpXmlFileLocation[0]) && 'HTTP/1.1 200 OK' === $wpXmlFileLocation[0]) {
+            // http://domain.com/wp-sitemap.xml.
+            $url = $sitemapUrlBase.'/wp-sitemap.xml';
+        } elseif (true === isset($rootXmlFileLocation[0]) && 'HTTP/1.1 200 OK' === $rootXmlFileLocation[0]) {
             // http://domain.com/sitemap.xml.
             $url = $sitemapUrlBase.'/sitemap.xml';
         } elseif (true === isset($altXmlFileLocation[0]) && 'HTTP/1.1 200 OK' === $altXmlFileLocation[0]) {
