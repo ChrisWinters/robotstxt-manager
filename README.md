@@ -116,9 +116,9 @@ Use the [Google Search Console](https://search.google.com/search-console) to val
 
 ### Screenshots
 
-1. [Plugin Admin - Settings Tab - Fresh Install](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/screenshot-1.png)
-2. [Plugin Admin - Settings Tab - Saved Robots.txt](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/screenshot-2.png)
-3. [Plugin Admin - Cleaner Tab](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/svn/screenshot-3.png)
+1. [Plugin Admin - Settings Tab - Fresh Install](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/assets/plugin/screenshot-1.png)
+2. [Plugin Admin - Settings Tab - Saved Robots.txt](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/assets/plugin/screenshot-2.png)
+3. [Plugin Admin - Cleaner Tab](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/assets/plugin/screenshot-3.png)
 
 ## Issue and feature requests
 
