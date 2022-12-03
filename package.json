@@ -2,7 +2,7 @@
     "name": "robotstxt-manager",
     "author": "Chris W.",
     "version": "1.1.0",
-    "license": "GPL-2.0",
+    "license": "GNU GPLv3",
     "type": "module",
     "repository": {
         "type": "git",
