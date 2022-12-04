@@ -14,13 +14,13 @@ export function lastUpdatedFiles() {
 // Items replace to search for.
 export function lastUpdatedFrom(lastUpdatedPlugin) {
   return [
-    '"last_updated": ' + lastUpdatedPlugin, // File: updates.json
+    '"last_updated": "' + lastUpdatedPlugin + '"', // File: updates.json
   ];
 }
 
 // Items replace will update to.
 export function lastUpdatedTo(dateAndTime) {
   return [
-    '"last_updated": ' + dateAndTime, // File: updates.json
+    '"last_updated": "' + dateAndTime + '"', // File: updates.json
   ];
 }
