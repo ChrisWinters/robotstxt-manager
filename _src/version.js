@@ -94,7 +94,7 @@ inquirer.prompt(questions).then((answers) => {
   if (answers.new_tested_wp_version) {
     replacer(
       extraLogging,
-      "Updated tested WordPress version to:" + answers.new_tested_wp_version,
+      "Updated tested WordPress version to: " + answers.new_tested_wp_version,
       testedWPFiles(),
       testedWPFrom(testedWPVersion),
       testedWPTo(answers.new_tested_wp_version)
