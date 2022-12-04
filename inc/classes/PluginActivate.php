@@ -47,9 +47,9 @@ final class PluginActivate
             )
         ) {
             \wp_die(
-                \esc_html__(
-                    'WordPress version '.self::$requiredWPVersion.' is required.',
-                    'robotstxt-manager'
+                sprintf(
+                    __('WordPress version %s is required.', 'robotstxt-manager'),
+                    self::$requiredWPVersion
                 )
             );
         }
