@@ -39,7 +39,7 @@ final class PluginActivate
     /**
      * Compare and require a version of WordPress.
      */
-    private static function requiredWordPress()
+    private static function requiredWordPress(): void
     {
         if (
             true === version_compare(
@@ -58,7 +58,7 @@ final class PluginActivate
     /**
      * Setup default plugin settings.
      */
-    private static function setupPlugin()
+    private static function setupPlugin(): void
     {
         $settings = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
