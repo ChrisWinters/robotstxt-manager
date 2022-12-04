@@ -13,71 +13,68 @@ if (false === defined('ABSPATH')) {
 }
 
 /**
- * Activation Rules.
+ * Plugin setup on activation.
  */
 final class PluginActivate
 {
     /**
-     * Init Plugin Activation.
+     * Required WordPress version.
+     *
+     * @var int
+     */
+    private static $requiredWPVersion = 3.8;
+
+    /**
+     * Init plugin validation and setup.
      */
     public static function init(): void
     {
-        $requiredWPVersion = 3.8;
+        // Compare and require a version of WordPress.
+        self::requiredWordPress();
 
-        if (true === version_compare(\get_bloginfo('version'), $requiredWPVersion, '<')) {
-            \wp_die(\esc_html__('WordPress version '.$requiredWPVersion.' is required.', 'robotstxt-manager'));
-        }
-
-        // Maybe Save Robots.txt As Plugin Robots.txt.
-        self::setRobotstxt();
+        // Setup default plugin settings.
+        self::setupPlugin();
     }
 
     /**
-     * Maybe Set Plugin Robots.txt.
+     * Compare and require a version of WordPress.
      */
-    public static function setRobotstxt(): void
+    private static function requiredWordPress()
+    {
+        if (
+            true === version_compare(
+                \get_bloginfo('version'), self::$requiredWPVersion, '<'
+            )
+        ) {
+            \wp_die(
+                \esc_html__(
+                    'WordPress version '.self::$requiredWPVersion.' is required.',
+                    'robotstxt-manager'
+                )
+            );
+        }
+    }
+
+    /**
+     * Setup default plugin settings.
+     */
+    private static function setupPlugin()
     {
         $settings = \get_option(ROBOTSTXT_MANAGER_PLUGIN_NAME);
 
-        // Set Plugin Robots.txt From Website Robots.txt.
-        if (true === empty($settings['robotstxt']) && true !== empty(self::getWebsiteRobotstxt())) {
-            \update_option(
-                ROBOTSTXT_MANAGER_PLUGIN_NAME,
-                [
-                    'robotstxt' => self::getWebsiteRobotstxt(),
-                ]
-            );
-        }
-
-        // Set Plugin Robots.txt Based On Default WordPress robots.txt - Unable To Read Robots.txt.
-        if (true === empty($settings['robotstxt']) && true === empty(self::getWebsiteRobotstxt())) {
-            $presetRobotstxt = "User-agent: *\n";
-            $presetRobotstxt .= "Disallow: /wp-admin/\n";
-            $presetRobotstxt .= "Allow: /wp-admin/admin-ajax.php\n";
+        // Maybe set default robots.txt file.
+        if (true === empty($settings['robotstxt'])) {
+            $robotstxt = "# robots.txt\n";
+            $robotstxt .= "User-agent: *\n";
+            $robotstxt .= "Disallow: /wp-admin/\n";
+            $robotstxt .= "Allow: /wp-admin/admin-ajax.php\n";
 
             \update_option(
                 ROBOTSTXT_MANAGER_PLUGIN_NAME,
                 [
-                    'robotstxt' => $presetRobotstxt,
+                    'robotstxt' => $robotstxt,
                 ]
             );
         }
-    }
-
-    /**
-     * Get Local Website Robots.txt File Body.
-     */
-    public static function getWebsiteRobotstxt(): string
-    {
-        $robotstxt = '';
-
-        // Retrieve the raw response from the HTTP request using the GET method.
-        $websiteRobotstxt = \wp_remote_get(\get_home_url().'/robots.txt');
-
-        if (true !== empty($websiteRobotstxt['response']['code']) && '200' === $websiteRobotstxt['response']['code'] && true !== empty($websiteRobotstxt['body'])) {
-            $robotstxt = $websiteRobotstxt['body'];
-        }
-
-        return $robotstxt;
     }
 }
