@@ -22,7 +22,7 @@ final class PluginActivate
      *
      * @var int
      */
-    private static $requiredWPVersion = 3.8;
+    private static $requiredWPVersion = 4.9;
 
     /**
      * Init plugin validation and setup.
