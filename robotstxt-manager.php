@@ -41,6 +41,20 @@ require_once __DIR__.'/inc/functions/option/get.php';
 require_once __DIR__.'/inc/functions/option/setting.php';
 require_once __DIR__.'/inc/functions/option/update.php';
 
+// Init plugin.
+\add_action(
+    'plugins_loaded',
+    '\RobotstxtManager\loadPlugin'
+);
+
+/**
+ * Load all plugin features.
+ */
+function loadPlugin(): void
+{
+    return;
+}
+
 // Validate plugin on activation and preset plugin data.
 \register_activation_hook(
     __FILE__,
