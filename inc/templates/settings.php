@@ -40,5 +40,27 @@ if (false === defined('ABSPATH')) {
 </table>
 
 <?php \submit_button(\esc_html__('update robots.txt file', 'robotstxt-manager')); ?>
+</form>
 
+<br /><br /><hr />
+
+<form enctype="multipart/form-data" method="post" action="<?php echo admin_url('admin-post.php'); ?>">
+<?php
+\wp_nonce_field(
+    'robotstxt_manager_action',
+    'robotstxt_manager_nonce'
+);
+?>
+<input type="hidden" name="action" value="delete" />
+<input type="hidden" name="tab" value="settings" />
+
+<table class="form-table">
+	<tbody>
+		<tr>
+		<td class="text-right"><span class="description"><?php \esc_html_e('WARNING: Delete all settings related to the Robots.txt Manager plugin.', 'robotstxt-manager'); ?></span> <input type="radio" name="confirm" value="delete" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<p class="textright"><input type="submit" name="submit" value=" <?php esc_html_e('delete settings', 'robotstxt-manager'); ?> " /></p>
 </form>
