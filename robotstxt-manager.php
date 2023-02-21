@@ -52,7 +52,8 @@ require_once __DIR__.'/inc/functions/option/update.php';
  */
 function loadPlugin(): void
 {
-    return;
+    // Maybe display robots.txt file.
+    \RobotstxtManager\robotstxt();
 }
 
 // Validate plugin on activation and preset plugin data.
