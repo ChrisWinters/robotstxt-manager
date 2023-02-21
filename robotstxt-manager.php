@@ -54,6 +54,28 @@ function loadPlugin(): void
 {
     // Maybe display robots.txt file.
     \RobotstxtManager\robotstxt();
+
+    // Get current locale.
+    $getLocale = \apply_filters(
+        'plugin_locale',
+        \get_locale(),
+        'robotstxt-manager'
+    );
+
+    if (true === file_exists(__FILE__.'/lang/'.$getLocale.'.mo')) {
+        // Load a .mo file into the text domain $textdomain.
+        \load_textdomain(
+            'robotstxt-manager',
+            __FILE__.'/lang/'.$getLocale.'.mo'
+        );
+
+        // Loads translated strings.
+        \load_plugin_textdomain(
+            'robotstxt-manager',
+            false,
+            '/lang/'
+        );
+    }
 }
 
 // Validate plugin on activation and preset plugin data.
