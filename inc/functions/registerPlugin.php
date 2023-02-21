@@ -35,7 +35,7 @@ function registerPlugin(): void
     // Set default WordPress ready robots.txt file.
     \RobotstxtManager\option\update(
         [
-            'robotstxt' => 'test',
+            'robotstxt' => '',
         ]
     );
 }
