@@ -41,6 +41,8 @@ require_once __DIR__.'/inc/functions/option/get.php';
 require_once __DIR__.'/inc/functions/option/setting.php';
 require_once __DIR__.'/inc/functions/option/update.php';
 
+require_once __DIR__.'/inc/functions/plugin-admin/view/displayAdmin.php';
+
 // Init plugin.
 \add_action(
     'plugins_loaded',
@@ -76,6 +78,12 @@ function loadPlugin(): void
             '/lang/'
         );
     }
+
+    // Load plugin menu and admin area templates.
+    \add_action(
+        'admin_menu',
+        '\RobotstxtManager\PluginAdmin\View\displayAdmin'
+    );
 }
 
 // Validate plugin on activation and preset plugin data.
