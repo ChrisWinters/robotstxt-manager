@@ -31,6 +31,11 @@ function actions(): void
         $status = \RobotstxtManager\PluginAdmin\Posts\robotstxt($postObject['robotstxt']);
     }
 
+    // Use preset and update saved robots.txt file.
+    if ('preset' === $postObject['action'] && true !== empty($postObject['preset'])) {
+        $status = \RobotstxtManager\PluginAdmin\Posts\preset($postObject['preset']);
+    }
+
     // Delete all plugin settings.
     if ('delete' === $postObject['action'] && 'delete' === $postObject['confirm']) {
         $status = \RobotstxtManager\PluginAdmin\Posts\delete();
