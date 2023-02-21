@@ -26,6 +26,7 @@ if (false === defined('ABSPATH')) {
 function settings(string $key): string|array
 {
     $settings = [
+        'plugin_name' => \__('Robots.txt Manager', 'robotstxt-manager'),
         'security_message' => \__('You are not authorized to perform this action.', 'robotstxt-manager'),
     ];
 

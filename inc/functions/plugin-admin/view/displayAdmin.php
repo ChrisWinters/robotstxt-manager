@@ -17,8 +17,8 @@ function displayAdmin(): void
     // Plugin admin menu and templates.
     \add_submenu_page(
         'options-general.php',
-        __('Robots.txt Manager', 'robotstxt-manager'),
-        __('Robots.txt Manager', 'robotstxt-manager'),
+        \RobotstxtManager\settings('plugin_name'),
+        \RobotstxtManager\settings('plugin_name'),
         'manage_options',
         'robotstxt-manager',
         function () {
