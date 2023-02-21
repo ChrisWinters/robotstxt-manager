@@ -27,7 +27,7 @@ if (false === defined('ABSPATH')) {
 
 <div class="postbox">
 	<div class="h5 p-1 font-weight-bold">
-		<?php \esc_html_e('Robots.txt Help', 'robotstxt-manager'); ?>
+		<?php \esc_html_e('Robots.txt help', 'robotstxt-manager'); ?>
 	</div>
 	<div class="inside" style="clear:both;padding-top:1px;">
 		<div class="para">
