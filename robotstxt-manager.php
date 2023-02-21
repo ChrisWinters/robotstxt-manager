@@ -41,6 +41,7 @@ require_once __DIR__.'/inc/functions/isRobotstxt.php';
 require_once __DIR__.'/inc/functions/robotstxt.php';
 require_once __DIR__.'/inc/functions/registerPlugin.php';
 
+require_once __DIR__.'/inc/functions/option/delete.php';
 require_once __DIR__.'/inc/functions/option/get.php';
 require_once __DIR__.'/inc/functions/option/setting.php';
 require_once __DIR__.'/inc/functions/option/update.php';
