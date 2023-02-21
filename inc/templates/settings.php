@@ -33,7 +33,12 @@ if (false === defined('ABSPATH')) {
 		<tr>
 		<td>
 			<textarea name="robotstxt" cols="65" rows="20" class="w-100"><?php echo \esc_html(\RobotstxtManager\option\setting('robotstxt')); ?></textarea><br />
+			<span class="description small"><?php \esc_html_e('Saving an empty robots.txt file will restore the default WordPress robots.txt file.', 'robotstxt-manager'); ?></span>
 		</td>
 		</tr>
 	</tbody>
 </table>
+
+<?php \submit_button(\esc_html__('update robots.txt file', 'robotstxt-manager')); ?>
+
+</form>
