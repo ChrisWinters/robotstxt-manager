@@ -98,6 +98,12 @@ function loadPlugin(): void
         'admin_enqueue_scripts',
         '\RobotstxtManager\PluginAdmin\View\enqueueScripts'
     );
+
+    // Update robots.txt file.
+    \add_action(
+        'admin_post_robotstxt',
+        '\RobotstxtManager\PluginAdmin\Posts\actions'
+    );
 }
 
 // Validate plugin on activation and preset plugin data.
