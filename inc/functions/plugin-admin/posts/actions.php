@@ -31,6 +31,11 @@ function actions(): void
         $status = \RobotstxtManager\PluginAdmin\Posts\robotstxt($postObject['robotstxt']);
     }
 
+    // Delete all plugin settings.
+    if ('delete' === $postObject['action'] && 'delete' === $postObject['confirm']) {
+        $status = \RobotstxtManager\PluginAdmin\Posts\delete();
+    }
+
     // Redirect user back to plugin admin area.
     \RobotstxtManager\PluginAdmin\postRedirect(
         $status,
