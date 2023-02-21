@@ -112,6 +112,12 @@ function loadPlugin(): void
         'admin_post_robotstxt',
         '\RobotstxtManager\PluginAdmin\Posts\actions'
     );
+
+    // Delete plugin settings.
+    \add_action(
+        'admin_post_delete',
+        '\RobotstxtManager\PluginAdmin\Posts\actions'
+    );
 }
 
 // Validate plugin on activation and preset plugin data.
