@@ -14,5 +14,18 @@ if (false === defined('ABSPATH')) {
  */
 function actions(): void
 {
-    return;
+    // Required security check.
+    \RobotstxtManager\PluginAdmin\securityCheck();
+
+    // Filtered but not sanitized post object.
+    $postObject = \RobotstxtManager\PluginAdmin\postObject();
+
+    // Get tab for redirect from hidden input.
+    $tab = (true !== empty($postObject['tab'])) ? $postObject['tab'] : 'settings';
+
+    // Redirect user back to plugin admin area.
+    \RobotstxtManager\PluginAdmin\postRedirect(
+        'success',
+        $tab
+    );
 }
