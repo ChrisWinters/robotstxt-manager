@@ -91,6 +91,12 @@ function loadPlugin(): void
         'admin_menu',
         '\RobotstxtManager\PluginAdmin\View\displayAdmin'
     );
+
+    // Enqueue plugin admin area stylesheet.
+    \add_action(
+        'admin_enqueue_scripts',
+        '\RobotstxtManager\PluginAdmin\View\enqueueScripts'
+    );
 }
 
 // Validate plugin on activation and preset plugin data.
