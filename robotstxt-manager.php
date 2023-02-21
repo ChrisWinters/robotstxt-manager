@@ -26,6 +26,7 @@ if (false === defined('ABSPATH')) {
 function settings(string $key): string|array
 {
     $settings = [
+        'plugin_version' => '2.0.0',
         'plugin_name' => \__('Robots.txt Manager', 'robotstxt-manager'),
         'plugin_about' => \__('A Simple Robots.txt Manager Plugin For WordPress.', 'robotstxt-manager'),
         'security_message' => \__('You are not authorized to perform this action.', 'robotstxt-manager'),
