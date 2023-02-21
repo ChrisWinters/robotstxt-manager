@@ -18,6 +18,20 @@ if (false === defined('ABSPATH')) {
     exit;
 }
 
+/**
+ * Plugin settings.
+ *
+ * @param string $key the array key to get the value for
+ */
+function settings(string $key): string|array
+{
+    $settings = [
+        'security_message' => \__('You are not authorized to perform this action.', 'robotstxt-manager'),
+    ];
+
+    return $settings[$key];
+}
+
 // Include plugin functions before loading plugin.
 require_once __DIR__.'/inc/functions/registerPlugin.php';
 
