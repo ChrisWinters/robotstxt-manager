@@ -14,5 +14,13 @@ if (false === defined('ABSPATH')) {
  */
 function includeTemplates(): void
 {
-    return;
+    $selectedTab = \RobotstxtManager\PluginAdmin\queryString('tab');
+    $currentTab = (true !== empty($selectedTab)) ? $selectedTab : 'settings';
+    $templatePath = \RobotstxtManager\settings('template_path');
+
+    if (true === file_exists($templatePath.$currentTab.'.php')) {
+        include_once $templatePath.'header.php';
+        include_once $templatePath.$currentTab.'.php';
+        include_once $templatePath.'footer.php';
+    }
 }
