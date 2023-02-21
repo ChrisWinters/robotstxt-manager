@@ -50,6 +50,8 @@ require_once __DIR__.'/inc/functions/plugin-admin/postRedirect.php';
 require_once __DIR__.'/inc/functions/plugin-admin/queryString.php';
 require_once __DIR__.'/inc/functions/plugin-admin/securityCheck.php';
 
+require_once __DIR__.'/inc/functions/plugin-admin/posts/actions.php';
+
 require_once __DIR__.'/inc/functions/plugin-admin/view/displayAdmin.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/enqueueScripts.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/includeTemplates.php';
