@@ -16,6 +16,9 @@ function postRedirect(
     string $status = 'success',
     string $tab = 'settings'
 ): void {
+    // Set update notice flag.
+    \RobotstxtManager\option\update($status, 'notice');
+
     \wp_redirect(
         \admin_url(
             'options-general.php?page=robotstxt-manager&tab='.$tab.'&status='.$status
