@@ -21,8 +21,6 @@ function displayAdmin(): void
         \RobotstxtManager\settings('plugin_name'),
         'manage_options',
         'robotstxt-manager',
-        function () {
-            return;
-        }
+        '\RobotstxtManager\PluginAdmin\View\includeTemplates'
     );
 }
