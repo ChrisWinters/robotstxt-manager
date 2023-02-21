@@ -16,7 +16,7 @@ if (false === defined('ABSPATH')) {
 			</div><!-- #post-body-content -->
 
 			<div id="postbox-container-1" class="postbox-container">
-				<?php // require_once \RobotstxtManager\settings('template_path').'sidebar.php';?>
+				<?php require_once \RobotstxtManager\settings('template_path').'sidebar.php'; ?>
 			</div>
 
 			<br class="clear" />
