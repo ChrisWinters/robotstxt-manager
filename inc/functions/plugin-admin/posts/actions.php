@@ -17,15 +17,23 @@ function actions(): void
     // Required security check.
     \RobotstxtManager\PluginAdmin\securityCheck();
 
+    // Default to update failed.
+    $status = 'error';
+
     // Filtered but not sanitized post object.
     $postObject = \RobotstxtManager\PluginAdmin\postObject();
 
     // Get tab for redirect from hidden input.
     $tab = (true !== empty($postObject['tab'])) ? $postObject['tab'] : 'settings';
 
+    // Updated saved robots.txt file.
+    if ('robotstxt' === $postObject['action']) {
+        $status = \RobotstxtManager\PluginAdmin\Posts\robotstxt($postObject['robotstxt']);
+    }
+
     // Redirect user back to plugin admin area.
     \RobotstxtManager\PluginAdmin\postRedirect(
-        'success',
+        $status,
         $tab
     );
 }
