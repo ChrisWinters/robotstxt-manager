@@ -75,6 +75,7 @@ require_once __DIR__.'/inc/functions/plugin-admin/preset/wordpress.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/displayAdmin.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/enqueueScripts.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/includeTemplates.php';
+require_once __DIR__.'/inc/functions/plugin-admin/view/navigationTabs.php';
 
 // Init plugin.
 \add_action(
