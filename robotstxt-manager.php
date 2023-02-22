@@ -32,6 +32,10 @@ function settings(string $key): string|array
         'security_message' => \__('You are not authorized to perform this action.', 'robotstxt-manager'),
         'preset_viewer' => '/wp-content/plugins/robotstxt-manager/inc/functions/presetViewer.php?p=',
         'template_path' => dirname(__FILE__).'/inc/templates/',
+        'admin_tabs' => [
+            'settings' => \__('Settings', 'robotstxt-manager'),
+            'cleaner' => \__('Cleaner', 'robotstxt-manager'),
+        ],
     ];
 
     return $settings[$key];
@@ -51,6 +55,8 @@ require_once __DIR__.'/inc/functions/plugin-admin/postObject.php';
 require_once __DIR__.'/inc/functions/plugin-admin/postRedirect.php';
 require_once __DIR__.'/inc/functions/plugin-admin/queryString.php';
 require_once __DIR__.'/inc/functions/plugin-admin/securityCheck.php';
+
+require_once __DIR__.'/inc/functions/plugin-admin/cleaner/checkPrevious.php';
 
 require_once __DIR__.'/inc/functions/plugin-admin/posts/actions.php';
 require_once __DIR__.'/inc/functions/plugin-admin/posts/cleaner.php';
