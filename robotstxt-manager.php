@@ -53,6 +53,7 @@ require_once __DIR__.'/inc/functions/plugin-admin/queryString.php';
 require_once __DIR__.'/inc/functions/plugin-admin/securityCheck.php';
 
 require_once __DIR__.'/inc/functions/plugin-admin/posts/actions.php';
+require_once __DIR__.'/inc/functions/plugin-admin/posts/cleaner.php';
 require_once __DIR__.'/inc/functions/plugin-admin/posts/delete.php';
 require_once __DIR__.'/inc/functions/plugin-admin/posts/preset.php';
 require_once __DIR__.'/inc/functions/plugin-admin/posts/robotstxt.php';
