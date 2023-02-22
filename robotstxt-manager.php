@@ -51,6 +51,11 @@ require_once __DIR__.'/inc/functions/plugin-admin/postRedirect.php';
 require_once __DIR__.'/inc/functions/plugin-admin/queryString.php';
 require_once __DIR__.'/inc/functions/plugin-admin/securityCheck.php';
 
+require_once __DIR__.'/inc/functions/plugin-admin/posts/actions.php';
+require_once __DIR__.'/inc/functions/plugin-admin/posts/delete.php';
+require_once __DIR__.'/inc/functions/plugin-admin/posts/preset.php';
+require_once __DIR__.'/inc/functions/plugin-admin/posts/robotstxt.php';
+
 require_once __DIR__.'/inc/functions/plugin-admin/preset/alternative.php';
 require_once __DIR__.'/inc/functions/plugin-admin/preset/blocked.php';
 require_once __DIR__.'/inc/functions/plugin-admin/preset/blogger.php';
@@ -58,10 +63,6 @@ require_once __DIR__.'/inc/functions/plugin-admin/preset/google.php';
 require_once __DIR__.'/inc/functions/plugin-admin/preset/open.php';
 require_once __DIR__.'/inc/functions/plugin-admin/preset/simplified.php';
 require_once __DIR__.'/inc/functions/plugin-admin/preset/wordpress.php';
-
-require_once __DIR__.'/inc/functions/plugin-admin/posts/actions.php';
-require_once __DIR__.'/inc/functions/plugin-admin/posts/delete.php';
-require_once __DIR__.'/inc/functions/plugin-admin/posts/robotstxt.php';
 
 require_once __DIR__.'/inc/functions/plugin-admin/view/displayAdmin.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/enqueueScripts.php';
@@ -118,6 +119,12 @@ function loadPlugin(): void
     // Update robots.txt file.
     \add_action(
         'admin_post_robotstxt',
+        '\RobotstxtManager\PluginAdmin\Posts\actions'
+    );
+
+    // Set preset as robots.txt file.
+    \add_action(
+        'admin_post_preset',
         '\RobotstxtManager\PluginAdmin\Posts\actions'
     );
 
