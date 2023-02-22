@@ -65,31 +65,31 @@ if (false === defined('ABSPATH')) {
 		</tr>
 		<tr>
 		<th scope="row"><label for="simplified"><?php \esc_html_e('Simplified robots.txt file', 'robotstxt-manager'); ?></label></th>
-		<td><input type="radio" name="preset" value="simplified" id="simplified" /> <span class="description"><?php \esc_html_e('Simplified rules that will work with most WordPress setups.', 'robotstxt-manager'); ?></span></td>
+		<td><input type="radio" name="preset" value="simplified" id="simplified" /> <span class="description"><?php \esc_html_e('Simplified rules that will work with most WordPress setups.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'simplified'); ?>" target="_blank"><?php \esc_html_e('view', 'robotstxt-manager'); ?></a>]</span></td>
 		</tr>
 		<tr>
 		<th scope="row"><label for="alternative"><?php \esc_html_e('Alternative robots.txt file', 'robotstxt-manager'); ?></label></th>
-		<td><input type="radio" name="preset" value="alternative" id="alternative" /> <span class="description"><?php \esc_html_e('Similar to the simplified robots.txt file, with more disallows.', 'robotstxt-manager'); ?></span></td>
+		<td><input type="radio" name="preset" value="alternative" id="alternative" /> <span class="description"><?php \esc_html_e('Similar to the simplified robots.txt file, with more disallows.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'alternative'); ?>" target="_blank"><?php \esc_html_e('view', 'robotstxt-manager'); ?></a>]</span></td>
 		</tr>
 		<tr>
 		<th scope="row"><label for="wordpress"><?php \esc_html_e('WordPress robots.txt file', 'robotstxt-manager'); ?></label></th>
-		<td><input type="radio" name="preset" value="wordpress" id="wordpress" /> <span class="description"><?php \esc_html_e('Includes all possible rules, use as a base to create a custom file.', 'robotstxt-manager'); ?></span></td>
+		<td><input type="radio" name="preset" value="wordpress" id="wordpress" /> <span class="description"><?php \esc_html_e('Includes all possible rules, use as a base to create a custom file.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'wordpress'); ?>" target="_blank"><?php \esc_html_e('view', 'robotstxt-manager'); ?></a>]</span></td>
 		</tr>
 		<tr>
 		<th scope="row"><label for="blogger"><?php \esc_html_e('Blogger friendly robots.txt file', 'robotstxt-manager'); ?></label></th>
-		<td><input type="radio" name="preset" value="blogger" id="blogger" /> <span class="description"><?php \esc_html_e('Optimized for blog focused WordPress websites.', 'robotstxt-manager'); ?></span></td>
+		<td><input type="radio" name="preset" value="blogger" id="blogger" /> <span class="description"><?php \esc_html_e('Optimized for blog focused WordPress websites.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'blogger'); ?>" target="_blank"><?php \esc_html_e('view', 'robotstxt-manager'); ?></a>]</span></td>
 		</tr>
 		<tr>
 		<th scope="row"><label for="google"><?php \esc_html_e('Google friendly robots.txt file', 'robotstxt-manager'); ?></label></th>
-		<td><input type="radio" name="preset" value="google" id="google" /> <span class="description"><?php \esc_html_e('A Google friendly robots.txt file.', 'robotstxt-manager'); ?></span></td>
+		<td><input type="radio" name="preset" value="google" id="google" /> <span class="description"><?php \esc_html_e('A Google friendly robots.txt file.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'google'); ?>" target="_blank"><?php \esc_html_e('view', 'robotstxt-manager'); ?></a>]</span></td>
 		</tr>
 		<tr>
 		<th scope="row"><label for="open"><?php \esc_html_e('Open robots.txt file', 'robotstxt-manager'); ?></label></th>
-		<td><input type="radio" name="preset" value="open" id="open" /> <span class="description"><?php \esc_html_e('Fully open robots.txt file, no disallows.', 'robotstxt-manager'); ?></span></td>
+		<td><input type="radio" name="preset" value="open" id="open" /> <span class="description"><?php \esc_html_e('Fully open robots.txt file, no disallows.', 'robotstxt-manager'); ?></span> <span class="small">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'open'); ?>" target="_blank"><?php \esc_html_e('view', 'robotstxt-manager'); ?></a>]</span></td>
 		</tr>
 		<tr>
 		<th scope="row"><label for="blocked"><?php \esc_html_e('Disallow entire website', 'robotstxt-manager'); ?></label></th>
-		<td><input type="radio" name="preset" value="blocked" id="blocked" /> <span class="description"><?php \esc_html_e('Disallow everything, prevent spiders from indexing the website.', 'robotstxt-manager'); ?></span></td>
+		<td><input type="radio" name="preset" value="blocked" id="blocked" /> <span class="description"><?php \esc_html_e('Disallow everything, prevent spiders from indexing the website.', 'robotstxt-manager'); ?> <span class="small">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'blocked'); ?>" target="_blank"><?php \esc_html_e('view', 'robotstxt-manager'); ?></a>]</span></span></td>
 		</tr>
 	</tbody>
 </table>

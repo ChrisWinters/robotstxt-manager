@@ -30,6 +30,7 @@ function settings(string $key): string|array
         'plugin_name' => \__('Robots.txt Manager', 'robotstxt-manager'),
         'plugin_about' => \__('A Simple Robots.txt Manager Plugin For WordPress.', 'robotstxt-manager'),
         'security_message' => \__('You are not authorized to perform this action.', 'robotstxt-manager'),
+        'preset_viewer' => '/wp-content/plugins/robotstxt-manager/inc/functions/presetViewer.php?p=',
         'template_path' => dirname(__FILE__).'/inc/templates/',
     ];
 
