@@ -40,7 +40,31 @@ if (false === defined('ABSPATH')) {
 </table>
 
 <?php \submit_button(\esc_html__('update robots.txt file', 'robotstxt-manager')); ?>
+
 </form>
+
+<table class="form-table">
+	<tbody>
+		<tr>
+		<td colspan="2">
+			<div class="text-dark font-weight-bold p-0 m-0 h6"><?php \esc_html_e('Manual rule suggestions', 'robotstxt-manager'); ?></div>
+			<p class="description"><?php \esc_html_e('The rules below will need to be manually added to the end of the robots.txt file.', 'robotstxt-manager'); ?></p>
+		</td>
+		</tr>
+		<tr>
+		<th scope="row"><label><?php \esc_html_e('Upload path', 'robotstxt-manager'); ?></label></th>
+		<td><input type="text" name="upload_path" value="<?php echo \esc_html(\RobotstxtManager\PluginAdmin\View\getUploadPath()); ?>" class="regular-text" onclick="select()" /></td>
+		</tr>
+		<tr>
+		<th scope="row"><label><?php \esc_html_e('Theme path', 'robotstxt-manager'); ?></label></th>
+		<td><input type="text" name="theme_path" value="<?php echo \esc_html(\RobotstxtManager\PluginAdmin\View\getThemePath()); ?>" class="regular-text" onclick="select()" /></td>
+		</tr>
+		<tr>
+		<th scope="row"><label><?php \esc_html_e('Sitemap URL', 'robotstxt-manager'); ?></label></th>
+		<td><input type="text" name="sitemap_url" value="<?php echo \esc_html(\RobotstxtManager\PluginAdmin\View\getSitemapUrl()); ?>" class="regular-text" onclick="select()" /></td>
+		</tr>
+	</tbody>
+</table>
 
 <hr />
 
@@ -119,4 +143,3 @@ if (false === defined('ABSPATH')) {
 </table>
 
 <p class="textright"><input type="submit" name="submit" value=" <?php esc_html_e('delete settings', 'robotstxt-manager'); ?> " /></p>
-</form>
