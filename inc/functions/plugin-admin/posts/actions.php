@@ -36,6 +36,12 @@ function actions(): void
         $status = \RobotstxtManager\PluginAdmin\Posts\preset($postObject['preset']);
     }
 
+    // Cleaner: Check for old plugin settings.
+    if ('cleaner' === $postObject['action']) {
+        $status = \RobotstxtManager\PluginAdmin\Posts\cleaner();
+        $tab = 'cleaner';
+    }
+
     // Delete all plugin settings.
     if ('delete' === $postObject['action'] && 'delete' === $postObject['confirm']) {
         $status = \RobotstxtManager\PluginAdmin\Posts\delete();
