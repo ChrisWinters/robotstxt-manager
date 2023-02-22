@@ -88,6 +88,9 @@ require_once __DIR__.'/inc/functions/plugin-admin/preset/open.php';
 require_once __DIR__.'/inc/functions/plugin-admin/preset/simplified.php';
 require_once __DIR__.'/inc/functions/plugin-admin/preset/wordpress.php';
 
+require_once __DIR__.'/inc/functions/plugin-admin/view/getSitemapUrl.php';
+require_once __DIR__.'/inc/functions/plugin-admin/view/getThemePath.php';
+require_once __DIR__.'/inc/functions/plugin-admin/view/getUploadPath.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/displayAdmin.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/enqueueScripts.php';
 require_once __DIR__.'/inc/functions/plugin-admin/view/includeTemplates.php';
