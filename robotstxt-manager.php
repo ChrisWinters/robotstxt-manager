@@ -56,7 +56,12 @@ require_once __DIR__.'/inc/functions/plugin-admin/postRedirect.php';
 require_once __DIR__.'/inc/functions/plugin-admin/queryString.php';
 require_once __DIR__.'/inc/functions/plugin-admin/securityCheck.php';
 
+require_once __DIR__.'/inc/functions/plugin-admin/cleaner/checkPhysical.php';
 require_once __DIR__.'/inc/functions/plugin-admin/cleaner/checkPrevious.php';
+require_once __DIR__.'/inc/functions/plugin-admin/cleaner/checkRewrite.php';
+require_once __DIR__.'/inc/functions/plugin-admin/cleaner/cleanPhysical.php';
+require_once __DIR__.'/inc/functions/plugin-admin/cleaner/cleanPrevious.php';
+require_once __DIR__.'/inc/functions/plugin-admin/cleaner/cleanRewrite.php';
 
 require_once __DIR__.'/inc/functions/plugin-admin/posts/actions.php';
 require_once __DIR__.'/inc/functions/plugin-admin/posts/cleaner.php';
