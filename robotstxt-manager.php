@@ -129,6 +129,12 @@ function loadPlugin(): void
         '\RobotstxtManager\PluginAdmin\Posts\actions'
     );
 
+    // Run cleaner actions.
+    \add_action(
+        'admin_post_cleaner',
+        '\RobotstxtManager\PluginAdmin\Posts\actions'
+    );
+
     // Delete plugin settings.
     \add_action(
         'admin_post_delete',
