@@ -153,6 +153,12 @@ function loadPlugin(): void
         'admin_post_delete',
         '\RobotstxtManager\PluginAdmin\Posts\actions'
     );
+
+    // Plugin admin area notices.
+    \add_action(
+        'admin_notices',
+        '\RobotstxtManager\PluginAdmin\adminNotices'
+    );
 }
 
 // Validate plugin on activation and preset plugin data.
