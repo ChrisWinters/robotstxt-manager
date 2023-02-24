@@ -1,9 +1,8 @@
 <?php
 /**
- * Plugin Admin Template.
+ * Plugin admin template part.
  *
- * @author Chris W. <chrisw@null.net>
- * @license GNU GPL
+ * @include /inc/functions/plugin-admin/view/displayAdmin.php
  */
 
 namespace RobotstxtManager;
@@ -17,7 +16,7 @@ if (false === defined('ABSPATH')) {
 			</div><!-- #post-body-content -->
 
 			<div id="postbox-container-1" class="postbox-container">
-				<?php require_once dirname(ROBOTSTXT_MANAGER_FILE).'/inc/templates/sidebar.php'; ?>
+				<?php require_once \RobotstxtManager\settings('template_path').'sidebar.php'; ?>
 			</div>
 
 			<br class="clear" />
@@ -26,7 +25,7 @@ if (false === defined('ABSPATH')) {
 
 	<div class="clearfix">
 		<div class="float-start text-left">
-			<small>&#9829; <?php \esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?></small>
+			<small>&#9829; <?php echo \esc_html(\RobotstxtManager\settings('plugin_name')); ?> - <?php \esc_html_e('Version', 'robotstxt-manager'); ?> <?php echo \esc_html(\RobotstxtManager\settings('plugin_version')); ?></small>
 		</div>
 		<div class="float-end text-right">
 			<a href="#wpbody-content" aria-label="<?php \esc_html_e('Click to return to plugin settings.', 'robotstxt-manager'); ?>"><span class="dashicons-before dashicons-arrow-up"><?php \esc_html_e('top', 'robotstxt-manager'); ?></span></a>

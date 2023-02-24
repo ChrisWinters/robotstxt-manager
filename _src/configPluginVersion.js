@@ -22,7 +22,7 @@ export function pluginVersionFrom(oldVersion) {
     "Stable tag: " + oldVersion, // File: readme.txt file
     "Current version:** " + oldVersion, // File: README.MD
     "Version: " + oldVersion, // File: robotstxt-manager.php
-    "'ROBOTSTXT_MANAGER_VERSION', '" + oldVersion + "'", // File: robotstxt-manager.php
+    "'plugin_version' => '" + oldVersion + "'", // File: robotstxt-manager.php
     '"version": "' + oldVersion + '"', // Files: package.json, package-lock.json, updates.json
     "tag/" + oldVersion, // File: updates.json
   ];
@@ -34,7 +34,7 @@ export function pluginVersionTo(newVersion) {
     "Stable tag: " + newVersion, // File: readme.txt file
     "Current version:** " + newVersion, // File: README.MD
     "Version: " + newVersion, // File: robotstxt-manager.php
-    "'ROBOTSTXT_MANAGER_VERSION', '" + newVersion + "'", // File: robotstxt-manager.php
+    "'plugin_version' => '" + newVersion + "'", // File: robotstxt-manager.php
     '"version": "' + newVersion + '"', // Files: package.json, package-lock.json, updates.json
     "tag/" + newVersion, // File: updates.json
   ];

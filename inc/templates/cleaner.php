@@ -16,11 +16,11 @@ if (false === defined('ABSPATH')) {
 <p class="description"><?php \esc_html_e('Tools to help you with robots.txt file issues.', 'robotstxt-manager'); ?></p>
 <hr />
 
-<form enctype="multipart/form-data" method="post" action="<?php echo \admin_url('options-general.php?page=robotstxt-manager&tab=cleaner#notice'); ?>">
+<form enctype="multipart/form-data" method="post" action="<?php echo admin_url('admin-post.php'); ?>">
 <?php
 \wp_nonce_field(
-    ROBOTSTXT_MANAGER_SETTING_PREFIX.'action',
-    ROBOTSTXT_MANAGER_SETTING_PREFIX.'nonce'
+    'robotstxt_manager_action',
+    'robotstxt_manager_nonce'
 );
 ?>
 <input type="hidden" name="action" value="cleaner" />
@@ -28,16 +28,16 @@ if (false === defined('ABSPATH')) {
 	<h3 id="scanSettingsTitle"><?php \esc_html_e('Check for other robots.txt file settings', 'robotstxt-manager'); ?></h3>
 	<p class="description" id="scanSettingsDesc"><?php \esc_html_e('If you are having problems with a websites robots.txt file to displaying properly, it is possible that old robots.txt file data left over from other plugins is conflicting. Click the "scan for old data" button below to scan the network for left over data. If any is found, a notice will display with a new button to automatically clean out the left over data.', 'robotstxt-manager'); ?></p>
 	<div class="mt-3">
-		<input type="submit" name="check-data" class="btn btn-secondary" value="scan for old data" aria-describedby="scanSettingsTitle,scanSettingsDesc" aria-label="<?php \esc_html_e('Select to scan for old Robots.txt file data.', 'robotstxt-manager'); ?>">
+		<input type="submit" name="check-previous" class="btn btn-secondary" value="scan for old data" aria-describedby="scanSettingsTitle,scanSettingsDesc" aria-label="<?php \esc_html_e('Select to scan for old Robots.txt file data.', 'robotstxt-manager'); ?>">
 	</div>
 	</section>
-	<?php if ('error' === $this->getSetting('checkdata')) { ?>
+	<?php if ('clean-previous' === \RobotstxtManager\option\get('cleaner')) { ?>
 		<hr />
 		<section>
 		<h3 id="foundSettingsTitle"><?php \esc_html_e('Old robots.txt file settings found', 'robotstxt-manager'); ?></h3>
 		<p class="description" id="foundSettingsDesc"><?php \esc_html_e('Click the "remove old data" button below to purge the old settings.', 'robotstxt-manager'); ?></p>
 		<div class="mt-3">
-			<input type="submit" name="clean-data" class="btn btn-primary" value="remove old data" aria-describedby="foundSettingsTitle,foundSettingsDesc" aria-label="<?php \esc_html_e('Select to remove old Robots.txt file data.', 'robotstxt-manager'); ?>">
+			<input type="submit" name="clean-previous" class="btn btn-primary" value="remove old data" aria-describedby="foundSettingsTitle,foundSettingsDesc" aria-label="<?php \esc_html_e('Select to remove old Robots.txt file data.', 'robotstxt-manager'); ?>">
 		</div>
 	</section>
 	<?php } ?>
@@ -52,7 +52,7 @@ if (false === defined('ABSPATH')) {
 	</div>
 	</section>
 
-	<?php if ('error' === $this->getSetting('checkphysical')) { ?>
+	<?php if ('clean-physical' === \RobotstxtManager\option\get('cleaner')) { ?>
 		<hr />
 		<section>
 		<h3 class="text-danger font-weight-bold pl-0" id="foundFileTitle"><?php \esc_html_e('A real robots.txt file was found', 'robotstxt-manager'); ?></h3>
@@ -73,7 +73,7 @@ if (false === defined('ABSPATH')) {
 	</div>
 	</section>
 
-	<?php if ('error' === $this->getSetting('checkrewrite')) { ?>
+	<?php if ('clean-rewrite' === \RobotstxtManager\option\get('cleaner')) { ?>
 		<hr />
 		<section>
 		<h3 class="text-danger font-weight-bold pl-0" id="noRewriteTitle"><?php \esc_html_e('The rewrite rule is missing', 'robotstxt-manager'); ?></h3>

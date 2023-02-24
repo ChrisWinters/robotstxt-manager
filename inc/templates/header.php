@@ -1,9 +1,8 @@
 <?php
 /**
- * Plugin Admin Template.
+ * Plugin admin template part.
  *
- * @author Chris W. <chrisw@null.net>
- * @license GNU GPL
+ * @include /inc/functions/plugin-admin/view/includeTemplates.php
  */
 
 namespace RobotstxtManager;
@@ -13,8 +12,12 @@ if (false === defined('ABSPATH')) {
 }
 ?>
 <div class="wrap">
-	<h1><span class="dashicons dashicons-admin-site-alt3 mt-1 pt-1"></span> <?php \esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?>: <small><?php \esc_html_e('A Simple Robots.txt Manager Plugin For WordPress.', 'robotstxt-manager'); ?></small></h1>
-	<?php echo \wp_kses_post($this->tabs()); ?>
+	<h1><span class="dashicons dashicons-admin-site-alt3 mt-1 pt-1"></span> <?php
+        echo \esc_html(\RobotstxtManager\settings('plugin_name')); ?>: <small><?php
+        echo \esc_html(\RobotstxtManager\settings('plugin_about')); ?></small></h1>
+
+	<?php echo \RobotstxtManager\PluginAdmin\View\navigationTabs(); ?>
+
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">

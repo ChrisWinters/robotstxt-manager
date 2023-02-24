@@ -1,9 +1,8 @@
 <?php
 /**
- * Plugin Admin Template.
+ * Plugin admin template part.
  *
- * @author Chris W. <chrisw@null.net>
- * @license GNU GPL
+ * @include /inc/templates/footer.php
  */
 
 namespace RobotstxtManager;
@@ -13,9 +12,7 @@ if (false === defined('ABSPATH')) {
 }
 ?>
 <aside class="postbox">
-	<h3>
-		<?php \esc_html_e('Robots.txt Manager', 'robotstxt-manager'); ?>
-	</h3>
+	<h3><?php echo \esc_html(\RobotstxtManager\settings('plugin_name')); ?></h3>
 	<div class="inside" style="clear:both;padding-top:1px;">
 		<div class="para">
 			<ul class="list-group list-group-flush p-0">
@@ -27,9 +24,7 @@ if (false === defined('ABSPATH')) {
 </aside>
 
 <aside class="postbox">
-	<h3>
-		<?php \esc_html_e('Robots.txt Help', 'robotstxt-manager'); ?>
-	</h3>
+	<h3><?php \esc_html_e('Robots.txt Help', 'robotstxt-manager'); ?></h3>
 	<div class="inside" style="clear:both;padding-top:1px;">
 		<div class="para">
 			<ul class="list-group list-group-flush p-0">
