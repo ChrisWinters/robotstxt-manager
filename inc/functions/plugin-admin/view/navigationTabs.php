@@ -24,21 +24,28 @@ function navigationTabs(): string
         $currentTab = $selectedTab;
     }
 
-    // HTML Output.
-    $html = '<h2 class="nav-tab-wrapper">';
+    $menuItem = \__('Menu item', 'robotstxt-manager');
+
+    $html = '<div class="nav-tab-wrapper" role="navigation" aria-label="Plugin tab menu">';
+    $html .= '<a href="#post-body-content" class="screen-reader-shortcut">'.\__('Skip to plugin settings', 'robotstxt-manager').'</a>';
+    $html .= '<ul class="p-0 m-0" id="nav">';
 
     foreach ($adminTabs as $tab => $name) {
-        $class = '';
+        $active = '';
+        $class = ' mb-0';
 
         if ($tab === $currentTab) {
             $class = ' nav-tab-active';
+            $active = \__('Active ', 'robotstxt-manager');
         }
 
-        $html .= '<a href="?page='.$pageName.
-        '&tab='.$tab.'" class="nav-tab'.$class.'">'.$name.'</a>';
+        $html .= '<li class="nav-tab'.$class.'">';
+        $html .= '<a href="?page='.$pageName.'&tab='.$tab.'#wpbody-content" aria-label="'.$active.$menuItem.': '.$name.'">'.$name.'</a>';
+        $html .= '</li>';
     }
 
-    $html .= '</h2><br />';
+    $html .= '</ul>';
+    $html .= '</div>';
 
     return $html;
 }

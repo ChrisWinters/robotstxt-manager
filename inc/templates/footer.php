@@ -22,7 +22,8 @@ if (false === defined('ABSPATH')) {
 			<br class="clear" />
 		</div><!-- #post-body -->
 	</div><!-- #poststuff -->
-    <div class="clearfix">
+
+	<div class="clearfix">
 		<div class="float-start text-left">
 			<small>&#9829; <?php echo \esc_html(\RobotstxtManager\settings('plugin_name')); ?> - <?php \esc_html_e('Version', 'robotstxt-manager'); ?> <?php echo \esc_html(\RobotstxtManager\settings('plugin_version')); ?></small>
 		</div>
