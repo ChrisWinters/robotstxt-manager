@@ -2,7 +2,7 @@
 
 A simple to use Robots.txt Manager Plugin for WordPress, with 7 pre-created robots.txt files to help you get started.
 
-* **Current version:** 2.0.0
+* **Current version:** 3.0.0
 * **Requires PHP:** 7.2
 * **WordPress version:** 6.1.1
 
