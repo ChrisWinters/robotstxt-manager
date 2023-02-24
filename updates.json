@@ -1,7 +1,7 @@
 {
 	"name": "Robots.txt Manager",
 	"version": "2.0.0",
-	"download_url": "https://github.com/ChrisWinters/robotstxt-manager/blob/master/robotstxt-manager.zip",
+	"download_url": "https://github.com/ChrisWinters/robotstxt-manager/raw/master/robotstxt-manager.zip",
 	"homepage": "https://github.com/ChrisWinters/robotstxt-manager/",
 	"required_php": "7.2",
 	"required_wp": "4.9",
