@@ -32,8 +32,10 @@
         "css-minify": "cleancss -O1 --format breakWidth=1f --with-rebase --output assets/css/style.min.css \"assets/css/*.css\" \"!assets/css/*.min.css\"",
         "translate": "wp-pot --src '**/*.php' --dest-file 'lang/robotstxt-manager.pot' --domain 'robotstxt-manager' --bug-report 'https://github.com/ChrisWinters/robotstxt-manager/issues'",
         "version": "node ./_src/version.js",
-        "zip": "node ./_src/zip.js",
-        "copy-files": "copyfiles -e ./_src/** -e ./node_modules/** -e ./.editorconfig -e ./.gitattributes -e ./.gitignore -e ./robotstxt-manager.zip -e ./package*.json -F ./* ./*/** zip/robotstxt-manager"
+        "zip": "npm-run-all copy-files zip-files remove-zip",
+        "copy-files": "copyfiles -e ./_src/** -e ./node_modules/** -e ./.editorconfig -e ./.gitattributes -e ./.gitignore -e ./robotstxt-manager.zip -e ./package*.json -F ./* ./*/** zip/robotstxt-manager",
+        "zip-files": "node ./_src/zipFiles.js",
+        "remove-zip": "node ./_src/removeZip.js"
     },
     "devDependencies": {
         "archiver": "^5.3.1",
