@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ChrisWinters/robotstxt-manager
  * Description: A Simple Robots.txt Manager For WordPress.
  * Tags: robotstxt, robots.txt, robots, robot, spiders, virtual, search, google, seo
- * Version: 2.0.0
+ * Version: 1.0.0
  * License: GNU GPLv3
  * Author: Chris Winters
  * Text Domain: robotstxt-manager
@@ -26,7 +26,7 @@ if (false === defined('ABSPATH')) {
 function settings(string $key): string|array
 {
     $settings = [
-        'plugin_version' => '2.0.0',
+        'plugin_version' => '1.0.0',
         'plugin_name' => \__('Robots.txt Manager', 'robotstxt-manager'),
         'plugin_about' => \__('A Simple Robots.txt Manager Plugin For WordPress.', 'robotstxt-manager'),
         'security_message' => \__('You are not authorized to perform this action.', 'robotstxt-manager'),
@@ -180,3 +180,14 @@ function loadPlugin(): void
     __FILE__,
     '\RobotstxtManager\registerPlugin'
 );
+
+// Plugin update checker
+if (true === file_exists(dirname(__FILE__).'/puc/plugin-update-checker.php')) {
+    require_once dirname(__FILE__).'/puc/plugin-update-checker.php';
+
+    $robotstxtManagerPuc = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+        'https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/updates.json',
+        __FILE__,
+        'robotstxt-manager'
+    );
+}
