@@ -38,7 +38,7 @@ function actions(): void
 
     // Cleaner: Check for old plugin settings.
     if ('cleaner' === $postObject['action']) {
-        $status = \RobotstxtManager\PluginAdmin\Posts\cleaner();
+        $status = \RobotstxtManager\PluginAdmin\Posts\cleaner($postObject);
         $tab = 'cleaner';
     }
 
