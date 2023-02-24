@@ -26,7 +26,7 @@ if (false === defined('ABSPATH')) {
 <input type="hidden" name="tab" value="settings" />
 	<h3><?php \esc_html_e('Saved robots.txt file', 'robotstxt-manager'); ?></h3>
 	<p class="description"><?php \esc_html_e('Displaying the currently saved robots.txt file. Saving an empty file will restore the default WordPress robots.txt file.', 'robotstxt-manager'); ?></p>
-	<p class="description pb-4"><a href="<?php \esc_url(\get_bloginfo('url')); ?>/robots.txt" target="_blank"><?php \esc_html_e('View this websites current robots.txt file', 'robotstxt-manager'); ?></a></p>
+	<p class="description pb-4"><a href="<?php \esc_url(\get_bloginfo('url')); ?>/robots.txt"><?php \esc_html_e('View this websites current robots.txt file', 'robotstxt-manager'); ?></a></p>
 	<textarea name="robotstxt" cols="65" rows="20" class="form-control" aria-label="<?php echo (true === empty(\RobotstxtManager\option\setting('robotstxt'))) ? \esc_html__('No robots.txt file is currently saved.', 'robotstxt-manager') : \esc_html__('Displaying the currently saved robots.txt file.', 'robotstxt-manager'); ?>"><?php echo \esc_html(\RobotstxtManager\option\setting('robotstxt')); ?></textarea>
 	<p class="submit"><input type="submit" name="submit" id="submit" class="btn btn-primary" value="<?php \esc_html_e('save robots.txt file changes', 'robotstxt-manager'); ?>"></p>
 </form>
@@ -73,14 +73,14 @@ if (false === defined('ABSPATH')) {
 	<li class="list-group-item my-3">
 		<input class="form-check-input me-1" name="preset" type="radio" value="simplified" id="simplified">
 		<label class="form-check-label fw-bold" for="simplified">
-			<?php \esc_html_e('Simplified robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'simplified'); ?>" target="_blank"><?php \esc_html_e('View the simplified robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
+			<?php \esc_html_e('Simplified robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'simplified'); ?>"><?php \esc_html_e('View the simplified robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
 		</label>
 	</li>
 
 	<li class="list-group-item mb-3">
 		<input class="form-check-input me-1" name="preset" type="radio" value="alternative" id="alternative">
 		<label class="form-check-label fw-bold" for="alternative">
-			<?php \esc_html_e('Alternative robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'alternative'); ?>" target="_blank"><?php \esc_html_e('View the alternative robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
+			<?php \esc_html_e('Alternative robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'alternative'); ?>"><?php \esc_html_e('View the alternative robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
 		</label>
 	</li>
 	<tr>
@@ -88,35 +88,35 @@ if (false === defined('ABSPATH')) {
 	<li class="list-group-item mb-3">
 		<input class="form-check-input me-1" name="preset" type="radio" value="wordpress" id="wordpress">
 		<label class="form-check-label fw-bold" for="wordpress">
-			<?php \esc_html_e('WordPress robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'wordpress'); ?>" target="_blank"><?php \esc_html_e('View the WordPress robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
+			<?php \esc_html_e('WordPress robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'wordpress'); ?>"><?php \esc_html_e('View the WordPress robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
 		</label>
 	</li>
 
 	<li class="list-group-item mb-3">
 		<input class="form-check-input me-1" name="preset" type="radio" value="open" id="open">
 		<label class="form-check-label fw-bold" for="open">
-			<?php \esc_html_e('Open robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'open'); ?>" target="_blank"><?php \esc_html_e('View the fully open robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
+			<?php \esc_html_e('Open robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'open'); ?>"><?php \esc_html_e('View the fully open robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
 		</label>
 	</li>
 
 	<li class="list-group-item mb-3">
 		<input class="form-check-input me-1" name="preset" type="radio" value="blogger" id="blogger">
 		<label class="form-check-label fw-bold" for="blogger">
-			<?php \esc_html_e('Blogger friendly robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'blogger'); ?>" target="_blank"><?php \esc_html_e('View the bloggers robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
+			<?php \esc_html_e('Blogger friendly robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'blogger'); ?>"><?php \esc_html_e('View the bloggers robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
 		</label>
 	</li>
 
 	<li class="list-group-item mb-3">
 		<input class="form-check-input me-1" name="preset" type="radio" value="google" id="google">
 		<label class="form-check-label fw-bold" for="google">
-			<?php \esc_html_e('Google friendly robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'google'); ?>" target="_blank"><?php \esc_html_e('View the Google friendly robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
+			<?php \esc_html_e('Google friendly robots.txt file', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'google'); ?>"><?php \esc_html_e('View the Google friendly robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
 		</label>
 	</li>
 
 	<li class="list-group-item mb-3">
 		<input class="form-check-input me-1" name="preset" type="radio" value="blocked" id="blocked">
 		<label class="form-check-label fw-bold" for="blocked">
-			<?php \esc_html_e('Disallow entire website', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'blocked'); ?>" target="_blank"><?php \esc_html_e('View the locked down robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
+			<?php \esc_html_e('Disallow entire website', 'robotstxt-manager'); ?> <span class="d-block d-sm-inline-block fw-normal">[<a href="<?php echo site_url(\RobotstxtManager\settings('preset_viewer').'blocked'); ?>"><?php \esc_html_e('View the locked down robots.txt file', 'robotstxt-manager'); ?></a>]</span></span>
 		</label>
 	</li>
 	</ul>
