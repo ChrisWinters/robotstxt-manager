@@ -2,11 +2,9 @@
 
 A simple to use Robots.txt Manager Plugin for WordPress, with 7 pre-created robots.txt files to help you get started.
 
-* **Current version:** 3.0.0
-* **Requires PHP:** 7.2
-* **WordPress version:** 6.1.1
-
   ![The robots.txt manger WordPress plugin allows you to quickly and easily manage your websites robots.txt file.](https://raw.githubusercontent.com/ChrisWinters/robotstxt-manager/master/assets/images/icon-256x256.png)
+
+**Current version:** 3.0.0 | **Requires PHP:** 7.2 | **WordPress version:** 6.1.1
 
 ## Plugin features
 
@@ -17,21 +15,11 @@ A simple to use Robots.txt Manager Plugin for WordPress, with 7 pre-created robo
 * Quickly disable or delete the plugin settings within the plugin admin
 * Scan and clean for old plugin data, a physical robots.txt file, and missing rewrite rules
 
-## Installation
+## Install and activate
 
-Manually download, install, and activate the plugin. Once activated the Robots.txt Manager plugin will update just like other WordPress plugin.
+[Download](https://github.com/ChrisWinters/robotstxt-manager/raw/master/robotstxt-manager.zip), install, and activate the plugin. Once activated the Robots.txt Manager plugin will update just like other WordPress plugin.
 
-### Download
-
-Select which download method works best for you.
-
-#### Done for you
-
-This is the simplest and quickest way to get started.
-
-* Download the already prepared [robotstxt-manager.zip](https://github.com/ChrisWinters/robotstxt-manager/raw/master/robotstxt-manager.zip) to your personal computer
-
-#### Do it yourself
+### Do it yourself
 
 A little extra work, but handy when you need to use a past versions or just like to use releases.
 
@@ -47,22 +35,6 @@ Integrate and deploy the plugin however you like.
 * Clone the plugin and have fun
 * Run npm install for basic development needs
   * Check the package.json for commands
-* Avoid publishing: Keep things clean
-  * The directories _src/ svn/ and node_modules/
-  * All dot files (.gitignore, etc)
-  * The package.json and package-lock.json files
-  * The README.md file
-  * The robotstxt-manager.zip file
-
-### Upload, install, and activate
-
-Once activated the plugin will update like other WordPress plugins.
-
-* Plugins menu > Add New link or click the "Upload Plugin" button on the plugin admin page
-  * Click the "Choose File" button
-    * Find and select/drag and drop the robotstxt-manager.zip file from your personal computer
-    * Click the "Install Now" button
-    * Click the "Activate" link to start the plugin
 
 ## Arbitrary section
 
